@@ -1,15 +1,11 @@
 <template lang='pug'>
-div
-  h1 Artjom Löbsack
-  NuxtLink(to='articles') Articles
-  NuxtContent(:document='document')
+NuxtContent(:document='index')
 </template>
 
 <script>
 export default {
   async asyncData ({ $content }) {
-    const document = await $content('hello').fetch()
-    return { document }
+    return { index: await $content('index').fetch() }
   }
 }
 </script>
