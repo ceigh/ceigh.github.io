@@ -1,0 +1,34 @@
+name: Deploy
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  pages:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Pull
+        uses: garygrossgarten/github-action-ssh@release
+        with:
+          command: cd /var/www/ceigh.com && git pull
+          host: ceigh.com
+          username: root
+          privateKey: ${{ secrets.PRIVATE_KEY }}
+
+      - name: Build
+        uses: garygrossgarten/github-action-ssh@release
+        with:
+          command: cd /var/www/ceigh.com && yarn build
+          host: ceigh.com
+          username: root
+          privateKey: ${{ secrets.PRIVATE_KEY }}
+
+      - name: Reload
+        uses: garygrossgarten/github-action-ssh@release
+        with:
+          command: pm2 reload ceigh.com
+          host: ceigh.com
+          username: root
+          privateKey: ${{ secrets.PRIVATE_KEY }}
