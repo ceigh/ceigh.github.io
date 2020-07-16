@@ -1,5 +1,17 @@
 <template lang='pug'>
-NuxtContent(:document='note')
+div
+  h1.title {{ note.title }}
+
+  p.author
+    | {{ note.author || 'Artjom Löbsack' }}
+    br
+    | {{ note.date }}
+
+  div.abstract
+    h3 Abstract
+    p {{ note.abstract }}
+
+  NuxtContent(:document='note')
 </template>
 
 <script>

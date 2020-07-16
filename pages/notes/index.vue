@@ -10,6 +10,8 @@ div
 
 <script>
 export default {
+  layout: 'header',
+
   async asyncData ({ $content }) {
     return { notes: await $content('notes').fetch() }
   }

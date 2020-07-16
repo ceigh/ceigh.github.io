@@ -4,6 +4,8 @@ NuxtContent(:document='index')
 
 <script>
 export default {
+  layout: 'header',
+
   async asyncData ({ $content }) {
     return { index: await $content('index').fetch() }
   }
