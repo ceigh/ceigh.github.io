@@ -16,6 +16,12 @@ code {
   padding: 4px;
 }
 
+pre code {
+  background: initial;
+  border-radius: 0;
+  padding: 0;
+}
+
 /* adaptive dark theme */
 @media (prefers-color-scheme: dark) {
   html {
