@@ -1,0 +1,25 @@
+/* set default selection color */
+::selection {
+  background: Highlight;
+  color: HighlightText;
+}
+
+/* zoom text */
+html {
+  font-size: calc(7px + 1vw);
+}
+
+/* adaptive dark theme */
+@media (prefers-color-scheme: dark) {
+  html {
+    filter: invert(100%);
+  }
+
+  body {
+    background: #000;
+  }
+
+  img {
+    filter: invert(0);
+  }
+}

@@ -12,7 +12,8 @@ export default {
     ]
   },
   css: [
-    'latex.css'
+    'latex.css',
+    '~/assets/styles/common.css'
   ],
   buildModules: [
     '@nuxtjs/eslint-module',
