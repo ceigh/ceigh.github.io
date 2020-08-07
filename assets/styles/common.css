@@ -22,4 +22,9 @@ html {
   img {
     filter: invert(0);
   }
+
+  /* make code block background lighter */
+  pre[class*='language-'] {
+    background: #ddd !important;
+  }
 }
