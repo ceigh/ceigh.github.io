@@ -17,9 +17,14 @@ code {
 }
 
 pre code {
-  background: initial;
+  background: none;
   border-radius: 0;
   padding: 0;
+}
+
+/* remove operator highlight */
+.token.operator {
+  background: none !important;
 }
 
 /* adaptive dark theme */
