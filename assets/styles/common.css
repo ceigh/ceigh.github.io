@@ -9,6 +9,13 @@ html {
   font-size: calc(7px + 1vw);
 }
 
+/* highlight one line code blocks */
+code {
+  background: #f5f2f0;
+  border-radius: 4px;
+  padding: 4px;
+}
+
 /* adaptive dark theme */
 @media (prefers-color-scheme: dark) {
   html {
@@ -24,7 +31,8 @@ html {
   }
 
   /* make code block background lighter */
-  pre[class*='language-'] {
+  pre[class*='language-'],
+  code {
     background: #ddd !important;
   }
 }
