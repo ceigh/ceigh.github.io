@@ -18,6 +18,11 @@ div
 export default {
   async asyncData ({ $content, params: { slug } }) {
     return { note: await $content('notes', slug).fetch() }
+  },
+
+  head () {
+    const { note } = this
+    return note ? { title: note.title } : {}
   }
 }
 </script>
