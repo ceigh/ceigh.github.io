@@ -22,7 +22,11 @@ export default {
 
   head () {
     const { note } = this
-    return note ? { title: note.title } : {}
+    if (note) {
+      const title = `${note.title || 'Note'} - ${
+        note.author || 'Artjom Löbsack'}`
+      return { title }
+    }
   }
 }
 </script>

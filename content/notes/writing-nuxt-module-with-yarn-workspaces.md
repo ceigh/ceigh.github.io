@@ -1,5 +1,5 @@
 ---
-title: Writing Nuxt module with Yarn PnP
+title: Writing Nuxt module with Yarn workspaces
 abstract: Short guide about nuxt modules basics
 date: Aug 2020
 ---
