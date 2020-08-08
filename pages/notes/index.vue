@@ -1,6 +1,6 @@
 <template lang='pug'>
 div
-  h1 Notes
+  h2 Notes
   ul
     li(v-for='note in notes'
       :key='note.slug')
