@@ -22,9 +22,21 @@ export default {
 
   head () {
     const { note } = this
-    if (note) {
-      const title = `${note.title} - ${note.author || 'Artjom Löbsack'}`
-      return { title }
+    if (!note) { return }
+    const { abstract, keywords } = note
+    if (!abstract || !keywords) {
+      throw new Error('Note must include abstract and keywords')
+    }
+    const author = note.author || 'Artjom Löbsack'
+    const pageTitle = `${note.title} - ${author}`
+
+    return {
+      title: pageTitle,
+      meta: [
+        { hid: 'description', name: 'description', content: abstract },
+        { hid: 'author', name: 'author', content: author },
+        { hid: 'keywords', name: 'keywords', content: keywords }
+      ]
     }
   }
 }
