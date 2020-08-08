@@ -8,6 +8,10 @@ export default {
 
   async asyncData ({ $content }) {
     return { index: await $content('index').fetch() }
+  },
+
+  head: {
+    title: 'Me'
   }
 }
 </script>

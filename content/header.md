@@ -3,7 +3,7 @@ title: Header
 description: Base header with my name and useful links
 ---
 
-# Artjom Löbsack
+# ceigh.com
 
 - [Me](/)
 - [My notes](/notes)

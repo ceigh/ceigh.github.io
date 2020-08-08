@@ -1,5 +1,7 @@
 {
   "name": "ceigh.com",
+  "author": "Artjom Löbsack <ceigh@pm.me> (https://ceigh.com)",
+  "description": "Ceigh's blog",
   "version": "1.0.0",
   "private": true,
   "scripts": {

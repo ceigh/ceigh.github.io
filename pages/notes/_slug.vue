@@ -23,8 +23,7 @@ export default {
   head () {
     const { note } = this
     if (note) {
-      const title = `${note.title || 'Note'} - ${
-        note.author || 'Artjom Löbsack'}`
+      const title = `${note.title} - ${note.author || 'Artjom Löbsack'}`
       return { title }
     }
   }

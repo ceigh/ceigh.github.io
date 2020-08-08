@@ -14,6 +14,10 @@ export default {
 
   async asyncData ({ $content }) {
     return { notes: await $content('notes').fetch() }
+  },
+
+  head: {
+    title: 'Notes'
   }
 }
 </script>
