@@ -11,6 +11,11 @@ div
     h3 Abstract
     p {{ note.abstract }}
 
+  figure(v-if='note.cover')
+    img(:src='`https://images.unsplash.com/photo-${note.cover}?w=1000`'
+      :alt='cover')
+    figcaption(v-if='note["cover-author"]') Photo by {{ note['cover-author'] }}
+
   nav
     h2 Contents
     ol

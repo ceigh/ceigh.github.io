@@ -14,17 +14,17 @@ export default {
     ]
   },
   pwa: {
-    icon: false,
-    /*
     icon: {
       iconSrc: '~/static/favicon.png',
       accessibleIcons: false
     },
-    */
     meta: {
       ogHost: 'https://ceigh.com',
       twitterCard: 'summary'
     }
+  },
+  content: {
+    liveEdit: false
   },
   css: [
     'latex.css',

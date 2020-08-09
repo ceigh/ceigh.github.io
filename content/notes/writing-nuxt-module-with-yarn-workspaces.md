@@ -2,6 +2,8 @@
 title: Writing Nuxt module with Yarn workspaces
 abstract: How to write testable nuxt modules using yarn workspaces basics.
 keywords: nuxt-module, nuxt, yarn, workspaces
+cover: 1596366799452-dbf111586985
+cover-author: Victor Garcia
 ---
 
 ## About
