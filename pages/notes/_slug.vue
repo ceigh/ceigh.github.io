@@ -17,6 +17,9 @@ div
       li(v-for='link in toc'
         :key='link.id')
         a(:href='`#${link.id}`') {{ link.text }}
+        ol(v-if='link.childrens.length')
+          li(v-for='child in link.childrens')
+            a(:href='`#${child.id}`') {{ child.text }}
 
   NuxtContent(:document='note')
 </template>
@@ -34,8 +37,19 @@ export default {
         year: 'numeric'
       })
     },
+
     toc () {
-      return this.note.toc.filter(l => l.depth === 2)
+      const res = []
+      this.note.toc.forEach((l) => {
+        const { depth } = l
+        if (depth === 2) {
+          l.childrens = []
+          res.push(l)
+        } else if (depth === 3) {
+          res[res.length - 1].childrens.push(l)
+        }
+      })
+      return res
     }
   },
 
