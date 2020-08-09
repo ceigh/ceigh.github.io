@@ -5,7 +5,7 @@ div
   p.author
     | {{ note.author || 'Artjom Löbsack' }}
     br
-    | {{ note.date }}
+    | {{ date }}
 
   div.abstract
     h3 Abstract
@@ -14,7 +14,7 @@ div
   nav
     h2 Contents
     ol
-      li(v-for='link in note.toc.filter(l => l.depth === 2)'
+      li(v-for='link in toc'
         :key='link.id')
         a(:href='`#${link.id}`') {{ link.text }}
 
@@ -25,6 +25,18 @@ div
 export default {
   async asyncData ({ $content, params: { slug } }) {
     return { note: await $content('notes', slug).fetch() }
+  },
+
+  computed: {
+    date () {
+      return new Date(this.note.createdAt).toLocaleString('en-US', {
+        month: 'short',
+        year: 'numeric'
+      })
+    },
+    toc () {
+      return this.note.toc.filter(l => l.depth === 2)
+    }
   },
 
   head () {
