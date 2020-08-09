@@ -32,6 +32,29 @@ pre code {
   border-top: none;
 }
 
+/* add links to headings */
+.nuxt-content h2 > a::before,
+.nuxt-content h3 > a::before {
+  opacity: 0;
+  content: '#';
+  color: #5ff;
+  font-weight: 600;
+  font-size: 1.25rem;
+  margin-left: -1.5rem;
+  padding-right: 0.5rem;
+  position: absolute;
+}
+
+.nuxt-content h2:hover > a::before,
+.nuxt-content h3:hover > a::before {
+  opacity: 1;
+}
+
+.nuxt-content h2 > a:focus,
+.nuxt-content h3 > a:focus {
+  outline: none;
+}
+
 /* adaptive dark theme */
 @media (prefers-color-scheme: dark) {
   html {
