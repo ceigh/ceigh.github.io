@@ -27,6 +27,11 @@ pre code {
   background: none !important;
 }
 
+/* remove duplicated footnotes border */
+.footnotes {
+  border-top: none;
+}
+
 /* adaptive dark theme */
 @media (prefers-color-scheme: dark) {
   html {
