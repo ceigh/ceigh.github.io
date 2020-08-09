@@ -1,6 +1,6 @@
 <template lang='pug'>
 div
-  h1.title {{ note.title }}
+  h1.title#title {{ note.title }}
 
   p.author
     | {{ note.author || 'Artjom Löbsack' }}
@@ -27,6 +27,8 @@ div
             a(:href='`#${child.id}`') {{ child.text }}
 
   NuxtContent(:document='note')
+
+  a(href='#title') [Top]
 </template>
 
 <script>
