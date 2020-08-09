@@ -1,6 +1,10 @@
 export default {
   mode: 'universal',
   target: 'server',
+  build: {
+    parallel: true,
+    cache: true
+  },
   loading: {
     color: '#dac876'
   },

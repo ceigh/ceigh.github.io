@@ -61,7 +61,7 @@ Now create an empty `packages` directory here.
 
 Point root `package.json` to this directory:
 
-```json
+```json{1,3-5}
 {
   "name": "nuxt-chatra-module-monorepo",
   "workspaces": [
@@ -88,9 +88,7 @@ For `nuxt-mock` we use private flag, because it will <ins>only be used locally</
 
 Now we need to point our `nuxt-mock` to use our `nuxt-chatra-module`.
 
-`nuxt-mock/package.json`:
-
-```json
+```json[nuxt-mock/package.json]
 {
   "dependencies": {
     "nuxt-chatra-module": "^0.0.1"
@@ -298,11 +296,9 @@ To test plugin injection, put dummy `console.log` in `plugin.client.js`:
 console.log('Hello from plugin')
 ```
 
-Now we can use special `addPlugin` fucntion from nuxt:
+Now we can use special `addPlugin` function from nuxt:
 
-Open `module.js`, and edit it:
-
-```js
+```js{1,6-8}[module.js]
 import path from 'path'
 
 export default function () {
@@ -332,8 +328,7 @@ in console you should see our greetings: `Hello from plugin`.
 
 I want my module to get options from config like this:
 
-`nuxt.config.js`
-```js
+```js{3}[nuxt.config.js]
 export default {
   chatra: {
     id: 12345
@@ -354,9 +349,9 @@ We sure want to pass our `chatra` object with parameters to plugin,
 but only way to do it is use
 [templates](https://nuxtjs.org/guides/directory-structure/modules#template-plugins).
 
-So update our `addPlugin` in `module js`:
+So update our `addPlugin` in module:
 
-```js
+```js{3}[module.js]
 this.addPlugin({
   src: path.resolve(__dirname, 'plugin.js'),
   options: this.options.chatra
@@ -367,13 +362,12 @@ We just pass `options` to it.
 
 Now in plugin js we can handle it with `'<%= options %>'` templating:
 
-```js
-// plugin.client.js
+```js{1}[plugin.client.js]
 const options = JSON.parse('<%= JSON.stringify(options) %>')
 console.log('Chatra options: ', options)
 ```
 
-*That's it!* we do simple module integration with options, now i just write code, that i
+*That's it!* We do simple module integration with options, now i just write code, that i
 want to execute on app open:
 
 ### Payload
@@ -381,8 +375,7 @@ want to execute on app open:
 Finally i write plugin payload, it simplty load chatra script,
 and initialize it:
 
-```js
-// plugin.client.js
+```js{4-14}[plugin.client.js]
 const options = JSON.parse('<%= JSON.stringify(options) %>')
 // to debug
 if (options.debug) console.log('Chatra options: ', options)
@@ -405,7 +398,7 @@ if (d.head) d.head.appendChild(s)
 Also i want to have function that allow me to open chatra chat from <ins>any</ins> vue instance,
 so for this you can do:
 
-```js
+```js[plugin.client.js]
 import Vue from 'vue'
 
 // other code...
