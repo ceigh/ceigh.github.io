@@ -37,7 +37,7 @@ pre code {
 .nuxt-content h3 > a::before {
   opacity: 0;
   content: '#';
-  color: #5ff;
+  color: #4dd;
   font-weight: 600;
   font-size: 1.25rem;
   margin-left: -1.5rem;

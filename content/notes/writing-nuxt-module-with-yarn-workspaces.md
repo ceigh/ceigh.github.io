@@ -7,7 +7,7 @@ keywords: nuxt-module, nuxt, yarn, workspaces
 ## About
 
 In this article, i want to show - how to easy and fast write
-Nuxt.js modules[^1] (and plugins[^2] also), without any bootstrap.
+Nuxt.js modules[^1] (and plugins[^2] also), <ins>without any bootstrap</ins>.
 
 We can write and test it in real time with yarn workspaces[^3] help.
 
@@ -16,6 +16,14 @@ increase quality of resulted code.
 
 All code you can find on my github repository[^4].
 
+## Configuration
+
+| Software | Version  |
+|----------|----------|
+| `node`   | `14.7.0` |
+| `yarn`   | `1.22.4` |
+| `nuxt`   | `2.14.1` |
+
 ## Get started
 
 First of all we need to create our module directory.
@@ -23,7 +31,7 @@ First of all we need to create our module directory.
 Here i've been using [yarn](https://yarnpkg.com), but you can adopt this tutorial for
 [npm](https://npmjs.com).
 
-Because of yarn workspaces, it makes sense to use only yarn.
+Because of yarn workspaces, it makes sense to use <ins>only</ins> yarn.
 
 ### Create directory
 
@@ -42,7 +50,7 @@ yarn init -py
 
 Note that i use `-p` flag. It's because our directory is not a dedicated package,
 it's like a monorepo for our module and testing nuxt environment.
-Yarn workspaces monorepo **must** be private.
+Yarn workspaces monorepo <mark>must</mark> be private.
 
 ### Create workspaces
 
@@ -76,7 +84,7 @@ cd nuxt-mock && yarn init -py
 
 Don't forget to specify packages versions.
 
-For `nuxt-mock` we use private flag, because it will only be used locally.
+For `nuxt-mock` we use private flag, because it will <ins>only be used locally</ins>.
 
 Now we need to point our `nuxt-mock` to use our `nuxt-chatra-module`.
 
@@ -104,102 +112,98 @@ But wait to commit, we need some more files.
 
 ### Linters
 
-#### commitlint
+- **commitlint**
 
-In my projects i prefer to use
-commitlint[^5] utility.
+  In my projects i prefer to use
+  commitlint[^5] utility.
 
-It checks your messages for compliance with commit style conventions.
+  It checks your messages for compliance with commit style conventions.
 
-Install (all actions are in root directory).
+  Install (all actions are in root directory).
 
-`yarn add -D @commitlint/{config-conventional,cli}`
+  `yarn add -D @commitlint/{config-conventional,cli}`
 
-Create commitlint config file:
+  Create commitlint config file:
 
-`touch .commitlintrc.js`
+  `touch .commitlintrc.js`
 
-And put in it:
+  And put in it:
 
-```js
-module.exports = {
-  extends: ['@commitlint/config-conventional']
-}
-```
-
-You can check commitlint docs [here](https://commitlint.js.org).
-
-#### eslint
-
-For `.*js` files use classic eslint[^6].
-
-I've been use it with [this config](https://github.com/standard/eslint-config-standard).
-
-So install deps:
-
-```shell
-yarn add -D eslint eslint-config-standard eslint-plugin-standard eslint-plugin-promise eslint-plugin-import eslint-plugin-node eslint-import-resolver-node
-```
-
-Create config:
-
-`touch .eslintrc.js`
-
-Put here:
-
-```js
-module.exports = {
-  extends: 'standard',
-  ignorePatterns: [
-    '!.*.js' // for optional configs lint
-  ]
-}
-```
-
-We add our configs as excluded from ignoring, because it start with period, and
-eslint ignores all files like that by default.
-
-#### lint-staged
-
-To lint only staged files, i use lint-staged[^7].
-
-`yarn add -D lint-staged`
-
-`touch .lintstagedrc.js`
-
-Add to config:
-
-```js
-module.exports = {
-  '*.js': 'eslint' // lint all staged .js files
-}
-```
-
-Now what is the magick utility, that's run our commands on special
-git events?
-
-#### husky
-
-Husky[^8] is like an engine for our linters.
-
-Install:
-
-`yarn add -D husky`
-
-Create husky config file
-
-`touch .huskyrc.js`
-
-Put in it:
-
-```js
-module.exports = {
-  hooks: {
-    'commit-msg': 'commitlint -E HUSKY_GIT_PARAMS', // lint commit messages
-    'pre-commit': 'lint-staged' // lint staged files on commit
+  ```js
+  module.exports = {
+    extends: ['@commitlint/config-conventional']
   }
-}
-```
+  ```
+
+  You can check commitlint docs [here](https://commitlint.js.org).
+
+- **eslint**
+
+  For `.*js` files use classic eslint[^6].
+
+  I've been use it with [this config](https://github.com/standard/eslint-config-standard).
+
+  So install deps:
+
+  ```shell
+  yarn add -D eslint eslint-config-standard eslint-plugin-standard eslint-plugin-promise eslint-plugin-import eslint-plugin-node eslint-import-resolver-node
+  ```
+
+  Create config:
+
+  `touch .eslintrc.js`
+
+  Put here:
+
+  ```js
+  module.exports = {
+    extends: 'standard',
+    ignorePatterns: [
+      '!.*.js' // for optional configs lint
+    ]
+  }
+  ```
+
+  We add our configs as excluded from ignoring, because it start with period, and
+  <ins>eslint ignores</ins> all files like that by default.
+
+- **lint-staged**
+
+  To lint only staged files, i use lint-staged[^7].
+
+  `yarn add -D lint-staged`
+
+  `touch .lintstagedrc.js`
+
+  Add to config:
+
+  ```js
+  module.exports = {
+    '*.js': 'eslint' // lint all staged .js files
+  }
+  ```
+
+  Now what is the magick utility, that's run our commands on special
+  git events?
+
+- **husky**
+
+  Husky[^8] is like an engine for our linters.
+
+  Install: `yarn add -D husky`
+
+  Create husky config file: `touch .huskyrc.js`
+
+  Put in it:
+
+  ```js
+  module.exports = {
+    hooks: {
+      'commit-msg': 'commitlint -E HUSKY_GIT_PARAMS', // lint commit messages
+      'pre-commit': 'lint-staged' // lint staged files on commit
+    }
+  }
+  ```
 
 Now we can test it:
 
@@ -226,8 +230,8 @@ touch plugin.client.js
 This is out core module scripts, in `module.js` we are parse nuxt module options, and add plugin,
 in `plugin.client.js` contains logic plugin payload.
 
-I named plugin file with `.client` postfix, it's indicate, that plugin only works on client side,
-and should not execute while server side rendering. Check
+I named plugin file with `.client` postfix, it's indicate, that plugin <ins>only works on client side</ins>,
+and **should not** execute while server side rendering. Check
 [this](https://nuxtjs.org/guide/plugins/#client-or-server-side-only) for details.
 
 To let recognize nuxt, that this module is a nuxt module, we need to define `main` property.
@@ -314,7 +318,7 @@ You can see more about `addPlugin`
 [here](https://nuxtjs.org/guides/directory-structure/modules#provide-plugins).
 
 Note: if you want in future publish your module to npm,
-you must add `module.exports.meta`, just add last line:
+you **must** add `module.exports.meta`, just add last line:
 
 `module.exports.meta = require('./package.json')`
 
@@ -369,7 +373,7 @@ const options = JSON.parse('<%= JSON.stringify(options) %>')
 console.log('Chatra options: ', options)
 ```
 
-That's it! we do simple module integration with options, now i just write code, that i
+*That's it!* we do simple module integration with options, now i just write code, that i
 want to execute on app open:
 
 ### Payload
@@ -398,7 +402,7 @@ if (d.head) d.head.appendChild(s)
 
 ### Access from vue instances
 
-Also i want to have function that allow me to open chatra chat from any vue instance,
+Also i want to have function that allow me to open chatra chat from <ins>any</ins> vue instance,
 so for this you can do:
 
 ```js
@@ -413,7 +417,7 @@ Vue.prototype.$chatra = {
 }
 ```
 
-just use Vue.prototype to inject your objects or functions into vue instances.
+just use `Vue.prototype` to inject your objects or functions into vue instances.
 
 You also can inject functions to nuxt context,
 [see](https://nuxtjs.org/guide/plugins/#inject-in-root--context).
@@ -421,11 +425,11 @@ You also can inject functions to nuxt context,
 ## Publish
 
 If you want to publish your module to [npm](https://www.npmjs.com) registry,
-you *must* call `yarn publish` from module package (`packages/nuxt-chatra-module`),
+you <mark>must</mark> call `yarn publish` from module package (`packages/nuxt-chatra-module`),
 **NOT** from root package!
 
 Fill `package.json` meta information like `"license"`, `"author"`, `"homepage"`, etc.
-And call `yarn publish`. That's it.
+And call `yarn publish`. *That's it*.
 
 ## Conclusion
 
