@@ -26,7 +26,7 @@ Here i've been using [yarn](https://yarnpkg.com), but you can adopt this tutoria
 
 Because of yarn workspaces, it makes sense to use only yarn.
 
-### 1. Create directory
+### Create directory
 
 For example i made [`nuxt-chatra-module`](https://www.npmjs.com/package/nuxt-chatra-module),
 which integrate [chatra](https://chatra.com) tool with nuxt.
@@ -45,7 +45,7 @@ Note that i use `-p` flag. It's because our directory is not a dedicated package
 it's like a monorepo for our module and testing nuxt environment.
 Yarn workspaces monorepo **must** be private.
 
-### 2. Create workspaces
+### Create workspaces
 
 Now create an empty `packages` directory here.
 `packages` name is common name for workspaces.
@@ -93,7 +93,7 @@ Now we need to point our `nuxt-mock` to use our `nuxt-chatra-module`.
 
 Now call `yarn` in root directory, it resolves packages and link them.
 
-### 3. Git
+### Git
 
 Create `.gitignore` file in root directory (`touch .gitignore`),
 and fill it with standard Nuxt.js
@@ -103,7 +103,7 @@ Initialize git in root directory with `git init` command.
 
 But wait to commit, we need some more files.
 
-### 4. Linters
+### Linters
 
 #### commitlint
 
@@ -247,7 +247,7 @@ export default function () {
 }
 ```
 
-### 5. Setup dev mode with nuxt
+### Setup dev mode with nuxt
 
 I want to test my module in realtime, so go to `packages/nuxt-mock`.
 
@@ -287,7 +287,7 @@ You can test it now with `yarn dev`.
 
 **IMAGE**
 
-### 6. Add plugin from module
+### Add plugin from module
 
 To test plugin injection, put dummy `console.log` in `plugin.client.js`:
 
@@ -325,7 +325,7 @@ If you run dev, and open browser on `localhost:3000`,
 
 in console you should see our greetings: `Hello from plugin`.
 
-### 7. Pass options from `nuxt.config.js`
+### Pass options from `nuxt.config.js`
 
 I want my module to get options from config like this:
 
@@ -373,7 +373,7 @@ console.log('Chatra options: ', options)
 That's it! we do simple module integration with options, now i just write code, that i
 want to execute on app open:
 
-### 8. Payload
+### Payload
 
 Finally i write plugin payload, it simplty load chatra script,
 and initialize it:
@@ -397,7 +397,7 @@ s.src = 'https://call.chatra.io/chatra.js'
 if (d.head) d.head.appendChild(s)
 ```
 
-### 9. Access from vue instances
+### Access from vue instances
 
 Also i want to have function that allow me to open chatra chat from any vue instance,
 so for this you can do:

@@ -11,6 +11,13 @@ div
     h3 Abstract
     p {{ note.abstract }}
 
+  nav
+    h2 Contents
+    ol
+      li(v-for='link in note.toc.filter(l => l.depth === 2)'
+        :key='link.id')
+        a(:href='`#${link.id}`') {{ link.text }}
+
   NuxtContent(:document='note')
 </template>
 
