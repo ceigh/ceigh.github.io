@@ -1,6 +1,6 @@
 ---
 title: Writing Nuxt module with Yarn workspaces
-abstract: How to write testable nuxt modules using yarn workspaces basics.
+abstract: Basics about how to write testable nuxt modules using yarn workspaces.
 keywords: ['nuxt-module', 'nuxt', 'yarn', 'yarn-workspaces']
 unsplash: { id: 1596366799452-dbf111586985, author: 'Victor Garcia' }
 config: { node: '14.7.0', yarn: '1.22.4', nuxt: '2.14.1' }
@@ -13,7 +13,7 @@ Nuxt.js modules[^1] (and plugins[^2] also), <ins>without any bootstrap</ins>.
 
 We can write and test it in real time with yarn workspaces[^3] help.
 
-Also i've been using code linter and commit linter to
+Also I will use code linter and commit linter - to
 increase quality of resulted code.
 
 All code you can find on my github repository.[^4]
@@ -22,19 +22,17 @@ All code you can find on my github repository.[^4]
 
 First of all we need to create our module directory.
 
-Here i've been using [yarn](https://yarnpkg.com), but you can adopt this tutorial for
+Here I will use [yarn](https://yarnpkg.com), but you can adopt this tutorial for
 [npm](https://npmjs.com).
 
 Because of yarn workspaces, it makes sense to use <ins>only</ins> yarn.
 
 ### Create directory
 
-For example i made [`nuxt-chatra-module`](https://www.npmjs.com/package/nuxt-chatra-module),
+For example I made [`nuxt-chatra-module`](https://www.npmjs.com/package/nuxt-chatra-module),
 which integrate [chatra](https://chatra.com) tool with nuxt.
 
-So i create empty directory:
-
-`mkdir nuxt-chatra-module-monorepo`
+So, I create empty directory: `mkdir nuxt-chatra-module-monorepo`
 
 Then we need to initialize yarn here:
 ```shell
@@ -42,16 +40,19 @@ cd nuxt-chatra-module-monorepo
 yarn init -py
 ```
 
-Note that i use `-p` flag. It's because our directory is not a dedicated package,
-it's like a monorepo for our module and testing nuxt environment.
-Yarn workspaces monorepo <mark>must</mark> be private.
+> **Note, that I use `-p` flag. It's because our directory is not a dedicated package,
+> it's like a monorepo for our module, and testing nuxt environment.**
+
+> **Yarn workspaces monorepo <mark>must</mark> be private.**
 
 ### Create workspaces
 
 Now create an empty `packages` directory here.
 `packages` name is common name for workspaces.
 
-`mkdir packages`
+```shell
+mkdir packages
+```
 
 Point root `package.json` to this directory:
 
@@ -80,9 +81,9 @@ mkdir nuxt-mock
 cd nuxt-mock && yarn init -py
 ```
 
-For `nuxt-mock` we use private flag, because it will <ins>only be used locally</ins>.
+For `nuxt-mock`, we use private flag, because it will <ins>only be used locally</ins>.
 
-Now we need to point our `nuxt-mock` to use our `nuxt-chatra-module`.
+Now we need to point our `nuxt-mock` - to use our `nuxt-chatra-module`.
 
 ```json{6-8}[nuxt-mock/package.json]
 {
@@ -97,7 +98,7 @@ Now we need to point our `nuxt-mock` to use our `nuxt-chatra-module`.
 }
 ```
 
-Now call `yarn` in root directory, it resolves packages and link them.
+Call `yarn` in root directory, and it resolves packages and link them.
 
 ### Git
 
@@ -107,13 +108,13 @@ and fill it with standard Nuxt.js
 
 Initialize git in root directory with `git init` command.
 
-But wait to commit, we need some more files.
+<ins>But wait to commit</ins>, we need some more files to create.
 
 ### Linters
 
 - **commitlint**
 
-  In my projects i prefer to use
+  In my projects, I prefer to use
   commitlint[^5] utility.
 
   It checks your messages for compliance with commit style conventions.
@@ -124,14 +125,12 @@ But wait to commit, we need some more files.
   yarn add -DW @commitlint/{config-conventional,cli}
   ```
 
-  **NOTE:** i use `-W` flag to install dependency in workspaces root,
-  you must use this flag to install here.
+  > **Note: I use `-W` flag to install dependency in workspaces root,
+  you must use this flag to install here.**
 
-  Create commitlint config file:
+  Create commitlint config file: `touch .commitlintrc.js`
 
-  `touch .commitlintrc.js`
-
-  And put in it:
+  And put config here:
 
   ```js
   module.exports = {
@@ -145,7 +144,7 @@ But wait to commit, we need some more files.
 
   For `.*js` files use classic eslint.[^6]
 
-  I've been use it with [this config](https://github.com/standard/eslint-config-standard).
+  I will use it with [this config](https://github.com/standard/eslint-config-standard).
 
   So install deps:
 
@@ -153,9 +152,7 @@ But wait to commit, we need some more files.
   yarn add -DW eslint eslint-config-standard eslint-plugin-standard eslint-plugin-promise eslint-plugin-import eslint-plugin-node
   ```
 
-  Create config:
-
-  `touch .eslintrc.js`
+  Create config: `touch .eslintrc.js`
 
   Put here:
 
@@ -168,16 +165,17 @@ But wait to commit, we need some more files.
   }
   ```
 
-  We add our configs as excluded from ignoring, because it start with period, and
-  <ins>eslint ignores</ins> all files like that by default.
+  > **We add our configs as excluded from ignoring, because it start with period, and
+  eslint <ins>ignores</ins> all files like that by default.**
 
 - **lint-staged**
 
   To lint only staged files, i use lint-staged.[^7]
 
-  `yarn add -DW lint-staged`
-
-  `touch .lintstagedrc.js`
+  ```shell
+  yarn add -DW lint-staged`
+  touch .lintstagedrc.js
+  ```
 
   Add to config:
 
@@ -187,8 +185,7 @@ But wait to commit, we need some more files.
   }
   ```
 
-  Now what is the magick utility, that's run our commands on special
-  git events?
+  Now guess - what is the *magic* tool that will link all this together?
 
 - **husky**
 
@@ -224,25 +221,26 @@ In order to better understand the next steps, check official nuxt modules
 
 Move to our module directory: `packages/nuxt-chatra-module`
 
-Create to files:
+Create two files:
 
 ```shell
 touch module.js
 touch plugin.client.js
 ```
 
-This is our core module scripts, in `module.js` we are parse nuxt module options, and add plugin,
-in `plugin.client.js` contains logic plugin payload.
+This is our core module's scripts, in `module.js` we are parse nuxt module options, and add plugin,
+`plugin.client.js` contains logical payload.
 
-I named plugin file with `.client` postfix, it's indicate, that plugin <ins>only works on client side</ins>,
-and **should not** execute while server side rendering. Check
-[this](https://nuxtjs.org/guide/plugins/#client-or-server-side-only) for details.
+> **Note, that I named plugin file with `.client` postfix, it's indicate,
+> that plugin <ins>only works on client side</ins>,
+> and *should not* execute while server side rendering. Check
+> [this](https://nuxtjs.org/guide/plugins/#client-or-server-side-only) for details.**
 
-To let recognize nuxt, that this module is a nuxt module, we need to change `"main"` property.
+To let recognize Nuxt, that this module is a Nuxt module, we need to change `"main"` property.
 
-So replace `"main": "index.js"` with `"main": "module.js"` line in `package.json`.
+So, replace `"main": "index.js"` with `"main": "module.js"` line in `package.json`.
 
-We were make it module, but under the hood it's were nuxt plugin, because i want to my
+We were make it module, but under the hood it's were nuxt plugin. Because I want to my
 code runs in runtime before vue app mounted, so all logic were in plugin, and through module
 we just importing payload plugin.
 
@@ -258,7 +256,7 @@ export default function () {
 
 I want to test my module in realtime, so go to `packages/nuxt-mock`.
 
-We still haven't install nuxt here, so: `yarn add -D nuxt`.
+We still haven't install Nuxt here, so: `yarn add -D nuxt`.
 
 Create `dev` command in `package.json`:
 
@@ -268,7 +266,7 @@ Create `dev` command in `package.json`:
 }
 ```
 
-Also i create link for that script in root `package.json`:
+Also, I create link for that script in root `package.json`:
 
 ```json
 "scripts": {
@@ -280,7 +278,7 @@ Add `nuxt.config.js` to `packages/nuxt-mock`:
 
 `touch nuxt.config.js`
 
-Point nuxt to use our module:
+Point Nuxt to use our module:
 
 ```js
 export default {
@@ -321,7 +319,7 @@ export default function () {
 You can see more about `addPlugin`
 [here](https://nuxtjs.org/guides/directory-structure/modules#provide-plugins).
 
-Restart nuxt, and in browser console you must see our plugin greetings:
+Restart nuxt, and in browser console you must see our plugin's greetings:
 
 <figure>
   <img src='/images/writing-nuxt-module-with-yarn-workspaces/1.jpg'
@@ -329,10 +327,10 @@ Restart nuxt, and in browser console you must see our plugin greetings:
   <figcaption>Plugin says hello</figcaption>
 </figure>
 
-Note: if you want in future publish your module to npm,
-you **must** add `module.exports.meta`, just add last line to `module.js`:
+> **Note: if you want in future publish your module to npm,
+> you *must* add `module.exports.meta`, just add last line to `module.js`:**
 
-`module.exports.meta = require('./package.json')`
+> `module.exports.meta = require('./package.json')`
 
 *And that's it!*
 
@@ -391,12 +389,16 @@ const options = JSON.parse('<%= JSON.stringify(options) %>')
 console.log('Chatra options: ', options)
 ```
 
-*That's it!* We do simple module integration with options, now i just write code, that i
+And because every item from templates is a `String`,
+I can `JSON.stringify()`, and `JSON.parse()` it,
+if it's an `Object`.
+
+*That's it!* We do simple module integration with options, now I just write code, that I
 want to execute on app open:
 
 ### Payload
 
-Finally i write plugin payload, it simplty load chatra script,
+Finally I write plugin payload, it simplty load chatra script,
 and initialize it:
 
 ```js{4-14}[plugin.client.js]
@@ -419,7 +421,7 @@ if (d.head) d.head.appendChild(s)
 
 ### Access from vue instances
 
-Also i want to have function that allow me to open chatra chat from <ins>any</ins> vue instance,
+Also, I want to have function that allow me to open chatra chat from <ins>any</ins> vue instance,
 so for this you can do:
 
 ```js[plugin.client.js]
@@ -449,11 +451,11 @@ Fill `package.json` meta information like `"author"`, `"homepage"`, etc.
 
 Check files with `yarn pack`.
 
-And if everything is ok, call `yarn publish`. *That's it*.
+And if everything is ok, call `yarn publish`. *Done!*
 
 ## Conclusion
 
-In this article, i have tried to explain the basic things about writing modules for Nuxt.js
+In this article, I have tried to explain the basic things about writing modules for Nuxt.js
 in as clearly as possible.
 
 I hope you liked it, and we will soon see even more useful and interesting modules!
@@ -465,7 +467,7 @@ If you have any problems or find an error, please let me know,
 [mail me](mailto:ceigh@pm.me?subject=writing-nuxt-module-with-yarn-workspaces),
 or contact on [Github](https://github.com/ceigh).
 
-Bye!
+Bye, bye! :)
 
 ## Links
 
