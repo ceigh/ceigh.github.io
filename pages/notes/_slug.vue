@@ -11,35 +11,11 @@ div
     h3 Abstract
     p {{ note.abstract }}
 
-  figure(v-if='note.unsplash')
-    img(:src='`https://images.unsplash.com/photo-${note.unsplash.id}?w=1000`'
-      alt='cover')
-    figcaption(v-if='note.unsplash.author') Photo by {{ note.unsplash.author }}
+  NoteCover(:unsplash='note.unsplash')
 
-  nav
-    h2 Contents
-    ol
-      li(v-for='link in toc'
-        :key='link.id')
-        a(:href='`#${link.id}`') {{ link.text }}
-        ol(v-if='link.childrens.length')
-          li(v-for='child in link.childrens')
-            a(:href='`#${child.id}`') {{ child.text }}
+  NoteToc(:toc='note.toc')
 
-  div(v-if='note.config')
-    h2 Configuration
-    table
-      thead
-        tr
-          th Software
-          th Version
-      tbody
-        tr(v-for='(v, k) in note.config'
-          :key='k')
-          td
-            code {{ k }}
-          td
-            code {{ v }}
+  NoteConfig(:config='note.config')
 
   NuxtContent(:document='note')
 
@@ -52,22 +28,6 @@ import { shortDate } from '~/plugins/filters.js'
 export default {
   async asyncData ({ $content, params: { slug } }) {
     return { note: await $content('notes', slug).fetch() }
-  },
-
-  computed: {
-    toc () {
-      const res = []
-      this.note.toc.forEach((l) => {
-        const { depth } = l
-        if (depth === 2) {
-          l.childrens = []
-          res.push(l)
-        } else if (depth === 3) {
-          res[res.length - 1].childrens.push(l)
-        }
-      })
-      return res
-    }
   },
 
   methods: {

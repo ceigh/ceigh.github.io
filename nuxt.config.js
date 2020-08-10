@@ -13,6 +13,7 @@ export default {
       { rel: 'icon', type: 'image/png', href: '/favicon.png' }
     ]
   },
+  components: true,
   pwa: {
     icon: {
       iconSrc: '~/static/favicon.png',
