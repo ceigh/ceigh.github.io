@@ -13,7 +13,7 @@ div
 
   figure(v-if='note.cover')
     img(:src='`https://images.unsplash.com/photo-${note.cover}?w=1000`'
-      :alt='cover')
+      alt='cover')
     figcaption(v-if='note["cover-author"]') Photo by {{ note['cover-author'] }}
 
   nav

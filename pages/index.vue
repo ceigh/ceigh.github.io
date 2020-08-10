@@ -1,5 +1,7 @@
 <template lang='pug'>
-NuxtContent(:document='index')
+div
+  h2 Me
+  NuxtContent(:document='index')
 </template>
 
 <script>

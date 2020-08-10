@@ -42,11 +42,11 @@ which integrate [chatra](https://chatra.com) tool with nuxt.
 
 So i create empty directory:
 
-`mkdir nuxt-chatra-module`
+`mkdir nuxt-chatra-module-monorepo`
 
 Then we need to initialize yarn here:
 ```shell
-cd nuxt-chatra-module
+cd nuxt-chatra-module-monorepo
 yarn init -py
 ```
 
@@ -63,9 +63,13 @@ Now create an empty `packages` directory here.
 
 Point root `package.json` to this directory:
 
-```json{1,3-5}
+```json{7-9}
 {
   "name": "nuxt-chatra-module-monorepo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
   "workspaces": [
     "packages/*"
   ]
@@ -84,16 +88,19 @@ mkdir nuxt-mock
 cd nuxt-mock && yarn init -py
 ```
 
-Don't forget to specify packages versions.
-
 For `nuxt-mock` we use private flag, because it will <ins>only be used locally</ins>.
 
 Now we need to point our `nuxt-mock` to use our `nuxt-chatra-module`.
 
-```json[nuxt-mock/package.json]
+```json{6-8}[nuxt-mock/package.json]
 {
+  "name": "nuxt-mock",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
   "dependencies": {
-    "nuxt-chatra-module": "^0.0.1"
+    "nuxt-chatra-module": "^1.0.0"
   }
 }
 ```
@@ -104,7 +111,7 @@ Now call `yarn` in root directory, it resolves packages and link them.
 
 Create `.gitignore` file in root directory (`touch .gitignore`),
 and fill it with standard Nuxt.js
-`.gitignore` file from [here](https://github.com/nuxt/nuxtjs.org/blob/master/.gitignore).
+`.gitignore` file from [here](https://raw.githubusercontent.com/nuxt/nuxtjs.org/master/.gitignore).
 
 Initialize git in root directory with `git init` command.
 
@@ -121,7 +128,12 @@ But wait to commit, we need some more files.
 
   Install (all actions are in root directory).
 
-  `yarn add -D @commitlint/{config-conventional,cli}`
+  ```shell
+  yarn add -DW @commitlint/{config-conventional,cli}
+  ```
+
+  **NOTE:** i use `-W` flag to install dependency in workspaces root,
+  you must use this flag to install here.
 
   Create commitlint config file:
 
@@ -146,7 +158,7 @@ But wait to commit, we need some more files.
   So install deps:
 
   ```shell
-  yarn add -D eslint eslint-config-standard eslint-plugin-standard eslint-plugin-promise eslint-plugin-import eslint-plugin-node eslint-import-resolver-node
+  yarn add -DW eslint eslint-config-standard eslint-plugin-standard eslint-plugin-promise eslint-plugin-import eslint-plugin-node
   ```
 
   Create config:
@@ -171,7 +183,7 @@ But wait to commit, we need some more files.
 
   To lint only staged files, i use lint-staged[^7].
 
-  `yarn add -D lint-staged`
+  `yarn add -DW lint-staged`
 
   `touch .lintstagedrc.js`
 
@@ -190,7 +202,7 @@ But wait to commit, we need some more files.
 
   Husky[^8] is like an engine for our linters.
 
-  Install: `yarn add -D husky`
+  Install: `yarn add -DW husky`
 
   Create husky config file: `touch .huskyrc.js`
 
@@ -227,16 +239,16 @@ touch module.js
 touch plugin.client.js
 ```
 
-This is out core module scripts, in `module.js` we are parse nuxt module options, and add plugin,
+This is our core module scripts, in `module.js` we are parse nuxt module options, and add plugin,
 in `plugin.client.js` contains logic plugin payload.
 
 I named plugin file with `.client` postfix, it's indicate, that plugin <ins>only works on client side</ins>,
 and **should not** execute while server side rendering. Check
 [this](https://nuxtjs.org/guide/plugins/#client-or-server-side-only) for details.
 
-To let recognize nuxt, that this module is a nuxt module, we need to define `main` property.
+To let recognize nuxt, that this module is a nuxt module, we need to change `"main"` property.
 
-So add `"main": "module.js"` line to `package.json`.
+So replace `"main": "index.js"` with `"main": "module.js"` line in `package.json`.
 
 We were make it module, but under the hood it's were nuxt plugin, because i want to my
 code runs in runtime before vue app mounted, so all logic were in plugin, and through module
@@ -272,7 +284,7 @@ Also i create link for that script in root `package.json`:
 }
 ```
 
-Add `nuxt.config.js`:
+Add `nuxt.config.js` to `packages/nuxt-mock`:
 
 `touch nuxt.config.js`
 
@@ -288,7 +300,11 @@ export default {
 
 You can test it now with `yarn dev`.
 
-**IMAGE**
+<figure>
+  <img src='/images/writing-nuxt-module-with-yarn-workspaces/0.jpg'
+    alt='Module says hello'/>
+  <figcaption>Module says hello</figcaption>
+</figure>
 
 ### Add plugin from module
 
@@ -304,8 +320,6 @@ Now we can use special `addPlugin` function from nuxt:
 import path from 'path'
 
 export default function () {
-  console.log('Hello from module')
-
   this.addPlugin({
     src: path.resolve(__dirname, 'plugin.client.js')
   })
@@ -315,16 +329,20 @@ export default function () {
 You can see more about `addPlugin`
 [here](https://nuxtjs.org/guides/directory-structure/modules#provide-plugins).
 
+Restart nuxt, and in browser console you must see our plugin greetings:
+
+<figure>
+  <img src='/images/writing-nuxt-module-with-yarn-workspaces/1.jpg'
+    alt='Plugin says hello'/>
+  <figcaption>Plugin says hello</figcaption>
+</figure>
+
 Note: if you want in future publish your module to npm,
-you **must** add `module.exports.meta`, just add last line:
+you **must** add `module.exports.meta`, just add last line to `module.js`:
 
 `module.exports.meta = require('./package.json')`
 
-And that's it!
-
-If you run dev, and open browser on `localhost:3000`,
-
-in console you should see our greetings: `Hello from plugin`.
+*And that's it!*
 
 ### Pass options from `nuxt.config.js`
 
@@ -333,7 +351,7 @@ I want my module to get options from config like this:
 ```js{3}[nuxt.config.js]
 export default {
   chatra: {
-    id: 12345
+    id: 'abcd'
   },
   modules: [
     'nuxt-chatra-module'
@@ -341,10 +359,20 @@ export default {
 }
 ```
 
-I can do it, by access `this.options` property from plugin function:
+I can do it, by access `this.options` property from **module** function:
 
-```js
-console.log(this.options) // { chatra: { id: 12345 } }
+```js{4}[module.js]
+import path from 'path'
+
+export default function () {
+  console.log(this.options.chatra) // { id: 'abcd' }
+
+  this.addPlugin({
+    src: path.resolve(__dirname, 'plugin.client.js')
+  })
+}
+
+module.exports.meta = require('./package.json')
 ```
 
 We sure want to pass our `chatra` object with parameters to plugin,
@@ -362,7 +390,9 @@ this.addPlugin({
 
 We just pass `options` to it.
 
-Now in plugin js we can handle it with `'<%= options %>'` templating:
+> **Don't forget to restart `nuxt` every time you change module.**
+
+Now in plugin we can handle it with `'<%= options %>'` templating:
 
 ```js{1}[plugin.client.js]
 const options = JSON.parse('<%= JSON.stringify(options) %>')
@@ -423,8 +453,11 @@ If you want to publish your module to [npm](https://www.npmjs.com) registry,
 you <mark>must</mark> call `yarn publish` from module package (`packages/nuxt-chatra-module`),
 **NOT** from root package!
 
-Fill `package.json` meta information like `"license"`, `"author"`, `"homepage"`, etc.
-And call `yarn publish`. *That's it*.
+Fill `package.json` meta information like `"author"`, `"homepage"`, etc.
+
+Check files with `yarn pack`.
+
+And if everything is ok, call `yarn publish`. *That's it*.
 
 ## Conclusion
 
