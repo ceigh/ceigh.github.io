@@ -214,7 +214,7 @@ And commit changes: `git commit -m "feat(project): initialize project" .`
 
 ## Write module
 
-Finally, we start to write something...
+Finally, we start to write something…
 
 To better understand the next steps, check official nuxt modules
 [docs](https://nuxtjs.org/guides/directory-structure/modules).
@@ -332,7 +332,7 @@ you *must* add `module.exports.meta`, just add the last line to `module.js`:**
 
 > `module.exports.meta = require('./package.json')`
 
-*And that's it!*
+*And that's it.*
 
 ### Pass options from `nuxt.config.js`
 
