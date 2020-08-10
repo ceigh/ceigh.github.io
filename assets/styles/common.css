@@ -57,16 +57,13 @@ pre code {
 
 /* adaptive dark theme */
 @media (prefers-color-scheme: dark) {
-  html {
-    filter: invert();
-  }
-
   body {
+    filter: invert(100%);
     background: #000;
   }
 
   img {
-    filter: brightness(50%) invert();
+    filter: brightness(50%) invert(100%);
   }
 
   /* make code block background lighter */
@@ -76,6 +73,6 @@ pre code {
   }
 
   #webpack-hot-middleware-clientOverlay {
-    filter: invert();
+    filter: invert(100%);
   }
 }
