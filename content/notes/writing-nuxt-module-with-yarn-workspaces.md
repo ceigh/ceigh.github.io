@@ -1,7 +1,7 @@
 ---
 title: Writing Nuxt module with Yarn workspaces
 abstract: How to write testable nuxt modules using yarn workspaces basics.
-keywords: nuxt-module, nuxt, yarn, workspaces
+keywords: ['nuxt-module', 'nuxt', 'yarn', 'yarn-workspaces']
 unsplash: { id: 1596366799452-dbf111586985, author: 'Victor Garcia' }
 config: { node: '14.7.0', yarn: '1.22.4', nuxt: '2.14.1' }
 ---
@@ -16,7 +16,7 @@ We can write and test it in real time with yarn workspaces[^3] help.
 Also i've been using code linter and commit linter to
 increase quality of resulted code.
 
-All code you can find on my github repository[^4].
+All code you can find on my github repository.[^4]
 
 ## Get started
 
@@ -143,7 +143,7 @@ But wait to commit, we need some more files.
 
 - **eslint**
 
-  For `.*js` files use classic eslint[^6].
+  For `.*js` files use classic eslint.[^6]
 
   I've been use it with [this config](https://github.com/standard/eslint-config-standard).
 
@@ -173,7 +173,7 @@ But wait to commit, we need some more files.
 
 - **lint-staged**
 
-  To lint only staged files, i use lint-staged[^7].
+  To lint only staged files, i use lint-staged.[^7]
 
   `yarn add -DW lint-staged`
 

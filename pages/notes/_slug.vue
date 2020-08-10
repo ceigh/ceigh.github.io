@@ -11,6 +11,10 @@ div
     h3 Abstract
     p {{ note.abstract }}
     i ~ {{ note.readingTime }}
+    br
+    sub(v-if='note.keywords')
+      del
+        i {{ note.keywords.map(k => `#${k}`).join(', ') }}
 
   NoteCover(:unsplash='note.unsplash')
 

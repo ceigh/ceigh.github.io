@@ -17,9 +17,7 @@ export default {
   layout: 'header',
 
   async asyncData ({ $content }) {
-    return {
-      notes: await $content('notes').sortBy('createdAt').fetch()
-    }
+    return { notes: await $content('notes').fetch() }
   },
 
   methods: {
