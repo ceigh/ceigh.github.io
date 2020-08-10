@@ -11,10 +11,10 @@ div
     h3 Abstract
     p {{ note.abstract }}
 
-  figure(v-if='note.cover')
-    img(:src='`https://images.unsplash.com/photo-${note.cover}?w=1000`'
+  figure(v-if='note.unsplash')
+    img(:src='`https://images.unsplash.com/photo-${note.unsplash.id}?w=1000`'
       alt='cover')
-    figcaption(v-if='note["cover-author"]') Photo by {{ note['cover-author'] }}
+    figcaption(v-if='note.unsplash.author') Photo by {{ note.unsplash.author }}
 
   nav
     h2 Contents
@@ -25,6 +25,21 @@ div
         ol(v-if='link.childrens.length')
           li(v-for='child in link.childrens')
             a(:href='`#${child.id}`') {{ child.text }}
+
+  div(v-if='note.config')
+    h2 Configuration
+    table
+      thead
+        tr
+          th Software
+          th Version
+      tbody
+        tr(v-for='(v, k) in note.config'
+          :key='k')
+          td
+            code {{ k }}
+          td
+            code {{ v }}
 
   NuxtContent(:document='note')
 

@@ -2,8 +2,8 @@
 title: Writing Nuxt module with Yarn workspaces
 abstract: How to write testable nuxt modules using yarn workspaces basics.
 keywords: nuxt-module, nuxt, yarn, workspaces
-cover: 1596366799452-dbf111586985
-cover-author: Victor Garcia
+unsplash: { id: 1596366799452-dbf111586985, author: 'Victor Garcia' }
+config: { node: '14.7.0', yarn: '1.22.4', nuxt: '2.14.1' }
 ---
 
 ## About
@@ -17,14 +17,6 @@ Also i've been using code linter and commit linter to
 increase quality of resulted code.
 
 All code you can find on my github repository[^4].
-
-## Configuration
-
-| Software | Version  |
-|----------|----------|
-| `node`   | `14.7.0` |
-| `yarn`   | `1.22.4` |
-| `nuxt`   | `2.14.1` |
 
 ## Get started
 
