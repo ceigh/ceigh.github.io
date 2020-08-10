@@ -85,7 +85,7 @@ For `nuxt-mock`, we use private flag, because it will <ins>only be used locally<
 
 Now we need to point our `nuxt-mock` - to use our `nuxt-chatra-module`.
 
-```json{6-8}[nuxt-mock/package.json]
+```json{7-9}[nuxt-mock/package.json]
 {
   "name": "nuxt-mock",
   "version": "1.0.0",
@@ -306,7 +306,7 @@ console.log('Hello from plugin')
 
 Now we can use special `addPlugin` function from nuxt:
 
-```js{1,6-8}[module.js]
+```js{1,4-6}[module.js]
 import path from 'path'
 
 export default function () {
@@ -338,7 +338,7 @@ you *must* add `module.exports.meta`, just add the last line to `module.js`:**
 
 I want my module to get options from config like this:
 
-```js{3}[nuxt.config.js]
+```js{2-4}[nuxt.config.js]
 export default {
   chatra: {
     id: 'abcd'
@@ -401,7 +401,7 @@ want to execute on app open:
 Finally I write plugin payload, it simplty load chatra script,
 and initialize it:
 
-```js{4-14}[plugin.client.js]
+```js{5-16}[plugin.client.js]
 const options = JSON.parse('<%= JSON.stringify(options) %>')
 // to debug
 if (options.debug) console.log('Chatra options: ', options)
