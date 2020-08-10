@@ -38,5 +38,13 @@ export default {
   ],
   modules: [
     '@nuxt/content'
-  ]
+  ],
+  hooks: {
+    'content:file:beforeInsert': (doc) => {
+      if (doc.extension === '.md') {
+        const { text } = require('reading-time')(doc.text)
+        doc.readingTime = text
+      }
+    }
+  }
 }

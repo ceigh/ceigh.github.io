@@ -10,6 +10,7 @@ div
   div.abstract
     h3 Abstract
     p {{ note.abstract }}
+    i ~ {{ note.readingTime }}
 
   NoteCover(:unsplash='note.unsplash')
 
