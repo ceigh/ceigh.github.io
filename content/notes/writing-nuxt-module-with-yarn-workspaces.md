@@ -11,16 +11,16 @@ config: { node: '14.7.0', yarn: '1.22.4', nuxt: '2.14.1' }
 In this article, i want to show - how to easy and fast write
 Nuxt.js modules[^1] (and plugins[^2] also), <ins>without any bootstrap</ins>.
 
-We can write and test it in real time with yarn workspaces[^3] help.
+We can write and test it in real-time with yarn workspaces[^3] help.
 
-Also I will use code linter and commit linter - to
-increase quality of resulted code.
+Also, I will use code linter and commit linter - to
+increase the quality of the resulted code.
 
-All code you can find on my github repository.[^4]
+All code you can find on my GitHub repository.[^4]
 
 ## Get started
 
-First of all we need to create our module directory.
+First, we need to create our module directory.
 
 Here I will use [yarn](https://yarnpkg.com), but you can adopt this tutorial for
 [npm](https://npmjs.com).
@@ -29,10 +29,10 @@ Because of yarn workspaces, it makes sense to use <ins>only</ins> yarn.
 
 ### Create directory
 
-For example I made [`nuxt-chatra-module`](https://www.npmjs.com/package/nuxt-chatra-module),
+For example, I made [`nuxt-chatra-module`](https://www.npmjs.com/package/nuxt-chatra-module),
 which integrate [chatra](https://chatra.com) tool with nuxt.
 
-So, I create empty directory: `mkdir nuxt-chatra-module-monorepo`
+So, I create an empty directory: `mkdir nuxt-chatra-module-monorepo`
 
 Then we need to initialize yarn here:
 ```shell
@@ -40,15 +40,15 @@ cd nuxt-chatra-module-monorepo
 yarn init -py
 ```
 
-> **Note, that I use `-p` flag. It's because our directory is not a dedicated package,
-> it's like a monorepo for our module, and testing nuxt environment.**
+> **Note that I use the `-p` flag. It's because our directory is not a dedicated package,
+it's like a monorepo for our module and testing nuxt environment.**
 
 > **Yarn workspaces monorepo <mark>must</mark> be private.**
 
 ### Create workspaces
 
 Now create an empty `packages` directory here.
-`packages` name is common name for workspaces.
+`packages` name is a common name for workspaces.
 
 ```shell
 mkdir packages
@@ -98,7 +98,7 @@ Now we need to point our `nuxt-mock` - to use our `nuxt-chatra-module`.
 }
 ```
 
-Call `yarn` in root directory, and it resolves packages and link them.
+Call `yarn` in the root directory, and it resolves packages and link them.
 
 ### Git
 
@@ -106,7 +106,7 @@ Create `.gitignore` file in root directory (`touch .gitignore`),
 and fill it with standard Nuxt.js
 `.gitignore` file from [here](https://raw.githubusercontent.com/nuxt/nuxtjs.org/master/.gitignore).
 
-Initialize git in root directory with `git init` command.
+Initialize git in the root directory with `git init` command.
 
 <ins>But wait to commit</ins>, we need some more files to create.
 
@@ -119,7 +119,7 @@ Initialize git in root directory with `git init` command.
 
   It checks your messages for compliance with commit style conventions.
 
-  Install (all actions are in root directory).
+  Install (all actions are in the root directory).
 
   ```shell
   yarn add -DW @commitlint/{config-conventional,cli}
@@ -170,7 +170,7 @@ Initialize git in root directory with `git init` command.
 
 - **lint-staged**
 
-  To lint only staged files, i use lint-staged.[^7]
+  To lint only staged files, I use lint-staged.[^7]
 
   ```shell
   yarn add -DW lint-staged`
@@ -193,7 +193,7 @@ Initialize git in root directory with `git init` command.
 
   Install: `yarn add -DW husky`
 
-  Create husky config file: `touch .huskyrc.js`
+  Create a husky config file: `touch .huskyrc.js`
 
   Put in it:
 
@@ -216,7 +216,7 @@ And commit changes: `git commit -m "feat(project): initialize project" .`
 
 Finally, we start to write something...
 
-In order to better understand the next steps, check official nuxt modules
+To better understand the next steps, check official nuxt modules
 [docs](https://nuxtjs.org/guides/directory-structure/modules).
 
 Move to our module directory: `packages/nuxt-chatra-module`
@@ -228,21 +228,21 @@ touch module.js
 touch plugin.client.js
 ```
 
-This is our core module's scripts, in `module.js` we are parse nuxt module options, and add plugin,
-`plugin.client.js` contains logical payload.
+This is our core module's scripts, in `module.js` we parse nuxt module options, and add plugin,
+`plugin.client.js` contains a logical payload.
 
 > **Note, that I named plugin file with `.client` postfix, it's indicate,
 > that plugin <ins>only works on client side</ins>,
 > and *should not* execute while server side rendering. Check
 > [this](https://nuxtjs.org/guide/plugins/#client-or-server-side-only) for details.**
 
-To let recognize Nuxt, that this module is a Nuxt module, we need to change `"main"` property.
+To let recognize Nuxt, that this module is a Nuxt module, we need to change the `"main"` property.
 
 So, replace `"main": "index.js"` with `"main": "module.js"` line in `package.json`.
 
-We were make it module, but under the hood it's were nuxt plugin. Because I want to my
-code runs in runtime before vue app mounted, so all logic were in plugin, and through module
-we just importing payload plugin.
+We made it a module, but under the hood, it's were nuxt plugin. Because I want my
+code runs in runtime before Vue app mounted, so all logic was in the plugin, and through the module
+we just importing the payload plugin.
 
 Now open `module.js` and write dummy export statement:
 
@@ -266,7 +266,7 @@ Create `dev` command in `package.json`:
 }
 ```
 
-Also, I create link for that script in root `package.json`:
+Also, I create a link for that script in root `package.json`:
 
 ```json
 "scripts": {
@@ -327,8 +327,8 @@ Restart nuxt, and in browser console you must see our plugin's greetings:
   <figcaption>Plugin says hello</figcaption>
 </figure>
 
-> **Note: if you want in future publish your module to npm,
-> you *must* add `module.exports.meta`, just add last line to `module.js`:**
+> **Note: if you want in future, publish your module to npm,
+you *must* add `module.exports.meta`, just add the last line to `module.js`:**
 
 > `module.exports.meta = require('./package.json')`
 
@@ -349,7 +349,7 @@ export default {
 }
 ```
 
-I can do it, by access `this.options` property from **module** function:
+I can do it by access `this.options` property from **module** function:
 
 ```js{4}[module.js]
 import path from 'path'
@@ -365,8 +365,8 @@ export default function () {
 module.exports.meta = require('./package.json')
 ```
 
-We sure want to pass our `chatra` object with parameters to plugin,
-but only way to do it is use
+We sure want to pass our `chatra` object with parameters to the plugin,
+but the only way to do it is using
 [templates](https://nuxtjs.org/guides/directory-structure/modules#template-plugins).
 
 So update our `addPlugin` in module:
@@ -393,7 +393,7 @@ And because every item from templates is a `String`,
 I can `JSON.stringify()`, and `JSON.parse()` it,
 if it's an `Object`.
 
-*That's it!* We do simple module integration with options, now I just write code, that I
+*That's it!* We do simple module integration with options, now I just write code that I
 want to execute on app open:
 
 ### Payload
@@ -419,10 +419,10 @@ s.src = 'https://call.chatra.io/chatra.js'
 if (d.head) d.head.appendChild(s)
 ```
 
-### Access from vue instances
+### Access from Vue instances
 
-Also, I want to have function that allow me to open chatra chat from <ins>any</ins> vue instance,
-so for this you can do:
+Also, I want to have a function that allows me to open chatra chat from <ins>any</ins> Vue instance,
+so for this, you can do:
 
 ```js[plugin.client.js]
 import Vue from 'vue'
@@ -436,7 +436,7 @@ Vue.prototype.$chatra = {
 }
 ```
 
-just use `Vue.prototype` to inject your objects or functions into vue instances.
+just use `Vue.prototype` to inject your objects or functions into Vue instances.
 
 You also can inject functions to nuxt context,
 [see](https://nuxtjs.org/guide/plugins/#inject-in-root--context).
@@ -456,7 +456,7 @@ And if everything is ok, call `yarn publish`. *Done!*
 ## Conclusion
 
 In this article, I have tried to explain the basic things about writing modules for Nuxt.js
-in as clearly as possible.
+clearly, as possible.
 
 I hope you liked it, and we will soon see even more useful and interesting modules!
 
