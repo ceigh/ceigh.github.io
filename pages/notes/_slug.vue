@@ -5,7 +5,7 @@ div
   p.author
     | {{ note.author || 'Artjom Löbsack' }}
     br
-    | {{ date }}
+    | {{ shortDate(note.createdAt) }}
 
   div.abstract
     h3 Abstract
@@ -47,19 +47,14 @@ div
 </template>
 
 <script>
+import { shortDate } from '~/plugins/filters.js'
+
 export default {
   async asyncData ({ $content, params: { slug } }) {
     return { note: await $content('notes', slug).fetch() }
   },
 
   computed: {
-    date () {
-      return new Date(this.note.createdAt).toLocaleString('en-US', {
-        month: 'short',
-        year: 'numeric'
-      })
-    },
-
     toc () {
       const res = []
       this.note.toc.forEach((l) => {
@@ -73,6 +68,10 @@ export default {
       })
       return res
     }
+  },
+
+  methods: {
+    shortDate
   },
 
   head () {

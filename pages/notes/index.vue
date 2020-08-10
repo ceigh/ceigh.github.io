@@ -6,14 +6,24 @@ div
       :key='note.slug')
       NuxtLink(:to='`/notes/${note.slug}`')
         | {{ note.title || note.slug }}
+      |
+      | - {{ shortDate(note.createdAt) }}
 </template>
 
 <script>
+import { shortDate } from '~/plugins/filters.js'
+
 export default {
   layout: 'header',
 
   async asyncData ({ $content }) {
-    return { notes: await $content('notes').fetch() }
+    return {
+      notes: await $content('notes').sortBy('createdAt').fetch()
+    }
+  },
+
+  methods: {
+    shortDate
   },
 
   head: {
