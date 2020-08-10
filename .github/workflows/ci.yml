@@ -17,6 +17,22 @@ jobs:
           username: root
           privateKey: ${{ secrets.PRIVATE_KEY }}
 
+      - name: Install
+        uses: garygrossgarten/github-action-ssh@release
+        with:
+          command: cd /var/www/ceigh.com && yarn
+          host: ceigh.com
+          username: root
+          privateKey: ${{ secrets.PRIVATE_KEY }}
+
+      - name: Clear
+        uses: garygrossgarten/github-action-ssh@release
+        with:
+          command: cd /var/www/ceigh.com && rm -rf node_modules/.cache .nuxt
+          host: ceigh.com
+          username: root
+          privateKey: ${{ secrets.PRIVATE_KEY }}
+
       - name: Build
         uses: garygrossgarten/github-action-ssh@release
         with:
