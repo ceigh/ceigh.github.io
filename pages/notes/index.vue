@@ -7,7 +7,9 @@ div
       NuxtLink(:to='`/notes/${note.slug}`')
         | {{ note.title || note.slug }}
       |
-      | - {{ shortDate(note.createdAt) }}
+      |
+      i(:title='note.createdAt')
+        | - {{ shortDate(note.createdAt) }}
 </template>
 
 <script>
