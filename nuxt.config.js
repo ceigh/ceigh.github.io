@@ -83,7 +83,8 @@ export default {
   ],
   modules: [
     '@nuxt/content',
-    '@nuxtjs/feed'
+    '@nuxtjs/feed',
+    '@nuxtjs/sitemap'
   ],
 
   hooks: {
