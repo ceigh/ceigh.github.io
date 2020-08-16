@@ -28,20 +28,11 @@ div
 </template>
 
 <script>
-import Prism from 'prismjs'
-import 'prismjs/plugins/line-highlight/prism-line-highlight.css'
-import 'prismjs/components/prism-bash.min.js'
-import 'prismjs/components/prism-json.min.js'
-import 'prismjs/plugins/line-highlight/prism-line-highlight.min.js'
 import { shortDate } from '~/plugins/filters.js'
 
 export default {
   async asyncData ({ $content, params: { slug } }) {
     return { note: await $content('notes', slug).fetch() }
-  },
-
-  mounted () {
-    Prism.highlightAll()
   },
 
   methods: {

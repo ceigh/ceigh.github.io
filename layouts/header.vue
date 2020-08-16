@@ -18,3 +18,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.post-header table {
+  width: 100%;
+}
+</style>
