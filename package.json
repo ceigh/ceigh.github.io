@@ -5,7 +5,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "nuxt -m=true",
+    "dev": "nuxt",
     "build": "nuxt build -m=true",
     "start": "nuxt start",
     "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
