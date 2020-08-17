@@ -25,6 +25,8 @@ div
   NuxtContent(:document='note')
 
   a(href='#title') [Top]
+
+  AppNav(bottom)
 </template>
 
 <script>

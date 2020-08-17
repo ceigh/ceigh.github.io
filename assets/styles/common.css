@@ -72,7 +72,8 @@ pre code {
     background: #ddd !important;
   }
 
-  #webpack-hot-middleware-clientOverlay {
+  #webpack-hot-middleware-clientOverlay,
+  .nuxt__build_indicator {
     filter: invert(100%);
   }
 }

@@ -17,7 +17,7 @@ export default {
 
   pwa: {
     icon: {
-      iconSrc: '~/static/favicon.png',
+      iconSrc: '/favicon.png',
       accessibleIcons: false
     },
     meta: {
