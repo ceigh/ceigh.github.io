@@ -9,34 +9,50 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Pull
-        uses: garygrossgarten/github-action-ssh@release
-        with:
-          command: cd /var/www/ceigh.com && git pull
-          host: ceigh.com
-          username: root
-          privateKey: ${{ secrets.PRIVATE_KEY }}
+      - name: Checkout
+        uses: actions/checkout@v2
 
-      - name: Install
-        uses: garygrossgarten/github-action-ssh@release
+      - name: Setup Node
+        uses: actions/setup-node@v1
         with:
-          command: cd /var/www/ceigh.com && yarn
-          host: ceigh.com
-          username: root
-          privateKey: ${{ secrets.PRIVATE_KEY }}
+          node-version: '14'
+
+      - name: Setup Yarn
+        run: npm i -g yarn
+
+      - uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Install deps
+        run: yarn
 
       - name: Build
-        uses: garygrossgarten/github-action-ssh@release
+        run: yarn build
+
+      - name: Deploy
+        uses: wlixcc/SFTP-Deploy-Action@v1
         with:
-          command: cd /var/www/ceigh.com && yarn build
-          host: ceigh.com
-          username: root
-          privateKey: ${{ secrets.PRIVATE_KEY }}
+          username: 'root'
+          server: 'ceigh.com'
+          ssh_private_key: ${{ secrets.PRIVATE_KEY }}
+          local_path: './.nuxt/*'
+          remote_path: '/var/www/ceigh.com/.nuxt'
+          args: '-o ConnectTimeout=5'
 
       - name: Reload
         uses: garygrossgarten/github-action-ssh@release
         with:
           command: pm2 reload ceigh.com
+          host: ceigh.com
+          username: root
+          privateKey: ${{ secrets.PRIVATE_KEY }}
+
+      - name: Update repository
+        uses: garygrossgarten/github-action-ssh@release
+        with:
+          command: cd /var/www/ceigh.com && git pull
           host: ceigh.com
           username: root
           privateKey: ${{ secrets.PRIVATE_KEY }}
