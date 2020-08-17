@@ -21,4 +21,5 @@ jobs:
             git pull
             yarn
             yarn build
-            pm2 restart
+            pm2 start
+            pm2 status
