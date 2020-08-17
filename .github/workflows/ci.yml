@@ -17,6 +17,7 @@ jobs:
           key: ${{ secrets.KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           script_stop: true
+          debug: true
           script: |
             cd ${{ secrets.DIR }}
             git pull
