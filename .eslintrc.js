@@ -10,5 +10,8 @@ module.exports = {
   extends: [
     '@nuxtjs',
     'plugin:nuxt/recommended'
+  ],
+  ignorePatterns: [
+    '!.*.js'
   ]
 }
