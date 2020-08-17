@@ -32,7 +32,7 @@ jobs:
         run: yarn build
 
       - name: Deploy
-        uses: wlixcc/SFTP-Deploy-Action@v1
+        uses: wlixcc/SFTP-Deploy-Action@v1.0
         with:
           username: 'root'
           server: 'ceigh.com'
