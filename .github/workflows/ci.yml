@@ -1,49 +1,24 @@
-name: Deploy
+name: deploy
 on:
   push:
     branches:
       - master
 
 jobs:
-  Deploy:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Node
-        uses: actions/setup-node@v1
+      - name: deploy
+        uses: appleboy/ssh-action@v0.1.3
         with:
-          node-version: '14'
-
-      - name: Yarn
-        run: npm i -g yarn
-
-      - uses: actions/cache@v2
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
-
-      - name: Install
-        run: yarn install --frozen-lockfile
-
-      - name: Build
-        run: yarn build
-
-      - name: Copy
-        uses: garygrossgarten/github-action-scp@v0.6.0
-        with:
-          local: .nuxt
-          remote: ${{ secrets.DIR }}/.nuxt
           host: ${{ secrets.HOST }}
-          username: ${{ secrets.USER }}
-          privateKey: ${{ secrets.PRIVATE_KEY }}
-
-      - name: Reload
-        uses: garygrossgarten/github-action-ssh@v0.5.0
-        with:
-          command: pm2 reload ${{ secrets.HOST }}
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USER }}
-          privateKey: ${{ secrets.PRIVATE_KEY }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.PRIVATE_KEY }}
+          script_stop: true
+          script: |
+            cd ${{ secrets.DIR }}
+            git pull
+            yarn
+            yarn build
+            pm2 restart .ecosystem.config.js
