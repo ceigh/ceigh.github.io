@@ -11,14 +11,13 @@ export default {
 
   head: {
     link: [
-      { rel: 'icon', type: 'image/png', href: '/favicon.png' }
+      { rel: 'icon', type: 'image/png', href: '/icon.png' }
     ]
   },
 
   pwa: {
     icon: {
-      iconSrc: '/favicon.png',
-      accessibleIcons: false
+      plugin: false
     },
     meta: {
       ogHost: 'https://ceigh.com',
