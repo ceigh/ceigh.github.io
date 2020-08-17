@@ -5,19 +5,19 @@ on:
       - master
 
 jobs:
-  ceigh:
+  Deploy:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Setup Node
+      - name: Node
         uses: actions/setup-node@v1
         with:
           node-version: '14'
 
-      - name: Setup Yarn
+      - name: Yarn
         run: npm i -g yarn
 
       - uses: actions/cache@v2
@@ -25,8 +25,8 @@ jobs:
           path: '**/node_modules'
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
 
-      - name: Install deps
-        run: yarn
+      - name: Install
+        run: yarn install --frozen-lockfile
 
       - name: Build
         run: yarn build
@@ -35,23 +35,15 @@ jobs:
         uses: garygrossgarten/github-action-scp@v0.6.0
         with:
           local: .nuxt
-          remote: /var/www/ceigh.com/.nuxt
-          host: ceigh.com
-          username: root
+          remote: ${{ secrets.DIR }}/.nuxt
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
           privateKey: ${{ secrets.PRIVATE_KEY }}
 
       - name: Reload
         uses: garygrossgarten/github-action-ssh@v0.5.0
         with:
-          command: pm2 reload ceigh.com
-          host: ceigh.com
-          username: root
-          privateKey: ${{ secrets.PRIVATE_KEY }}
-
-      - name: Update repository
-        uses: garygrossgarten/github-action-ssh@v0.5.0
-        with:
-          command: cd /var/www/ceigh.com && git pull
-          host: ceigh.com
-          username: root
+          command: pm2 reload ${{ secrets.HOST }}
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
           privateKey: ${{ secrets.PRIVATE_KEY }}
