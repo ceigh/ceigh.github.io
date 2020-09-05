@@ -29,7 +29,7 @@ export default {
       { name: 'Me', to: '/' },
       { name: 'Notes', to: '/notes' },
       { name: 'GitHub', to: 'https://github.com/ceigh', external: true },
-      { name: 'Email', to: 'mailto:ceigh@pm.me', external: true },
+      { name: 'Email', to: 'mailto:me@ceigh.com', external: true },
       { name: 'RSS', to: '/rss/atom.xml', external: true }
     ]
   }
