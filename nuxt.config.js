@@ -1,5 +1,5 @@
 export default {
-  mode: 'universal',
+  ssr: true,
   target: 'server',
   components: true,
   loading: { color: '#dac876' },
