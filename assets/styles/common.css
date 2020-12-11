@@ -22,6 +22,11 @@ pre code {
   padding: 0;
 }
 
+/* stretch images */
+img {
+  width: 100%;
+}
+
 /* remove operator highlight */
 .token.operator {
   background: none !important;
