@@ -1,5 +1,5 @@
 ---
-title: Me
+title: About me
 description: Index page with myself introducing
 ---
 
