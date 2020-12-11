@@ -1,3 +1,0 @@
----
-title: Simple C Program
----
