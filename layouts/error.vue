@@ -20,15 +20,15 @@ export default {
     }
   },
 
+  head () {
+    return { title: this.error.message }
+  },
+
   created () {
     this.unsplash = {
       id: '1526401415661-5a755bef0246',
       author: 'Alice Washington'
     }
-  },
-
-  head () {
-    return { title: this.error.message }
   }
 }
 </script>

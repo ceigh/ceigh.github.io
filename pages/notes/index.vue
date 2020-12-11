@@ -22,12 +22,12 @@ export default {
     return { notes: await $content('notes').fetch() }
   },
 
-  methods: {
-    shortDate
-  },
-
   head: {
     title: 'Notes'
+  },
+
+  methods: {
+    shortDate
   }
 }
 </script>

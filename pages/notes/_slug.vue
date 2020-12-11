@@ -37,10 +37,6 @@ export default {
     return { note: await $content('notes', slug).fetch() }
   },
 
-  methods: {
-    shortDate
-  },
-
   head () {
     const { note } = this
     if (!note) { return }
@@ -59,6 +55,10 @@ export default {
         { hid: 'keywords', name: 'keywords', content: keywords }
       ]
     }
+  },
+
+  methods: {
+    shortDate
   }
 }
 </script>

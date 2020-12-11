@@ -18,6 +18,10 @@ export default {
     return { index: await $content('index').fetch() }
   },
 
+  head: {
+    title: 'Home'
+  },
+
   methods: {
     getRandomTroxler () {
       const dir = '/images/troxler/'
@@ -25,10 +29,6 @@ export default {
       const idx = Math.floor(Math.random() * (max - 1) + 1)
       return `${dir}${idx}.jpg`
     }
-  },
-
-  head: {
-    title: 'Home'
   }
 }
 </script>
