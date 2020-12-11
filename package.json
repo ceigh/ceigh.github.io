@@ -5,7 +5,6 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "lint": "eslint --ignore-path .gitignore .",
     "dev": "nuxt",
     "build": "nuxt build -m=true"
   },
@@ -34,7 +33,7 @@
     "lint-staged": "^10.2.11",
     "stylelint": "^13.6.1",
     "stylelint-config-standard": "^20.0.0",
-    "typescript": ">=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev || >= 3.7.0-beta",
+    "typescript": "^4.1.2",
     "webpack": "^5.10.0"
   }
 }
