@@ -6,7 +6,8 @@ export default {
 
   build: {
     parallel: true,
-    cache: true
+    cache: true,
+    transpile: [({ isLegacy }) => isLegacy && 'troxler']
   },
 
   head: {

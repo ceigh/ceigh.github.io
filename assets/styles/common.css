@@ -23,7 +23,8 @@ pre code {
 }
 
 /* stretch images */
-img {
+img,
+canvas {
   width: 100%;
 }
 
@@ -67,7 +68,8 @@ img {
     background: #000;
   }
 
-  img {
+  img,
+  canvas {
     filter: brightness(50%) invert(100%);
   }
 

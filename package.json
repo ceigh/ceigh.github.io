@@ -20,7 +20,8 @@
     "nuxt": "^2.13.0",
     "pug": "^3.0.0",
     "pug-plain-loader": "^1.0.0",
-    "reading-time": "^1.2.0"
+    "reading-time": "^1.2.0",
+    "troxler": "^1.1.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",

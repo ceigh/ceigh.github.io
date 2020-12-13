@@ -4,12 +4,16 @@ div
   NuxtContent(:document='index')
   br
   figure
-    img(:src='getRandomTroxler()'
-      alt='troxler')
+    canvas.troxler(ref='canvas'
+      width='400'
+      height='300'
+      title='Click to redraw'
+      @click='redraw')
     figcaption Troxler's fading
 </template>
 
 <script>
+import { drawTroxler } from 'troxler'
 
 export default {
   layout: 'header',
@@ -22,13 +26,22 @@ export default {
     title: 'Home'
   },
 
+  mounted () {
+    this.redraw()
+  },
+
   methods: {
-    getRandomTroxler () {
-      const dir = '/images/troxler/'
-      const max = 11
-      const idx = Math.floor(Math.random() * (max - 1) + 1)
-      return `${dir}${idx}.jpg`
+    redraw () {
+      const canvas = this.$refs.canvas
+      canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
+      drawTroxler(canvas)
     }
   }
 }
 </script>
+
+<style scoped>
+.troxler {
+  cursor: pointer;
+}
+</style>

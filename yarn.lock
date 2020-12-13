@@ -10263,6 +10263,11 @@ trough@^1.0.0:
   resolved "https://registry.yarnpkg.com/trough/-/trough-1.0.5.tgz#b8b639cefad7d0bb2abd37d433ff8293efa5f406"
   integrity sha512-rvuRbTarPXmMb79SmzEp8aqXNKcK+y0XaB298IXueQ8I2PsrATcPBCSPyK/dDNa2iWOhKlfNnOjdAOTBU/nkFA==
 
+troxler@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/troxler/-/troxler-1.1.2.tgz#f4f07aa280b6fdd0dc5d4aff279257af333f13c2"
+  integrity sha512-Th9G2h4OhpM2Mbx/XCN174+UGUp/ghPjz1LlpxrfzhFGm09gzEgy+H68COz0DVBQd5ZEhovLHvWszU4JBeywRw==
+
 tryer@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/tryer/-/tryer-1.0.1.tgz#f2c85406800b9b0f74c9f7465b81eaad241252f8"
