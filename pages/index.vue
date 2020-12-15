@@ -6,8 +6,7 @@ div
   figure
     canvas(ref='canvas'
       width='400'
-      height='300'
-      title='Click to redraw')
+      height='300')
     figcaption Troxler's fading
 </template>
 
