@@ -4,11 +4,10 @@ div
   NuxtContent(:document='index')
   br
   figure
-    canvas.troxler(ref='canvas'
+    canvas(ref='canvas'
       width='400'
       height='300'
-      title='Click to redraw'
-      @click='redraw')
+      title='Click to redraw')
     figcaption Troxler's fading
 </template>
 
@@ -27,21 +26,8 @@ export default {
   },
 
   mounted () {
-    this.redraw()
-  },
-
-  methods: {
-    redraw () {
-      const canvas = this.$refs.canvas
-      canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
-      drawTroxler(canvas)
-    }
+    const canvas = this.$refs.canvas
+    drawTroxler(canvas)
   }
 }
 </script>
-
-<style scoped>
-.troxler {
-  cursor: pointer;
-}
-</style>
