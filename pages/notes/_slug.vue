@@ -16,7 +16,7 @@ div
       del
         i {{ note.keywords.map(k => `#${k}`).join(', ') }}
 
-  NoteCover(:unsplash='note.unsplash')
+  NoteCover(:unsplash='note.unsplash' :plain='note.plain')
 
   NoteToc(:toc='note.toc')
 

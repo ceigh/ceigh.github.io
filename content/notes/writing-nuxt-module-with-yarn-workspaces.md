@@ -40,10 +40,9 @@ cd nuxt-chatra-module-monorepo
 yarn init -py
 ```
 
-> **Note that I use the `-p` flag. It's because our directory is not a dedicated package,
-it's like a monorepo for our module and testing nuxt environment.**
+>**Note that I use the `-p` flag. It's because our directory is not a dedicated package, it's like a monorepo for our module and testing nuxt environment.**
 
-> **Yarn workspaces monorepo <mark>must</mark> be private.**
+>**Yarn workspaces monorepo <mark>must</mark> be private.**
 
 ### Create workspaces
 
@@ -125,8 +124,7 @@ Initialize git in the root directory with `git init` command.
   yarn add -DW @commitlint/{config-conventional,cli}
   ```
 
-  > **Note: I use `-W` flag to install dependency in workspaces root,
-  you must use this flag to install here.**
+  >**Note: I use `-W` flag to install dependency in workspaces root, you must use this flag to install here.**
 
   Create commitlint config file: `touch .commitlintrc.js`
 
@@ -165,8 +163,7 @@ Initialize git in the root directory with `git init` command.
   }
   ```
 
-  > **We add our configs as excluded from ignoring, because it start with period, and
-  eslint <ins>ignores</ins> all files like that by default.**
+  >**We add our configs as excluded from ignoring, because it start with period, and eslint <ins>ignores</ins> all files like that by default.**
 
 - **lint-staged**
 
@@ -231,10 +228,10 @@ touch plugin.client.js
 This is our core module's scripts, in `module.js` we parse nuxt module options, and add plugin,
 `plugin.client.js` contains a logical payload.
 
-> **Note, that I named plugin file with `.client` postfix, it's indicate,
-> that plugin <ins>only works on client side</ins>,
-> and *should not* execute while server side rendering. Check
-> [this](https://nuxtjs.org/guide/plugins/#client-or-server-side-only) for details.**
+>**Note, that I named plugin file with `.client` postfix, it's indicate,
+>that plugin <ins>only works on client side</ins>,
+>and *should not* execute while server side rendering. Check
+>[this](https://nuxtjs.org/guide/plugins/#client-or-server-side-only) for details.**
 
 To let recognize Nuxt, that this module is a Nuxt module, we need to change the `"main"` property.
 
@@ -327,10 +324,9 @@ Restart nuxt, and in browser console you must see our plugin's greetings:
   <figcaption>Plugin says hello</figcaption>
 </figure>
 
-> **Note: if you want in future, publish your module to npm,
-you *must* add `module.exports.meta`, just add the last line to `module.js`:**
+>**Note: if you want in future, publish your module to npm, you *must* add `module.exports.meta`, just add the last line to `module.js`:**
 
-> `module.exports.meta = require('./package.json')`
+>`module.exports.meta = require('./package.json')`
 
 *And that's it.*
 
@@ -380,7 +376,7 @@ this.addPlugin({
 
 We just pass `options` to it.
 
-> **Don't forget to restart `nuxt` every time you change module.**
+>**Don't forget to restart `nuxt` every time you change module.**
 
 Now in plugin we can handle it with `'<%= options %>'` templating:
 
