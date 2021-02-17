@@ -24,10 +24,11 @@
     "troxler": "^1.1.2"
   },
   "devDependencies": {
+    "@babel/core": ">=7.11.0",
+    "@babel/eslint-parser": "^7.12.16",
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
     "@nuxtjs/eslint-config": "^5.0.0",
-    "babel-eslint": "^10.1.0",
     "eslint": "^7.2.0",
     "eslint-plugin-nuxt": "^2.0.0",
     "husky": "^4.2.5",

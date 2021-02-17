@@ -5,7 +5,7 @@ div
   p.author
     | {{ note.author || 'Artjom Löbsack' }}
     br
-    | {{ shortDate(note.createdAt) }}
+    | {{ shortDate(note.date) }}
 
   div.abstract
     h3 Abstract
@@ -41,8 +41,8 @@ export default {
     const { note } = this
     if (!note) { return }
     const { abstract, keywords } = note
-    if (!abstract || !keywords) {
-      throw new Error('Note must include abstract and keywords')
+    if (!note.date || !abstract || !keywords) {
+      throw new Error('Note must include date, abstract and keywords')
     }
     const author = note.author || 'Artjom Löbsack'
     const pageTitle = `${note.title} - ${author}`
