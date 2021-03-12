@@ -5,8 +5,6 @@ export default {
   loading: { color: '#dac876' },
 
   build: {
-    parallel: true,
-    cache: true,
     transpile: [({ isLegacy }) => isLegacy && 'troxler']
   },
 
@@ -19,10 +17,6 @@ export default {
   pwa: {
     icon: {
       plugin: false
-    },
-    meta: {
-      ogHost: 'https://ceigh.com',
-      twitterCard: 'summary'
     }
   },
 

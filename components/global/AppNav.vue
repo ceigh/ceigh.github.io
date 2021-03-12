@@ -27,6 +27,7 @@ export default {
   created () {
     this.links = [
       { name: 'Home', to: '/' },
+      { name: 'Gallery', to: '/gallery' },
       { name: 'Notes', to: '/notes' },
       { name: 'Code', to: 'https://git.ceigh.com', external: true },
       { name: 'GitHub', to: 'https://github.com/ceigh', external: true },
