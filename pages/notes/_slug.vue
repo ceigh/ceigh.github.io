@@ -3,7 +3,7 @@ div
   h1.title#title {{ note.title }}
 
   p.author
-    | {{ note.author || 'Artjom Löbsack' }}
+    | {{ note.author || name }}
     br
     | {{ shortDate(note.date) }}
 
@@ -31,10 +31,11 @@ div
 
 <script>
 import { shortDate } from '~/plugins/filters.js'
+import { name } from '~/plugins/const.json'
 
 export default {
   async asyncData ({ $content, params: { slug } }) {
-    return { note: await $content('notes', slug).fetch() }
+    return { note: await $content('notes', slug).fetch(), name }
   },
 
   head () {
@@ -44,7 +45,7 @@ export default {
     if (!note.date || !abstract || !keywords) {
       throw new Error('Note must include date, abstract and keywords')
     }
-    const author = note.author || 'Artjom Löbsack'
+    const author = note.author || name
     const pageTitle = `${note.title} - ${author}`
 
     return {

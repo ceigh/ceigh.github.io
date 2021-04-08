@@ -84,3 +84,7 @@ canvas {
     filter: invert(100%);
   }
 }
+
+.white-bg img {
+  background-color: #fff;
+}

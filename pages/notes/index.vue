@@ -8,7 +8,7 @@ div
         | {{ note.title || note.slug }}
       |
       |
-      i(:title='note.createdAt')
+      i(:title='note.date')
         | - {{ shortDate(note.date) }}
 </template>
 
