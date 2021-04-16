@@ -2,11 +2,11 @@
 div
   h2 Gallery
 
-  NuxtLink(v-for='demo in demos' :key='demo.slug'
-    :to='`/gallery/${demo.slug}`')
-    figure(:class='{ "white-bg": demo.whiteBg }')
-      img(:src='`/images/${demo.preview}`' :alt='demo.title')
-      figcaption {{ demo.title }}
+  p(v-for='demo in demos' :key='demo.slug')
+    NuxtLink(:to='`/gallery/${demo.slug}`')
+      figure(:class='{ "white-bg": demo.whiteBg }')
+        img(:src='`/images/${demo.preview}`' :alt='demo.title')
+        figcaption {{ demo.title }}
 </template>
 
 <script>
