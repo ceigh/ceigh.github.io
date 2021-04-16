@@ -69,8 +69,9 @@ canvas {
   }
 
   img,
-  canvas {
-    filter: brightness(50%) invert(100%);
+  canvas,
+  iframe {
+    filter: invert(100%);
   }
 
   /* make code block background lighter */
@@ -79,12 +80,13 @@ canvas {
     background: #ddd !important;
   }
 
-  #webpack-hot-middleware-clientOverlay,
-  .nuxt__build_indicator {
-    filter: invert(100%);
+  .white-bg img {
+    background-color: #fff;
   }
 }
 
-.white-bg img {
-  background-color: #fff;
+iframe {
+  border: 0;
+  width: 100%;
+  min-height: 50vh;
 }
