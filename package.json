@@ -1,12 +1,12 @@
 {
   "name": "ceigh.com",
   "author": "Artjom Löbsack <me@ceigh.com> (https://ceigh.com)",
-  "description": "Ceigh's blog",
+  "description": "Ceigh",
   "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "nuxt",
-    "build": "nuxt build -m=true"
+    "build": "nuxt build --modern"
   },
   "dependencies": {
     "@nuxt/content": "^1.3.2",
