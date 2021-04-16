@@ -41,6 +41,10 @@ export default {
     '@nuxtjs/robots'
   ],
 
+  build: {
+    transpile: [({ isLegacy }) => isLegacy && 'troxler']
+  },
+
   hooks: {
     'content:file:beforeInsert': (doc) => {
       if (doc.extension === '.md') {
