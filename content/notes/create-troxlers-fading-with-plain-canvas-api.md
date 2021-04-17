@@ -2,11 +2,13 @@
 date: 2/17/2021
 title: Create “Troxler's Fading” with plain canvas api
 abstract: Playing with canvas and some optical illusions.
-keywords: ['canvas', 'js', 'optical-illusion']
-plain: {
-  src: /images/create-troxlers-fading-with-plain-canvas-api/3.png,
+keywords:
+  - canvas
+  - js
+  - optical-illusion
+plain:
+  src: /images/create-troxlers-fading-with-plain-canvas-api/3.png
   caption: Effect in action
-}
 ---
 
 ## About

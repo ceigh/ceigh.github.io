@@ -2,9 +2,18 @@
 date: 8/11/2020
 title: Writing Nuxt module with Yarn workspaces
 abstract: Basics about how to write testable nuxt modules using yarn workspaces.
-keywords: ['nuxt-module', 'nuxt', 'yarn', 'yarn-workspaces']
-unsplash: { id: 1596366799452-dbf111586985, author: 'Victor Garcia' }
-config: { node: '14.7.0', yarn: '1.22.4', nuxt: '2.14.1' }
+keywords:
+  - nuxt-module
+  - nuxt
+  - yarn
+  - yarn-workspaces
+unsplash:
+  id: 1596366799452-dbf111586985
+  author: Victor Garcia
+config:
+  node: 14.7.0
+  yarn: 1.22.4
+  nuxt: 2.14.1
 ---
 
 ## About
