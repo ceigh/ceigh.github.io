@@ -1,7 +1,7 @@
 <template lang='pug'>
 div
   h2 {{ heading }}
-  p.mb-1 {{ $t('gallery.description') }}
+  p.mb-1 {{ $t('gallery.description') }}.
 
   div(v-for='(demo, i) in demos' :key='demo.slug'
     :class='{ "mb-1": i !== demos.length - 1 }')
@@ -39,3 +39,11 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+img {
+  height: 50vh;
+  object-fit: cover;
+  object-position: top;
+}
+</style>

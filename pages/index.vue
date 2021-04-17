@@ -5,8 +5,8 @@ div
   br
   figure
     canvas(ref='canvas'
-      width='400'
-      height='300'
+      width='320'
+      height='240'
       style='cursor: pointer'
       :title='$t("home.troxler.title")'
       @click='renderTroxler')

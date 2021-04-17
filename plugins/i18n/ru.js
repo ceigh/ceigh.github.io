@@ -15,7 +15,8 @@ export default {
   },
 
   notes: {
-    heading: 'Заметки'
+    heading: 'Заметки',
+    description: 'Короткие очерки на техническую и околотехническую тематику'
   },
 
   gallery: {

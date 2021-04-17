@@ -15,7 +15,8 @@ export default {
   },
 
   notes: {
-    heading: 'Notes'
+    heading: 'Notes',
+    description: 'Short essays on technical and near-technical topics'
   },
 
   gallery: {
