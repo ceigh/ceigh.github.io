@@ -18,7 +18,9 @@ div
 import { shortDate } from '~/plugins/filters.js'
 
 async function getNotes ($content, locale) {
-  return await $content(`${locale}/notes`).fetch()
+  return await $content(`${locale}/notes`)
+    .sortBy('date')
+    .fetch()
 }
 
 export default {

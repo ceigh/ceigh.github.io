@@ -21,7 +21,9 @@ export default {
   layout: 'header',
 
   async asyncData ({ $content }) {
-    return { demos: await $content('demos').fetch() }
+    return {
+      demos: await $content('demos').sortBy('date').fetch()
+    }
   },
 
   head () {
