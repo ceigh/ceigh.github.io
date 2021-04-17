@@ -13,6 +13,7 @@ export default {
       const otherLocales =
         $i18n.locales.filter(l => l !== $i18n.locale)
       $i18n.setLocale(otherLocales[0])
+      window.scrollTo(0, 0)
     }
   }
 }

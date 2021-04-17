@@ -6,6 +6,10 @@
   color: HighlightText;
 }
 
+html {
+  scroll-behavior: initial;
+}
+
 body {
   font-family: 'Computer Modern Serif', 'Latin Modern', Georgia, Cambria, 'Times New Roman', Times, serif;
 }
