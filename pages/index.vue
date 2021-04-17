@@ -23,9 +23,9 @@ async function getDocument ($content, locale) {
 export default {
   layout: 'header',
 
-  async asyncData ({ $content, app }) {
+  async asyncData ({ $content, i18n }) {
     return {
-      document: await getDocument($content, app.i18n.locale)
+      document: await getDocument($content, i18n.locale)
     }
   },
 

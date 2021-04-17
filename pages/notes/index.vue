@@ -24,9 +24,9 @@ async function getNotes ($content, locale) {
 export default {
   layout: 'header',
 
-  async asyncData ({ $content, app }) {
+  async asyncData ({ $content, i18n }) {
     return {
-      notes: await getNotes($content, app.i18n.locale)
+      notes: await getNotes($content, i18n.locale)
     }
   },
 

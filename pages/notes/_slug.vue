@@ -38,10 +38,10 @@ async function getNote ($content, locale, slug) {
 }
 
 export default {
-  async asyncData ({ $content, app, params: { slug } }) {
+  async asyncData ({ $content, i18n, params: { slug } }) {
     return {
       name,
-      note: await getNote($content, app.i18n.locale, slug)
+      note: await getNote($content, i18n.locale, slug)
     }
   },
 
