@@ -12,5 +12,9 @@ export default {
       title: 'Нажми на меня',
       caption: 'Эффект Трокслера'
     }
+  },
+
+  gallery: {
+    heading: 'Галерея'
   }
 }

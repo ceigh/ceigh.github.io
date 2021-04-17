@@ -1,12 +1,15 @@
 <template lang='pug'>
 div
-  h2 Gallery
+  h2 {{ $t('gallery.heading') }}
 
-  p(v-for='demo in demos' :key='demo.slug')
-    NuxtLink(:to='`/gallery/${demo.slug}`')
-      figure(:class='{ "white-bg": demo.whiteBg }')
+  .demo(v-for='demo in demos' :key='demo.slug')
+    figure(:class='{ "white-bg": demo.whiteBg }')
+      NuxtLink(:to='`/gallery/${demo.slug}`')
         img(:src='`/images/${demo.preview}`' :alt='demo.title')
-        figcaption {{ demo.title }}
+      figcaption
+        | {{ demo.title }}
+        |
+        i(:title='demo.date') - {{ shortDate(demo.date) }}
 </template>
 
 <script>
@@ -28,3 +31,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.demo:not(:last-child) {
+  margin-bottom: 1rem;
+}
+</style>

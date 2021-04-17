@@ -6,7 +6,7 @@ div
   h1(v-if='!bottom')
     +heading
 
-  table.app-nav-table(:class='{ "app-nav-table-bottom": bottom }')
+  table(:class='{ "bottom": bottom }')
     thead
       tr
         th(v-for='l in links'
@@ -47,15 +47,15 @@ export default {
 </script>
 
 <style scoped>
-.app-nav-table {
+table {
   width: 100%;
 }
 
-.app-nav-table th {
+th {
   text-align: center;
 }
 
-.app-nav-table-bottom {
+.bottom {
   margin-top: 2rem;
 }
 

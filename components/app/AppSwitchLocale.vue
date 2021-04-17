@@ -1,5 +1,5 @@
 <template lang='pug'>
-.app-switch-locale
+.switch
   button(@click='switchLocale')
     span(v-if='$i18n.locale === "ru"') Switch to English
     span(v-else) Переключить на Русский
@@ -18,8 +18,8 @@ export default {
 }
 </script>
 
-<style>
-.app-switch-locale {
+<style scoped>
+.switch {
   text-align: center;
   margin-top: 2rem;
 }

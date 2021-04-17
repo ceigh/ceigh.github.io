@@ -12,5 +12,9 @@ export default {
       title: 'Click me',
       caption: 'Troxler\'s fading'
     }
+  },
+
+  gallery: {
+    heading: 'Gallery'
   }
 }
