@@ -31,15 +31,17 @@ export default {
     }
   },
 
-  created () {
-    this.links = [
-      { name: 'Notes', to: '/notes' },
-      { name: 'Gallery', to: '/gallery' },
-      { name: 'Code', to: 'https://git.ceigh.com', external: true },
-      { name: 'GitHub', to: 'https://github.com/ceigh', external: true },
-      { name: 'Email', to: 'mailto:me@ceigh.com', external: true },
-      { name: 'RSS', to: '/rss/atom.xml', external: true }
-    ]
+  computed: {
+    links () {
+      return [
+        { name: this.$t('nav.notes'), to: '/notes' },
+        { name: this.$t('nav.gallery'), to: '/gallery' },
+        { name: this.$t('nav.code'), to: 'https://git.ceigh.com', external: true },
+        { name: 'GitHub', to: 'https://github.com/ceigh', external: true },
+        { name: this.$t('nav.email'), to: 'mailto:me@ceigh.com', external: true },
+        { name: 'RSS', to: '/rss/atom.xml', external: true }
+      ]
+    }
   }
 }
 </script>

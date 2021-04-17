@@ -9,6 +9,8 @@ div
     n-link(to='/') Go to homepage
 
   NoteCover(:unsplash='unsplash')
+
+  AppSwitchLocale
 </template>
 
 <script>

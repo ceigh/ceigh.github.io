@@ -1,3 +1,5 @@
 <template lang='pug'>
-Nuxt
+div
+  Nuxt
+  AppSwitchLocale
 </template>

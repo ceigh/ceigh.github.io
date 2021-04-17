@@ -2,4 +2,5 @@
 div
   AppNav
   Nuxt
+  AppSwitchLocale
 </template>

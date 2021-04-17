@@ -1,4 +1,5 @@
 import feed from './plugins/feed'
+import i18n from './plugins/i18n'
 
 export default {
   ssr: true,
@@ -23,10 +24,11 @@ export default {
   },
 
   feed,
+  i18n,
 
   css: [
     'latex.css',
-    '~/assets/styles/common.css'
+    '~/assets/styles'
   ],
 
   buildModules: [
@@ -38,7 +40,8 @@ export default {
     '@nuxt/content',
     '@nuxtjs/feed',
     '@nuxtjs/sitemap',
-    '@nuxtjs/robots'
+    '@nuxtjs/robots',
+    'nuxt-i18n'
   ],
 
   build: {
