@@ -22,7 +22,10 @@ export default {
 
   async asyncData ({ $content }) {
     return {
-      demos: await $content('demos').sortBy('date').fetch()
+      demos: await $content('demos')
+        .sortBy('timestamp', 'desc')
+        .only(['slug', 'whiteBg', 'preview', 'title', 'date'])
+        .fetch()
     }
   },
 

@@ -57,6 +57,7 @@ export default {
       if (doc.extension === '.md') {
         const { text } = require('reading-time')(doc.text)
         doc.readingTime = text
+        doc.timestamp = new Date(doc.date)
       }
     }
   }
