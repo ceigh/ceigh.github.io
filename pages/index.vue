@@ -1,6 +1,6 @@
 <template lang='pug'>
 div
-  h2 {{ $t('home.heading') }}
+  h2 {{ heading }}
   NuxtContent(:document='document')
   br
   figure
@@ -29,8 +29,14 @@ export default {
     }
   },
 
-  head: {
-    title: 'Home'
+  head () {
+    return { title: this.heading }
+  },
+
+  computed: {
+    heading () {
+      return this.$t('home.heading')
+    }
   },
 
   watch: {

@@ -1,6 +1,6 @@
 <template lang='pug'>
 div
-  h2 {{ $t('gallery.heading') }}
+  h2 {{ heading }}
   p.mb-1 {{ $t('gallery.description') }}
 
   div(v-for='(demo, i) in demos' :key='demo.slug'
@@ -24,8 +24,14 @@ export default {
     return { demos: await $content('demos').fetch() }
   },
 
-  head: {
-    title: 'Gallery'
+  head () {
+    return { title: this.heading }
+  },
+
+  computed: {
+    heading () {
+      return this.$t('gallery.heading')
+    }
   },
 
   methods: {

@@ -1,6 +1,6 @@
 <template lang='pug'>
 div
-  h2 {{ $t('notes.heading') }}
+  h2 {{ heading }}
   ul
     li(v-for='note in notes'
       :key='note.slug')
@@ -28,8 +28,14 @@ export default {
     }
   },
 
-  head: {
-    title: 'Notes'
+  head () {
+    return { title: this.heading }
+  },
+
+  computed: {
+    heading () {
+      return this.$t('notes.heading')
+    }
   },
 
   watch: {
