@@ -7,6 +7,7 @@
 /* zoom text */
 html {
   font-size: calc(7px + 1vw);
+  scroll-behavior: initial;
 }
 
 /* highlight one line code blocks */
