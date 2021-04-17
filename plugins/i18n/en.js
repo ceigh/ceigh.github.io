@@ -14,6 +14,10 @@ export default {
     }
   },
 
+  notes: {
+    heading: 'Notes'
+  },
+
   gallery: {
     heading: 'Gallery',
     description: 'Various graphics'

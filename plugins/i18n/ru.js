@@ -14,6 +14,10 @@ export default {
     }
   },
 
+  notes: {
+    heading: 'Заметки'
+  },
+
   gallery: {
     heading: 'Галерея',
     description: 'Различное графическое творчество'

@@ -1,6 +1,6 @@
 <template lang='pug'>
 div
-  h2 Notes
+  h2 {{ $t('notes.heading') }}
   ul
     li(v-for='note in notes'
       :key='note.slug')
