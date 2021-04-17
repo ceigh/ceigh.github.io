@@ -9,7 +9,11 @@ export default {
 
   head: {
     link: [
-      { rel: 'icon', type: 'image/png', href: '/icon.png' }
+      { rel: 'icon', type: 'image/png', href: '/icon.png' },
+      {
+        rel: 'stylesheet',
+        href: 'https://cdn.rawgit.com/dreampulse/computer-modern-web-font/master/fonts.css'
+      }
     ]
   },
 
