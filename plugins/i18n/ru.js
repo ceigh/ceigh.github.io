@@ -10,6 +10,10 @@ export default {
   top: 'Наверх',
   back: 'Назад',
 
+  error: {
+    start: 'Начать сначала'
+  },
+
   nav: {
     notes: 'Заметки',
     gallery: 'Галерея',

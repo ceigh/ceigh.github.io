@@ -10,6 +10,10 @@ export default {
   top: 'Top',
   back: 'Back',
 
+  error: {
+    start: 'Start over'
+  },
+
   nav: {
     notes: 'Notes',
     gallery: 'Gallery',

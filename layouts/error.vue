@@ -6,11 +6,9 @@ div
     |
     strong :(
     br
-    n-link(to='/') Go to homepage
+    a(href='/') {{ $t('error.start') }}
 
   NoteCover(:unsplash='unsplash')
-
-  AppSwitchLocale
 </template>
 
 <script>
@@ -28,8 +26,8 @@ export default {
 
   created () {
     this.unsplash = {
-      id: '1526401415661-5a755bef0246',
-      author: 'Alice Washington'
+      id: '7K3VasWk47Q',
+      author: 'Kyaw Tun'
     }
   }
 }
