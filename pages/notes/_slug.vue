@@ -24,7 +24,7 @@ div
 
   NuxtContent(:document='note')
 
-  a(href='#title') [Top]
+  AppLocalNav
 
   AppNav(bottom)
 </template>

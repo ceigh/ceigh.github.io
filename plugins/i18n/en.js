@@ -7,6 +7,8 @@ export default {
     software: 'Software',
     version: 'Version'
   },
+  top: 'Top',
+  back: 'Back',
 
   nav: {
     notes: 'Notes',

@@ -7,6 +7,8 @@ export default {
     software: 'ПО',
     version: 'Версия'
   },
+  top: 'Наверх',
+  back: 'Назад',
 
   nav: {
     notes: 'Заметки',

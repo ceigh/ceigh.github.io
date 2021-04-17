@@ -9,6 +9,8 @@ div
 
   NuxtContent(:document='demo')
 
+  AppLocalNav
+
   AppNav(bottom)
 </template>
 
