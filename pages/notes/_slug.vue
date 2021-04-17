@@ -5,7 +5,7 @@ div
   p.author
     | {{ note.author || name }}
     br
-    | {{ shortDate(note.date) }}
+    | {{ shortDate(note.date, $i18n.locale) }}
 
   div.abstract
     h3 Abstract
@@ -33,9 +33,16 @@ div
 import { shortDate } from '~/plugins/filters.js'
 import { name } from '~/plugins/const.json'
 
+async function getNote ($content, locale, slug) {
+  return await $content(`${locale}/notes`, slug).fetch()
+}
+
 export default {
-  async asyncData ({ $content, params: { slug } }) {
-    return { note: await $content('notes', slug).fetch(), name }
+  async asyncData ({ $content, app, params: { slug } }) {
+    return {
+      name,
+      note: await getNote($content, app.i18n.locale, slug)
+    }
   },
 
   head () {
@@ -55,6 +62,13 @@ export default {
         { hid: 'author', name: 'author', content: author },
         { hid: 'keywords', name: 'keywords', content: keywords }
       ]
+    }
+  },
+
+  watch: {
+    async '$i18n.locale' (newLocale) {
+      this.note = await getNote(this.$content,
+        newLocale, this.$query.params.slug)
     }
   },
 
