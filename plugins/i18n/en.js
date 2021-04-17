@@ -8,6 +8,9 @@ export default {
 
   home: {
     heading: 'About me',
-    troxler: 'Troxler\'s fading'
+    troxler: {
+      title: 'Click me',
+      caption: 'Troxler\'s fading'
+    }
   }
 }

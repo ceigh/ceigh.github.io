@@ -6,8 +6,11 @@ div
   figure
     canvas(ref='canvas'
       width='400'
-      height='300')
-    figcaption {{ $t('home.troxler') }}
+      height='300'
+      style='cursor: pointer'
+      :title='$t("home.troxler.title")'
+      @click='renderTroxler')
+    figcaption {{ $t('home.troxler.caption') }}
 </template>
 
 <script>
@@ -37,8 +40,13 @@ export default {
   },
 
   mounted () {
-    const canvas = this.$refs.canvas
-    drawTroxler(canvas)
+    this.renderTroxler()
+  },
+
+  methods: {
+    renderTroxler () {
+      drawTroxler(this.$refs.canvas)
+    }
   }
 }
 </script>

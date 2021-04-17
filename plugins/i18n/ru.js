@@ -8,6 +8,9 @@ export default {
 
   home: {
     heading: 'Обо мне',
-    troxler: 'Эффект Трокслера'
+    troxler: {
+      title: 'Нажми на меня',
+      caption: 'Эффект Трокслера'
+    }
   }
 }
