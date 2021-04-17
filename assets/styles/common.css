@@ -90,3 +90,8 @@ iframe {
   width: 100%;
   min-height: 50vh;
 }
+
+.link-plain {
+  text-decoration: none;
+  color: inherit;
+}

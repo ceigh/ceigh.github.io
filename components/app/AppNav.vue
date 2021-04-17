@@ -1,6 +1,10 @@
 <template lang='pug'>
+mixin heading
+  a.link-plain(href='/') ceigh.com
+
 div
-  h1(v-if='!bottom') ceigh.com
+  h1(v-if='!bottom')
+    +heading
 
   table.app-nav-table(:class='{ "app-nav-table-bottom": bottom }')
     thead
@@ -13,6 +17,9 @@ div
             target='_blank') {{ l.name }}
           NuxtLink(v-else
             :to='l.to') {{ l.name }}
+
+  h1(v-if='bottom')
+    +heading
 </template>
 
 <script>
@@ -26,9 +33,8 @@ export default {
 
   created () {
     this.links = [
-      { name: 'Home', to: '/' },
-      { name: 'Gallery', to: '/gallery' },
       { name: 'Notes', to: '/notes' },
+      { name: 'Gallery', to: '/gallery' },
       { name: 'Code', to: 'https://git.ceigh.com', external: true },
       { name: 'GitHub', to: 'https://github.com/ceigh', external: true },
       { name: 'Email', to: 'mailto:me@ceigh.com', external: true },
@@ -45,5 +51,10 @@ export default {
 
 .app-nav-table-bottom {
   margin-top: 2rem;
+}
+
+h1:last-child {
+  margin-top: 1rem;
+  text-align: center;
 }
 </style>
