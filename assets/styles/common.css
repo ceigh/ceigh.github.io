@@ -94,5 +94,5 @@ iframe {
 
 .link-plain {
   text-decoration: none;
-  color: inherit;
+  color: inherit !important;
 }

@@ -1,6 +1,6 @@
 <template lang='pug'>
 mixin heading
-  a.link-plain(href='/') ceigh.com
+  a.link-plain(href='/') ceigh
 
 div
   h1(v-if='!bottom')
@@ -47,6 +47,10 @@ export default {
 <style scoped>
 .app-nav-table {
   width: 100%;
+}
+
+.app-nav-table th {
+  text-align: center;
 }
 
 .app-nav-table-bottom {
