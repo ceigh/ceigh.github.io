@@ -4,5 +4,10 @@ export default {
     gallery: 'Gallery',
     code: 'Code',
     email: 'Email'
+  },
+
+  home: {
+    heading: 'About me',
+    troxler: 'Troxler\'s fading'
   }
 }

@@ -4,5 +4,10 @@ export default {
     gallery: 'Галерея',
     code: 'Код',
     email: 'Почта'
+  },
+
+  home: {
+    heading: 'Обо мне',
+    troxler: 'Эффект Трокслера'
   }
 }
