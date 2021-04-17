@@ -1,6 +1,6 @@
 <template lang='pug'>
 nav
-  h2 Contents
+  h2 {{ $t('contents') }}
   ol
     li(v-for='link in tocRearranged'
       :key='link.id')

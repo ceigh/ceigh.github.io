@@ -1,4 +1,13 @@
 export default {
+  abstract: 'Abstract',
+  contents: 'Contents',
+  cover: 'Photo by',
+  config: {
+    heading: 'Configuration',
+    software: 'Software',
+    version: 'Version'
+  },
+
   nav: {
     notes: 'Notes',
     gallery: 'Gallery',

@@ -1,8 +1,8 @@
 <template lang='pug'>
 figure(v-if='unsplash')
-  img(:src='`https://images.unsplash.com/photo-${unsplash.id}?w=1000&q=70`'
+  img(:src='`https://source.unsplash.com/${unsplash.id}`'
     alt='cover')
-  figcaption(v-if='unsplash.author') Photo by {{ unsplash.author }}
+  figcaption(v-if='unsplash.author') {{ $t('cover') }} {{ unsplash.author }}
 figure(v-else-if='plain')
   img(:src='plain.src'
     alt='cover')

@@ -1,4 +1,13 @@
 export default {
+  abstract: 'Вкратце',
+  contents: 'Содержание',
+  cover: 'Фото:',
+  config: {
+    heading: 'Конфигурация',
+    software: 'ПО',
+    version: 'Версия'
+  },
+
   nav: {
     notes: 'Заметки',
     gallery: 'Галерея',

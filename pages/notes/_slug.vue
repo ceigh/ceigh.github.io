@@ -8,7 +8,7 @@ div
     | {{ shortDate(note.date, $i18n.locale) }}
 
   div.abstract
-    h3 Abstract
+    h3 {{ $t('abstract') }}
     p {{ note.abstract }}
     i ~ {{ note.readingTime }}
     br

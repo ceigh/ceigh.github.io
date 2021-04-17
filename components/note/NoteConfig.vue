@@ -1,11 +1,11 @@
 <template lang='pug'>
 div(v-if='config')
-  h2 Configuration
+  h2 {{ $t('config.heading') }}
   table
     thead
       tr
-        th Software
-        th Version
+        th {{ $t('config.software') }}
+        th {{ $t('config.version') }}
     tbody
       tr(v-for='(v, k) in config'
         :key='k')
