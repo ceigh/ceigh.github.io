@@ -6,7 +6,7 @@ div
   h1(v-if='!bottom')
     +heading
 
-  table(:class='{ "bottom": bottom }')
+  table(:class='{ "mt-2": bottom }')
     thead
       tr
         th(v-for='l in links'
@@ -18,7 +18,7 @@ div
           NuxtLink(v-else
             :to='l.to') {{ l.name }}
 
-  h1(v-if='bottom')
+  h1.mt-1(v-if='bottom')
     +heading
 </template>
 
@@ -55,12 +55,7 @@ th {
   text-align: center;
 }
 
-.bottom {
-  margin-top: 2rem;
-}
-
 h1:last-child {
-  margin-top: 1rem;
   text-align: center;
 }
 </style>

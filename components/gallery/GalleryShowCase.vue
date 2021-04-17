@@ -1,8 +1,9 @@
 <template lang='pug'>
-div(:class='{ "white-bg": whiteBg }')
-  figure(v-for='i in images' :key='i.title')
-    img(:src='`/images/${i.src}`' :alt='i.name')
-    figcaption {{ i.name }}
+div
+  figure(v-for='(image, i) in images' :key='image.title'
+    :class='{ "white-bg": whiteBg, "mb-1": i !== images.length - 1 }')
+    img(:src='`/images/${image.src}`' :alt='image.name')
+    figcaption {{ image.name }}
 </template>
 
 <script>

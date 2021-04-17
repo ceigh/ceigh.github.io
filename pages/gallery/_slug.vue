@@ -5,7 +5,7 @@ div
   p.author
     | {{ demo.author || name }}
     br
-    | {{ shortDate(demo.date) }}
+    | {{ shortDate(demo.date, $i18n.locale) }}
 
   NuxtContent(:document='demo')
 

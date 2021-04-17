@@ -1,12 +1,12 @@
-import ru from './ru'
 import en from './en'
+import ru from './ru'
 
 export default {
-  locales: ['ru', 'en'],
-  defaultLocale: 'ru',
+  locales: ['en', 'ru'],
+  defaultLocale: 'en',
   strategy: 'no_prefix',
   vueI18n: {
     fallbackLocale: 'en',
-    messages: { ru, en }
+    messages: { en, ru }
   }
 }

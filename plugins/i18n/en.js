@@ -15,6 +15,7 @@ export default {
   },
 
   gallery: {
-    heading: 'Gallery'
+    heading: 'Gallery',
+    description: 'Various graphics'
   }
 }

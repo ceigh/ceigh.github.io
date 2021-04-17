@@ -15,6 +15,7 @@ export default {
   },
 
   gallery: {
-    heading: 'Галерея'
+    heading: 'Галерея',
+    description: 'Различное графическое творчество'
   }
 }

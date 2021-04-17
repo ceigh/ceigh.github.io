@@ -1,5 +1,5 @@
 <template lang='pug'>
-.switch
+.switch.mt-2
   button(@click='switchLocale')
     span(v-if='$i18n.locale === "ru"') Switch to English
     span(v-else) Переключить на Русский
@@ -22,6 +22,5 @@ export default {
 <style scoped>
 .switch {
   text-align: center;
-  margin-top: 2rem;
 }
 </style>
