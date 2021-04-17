@@ -1,6 +1,6 @@
 <template lang='pug'>
 mixin heading
-  a.link-plain(href='/') ceigh
+  a.link-plain(href='/') ceigh.com
 
 div
   h1(v-if='!bottom')
