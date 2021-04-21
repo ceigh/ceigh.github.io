@@ -106,7 +106,7 @@ and then blur all the image</i> to get a blending.
 
 - Color
 
-  To determine the color, I will write a helper function `rdnColor`:
+  To determine the color, I will write a helper function `rndColor`:
 
   ```js
   const rndColor = (alpha = 1) =>
