@@ -7,7 +7,7 @@ async function create (feed) {
   feed.options = { title: 'Ceigh', link: baseUrl }
 
   const content = []
-  for (const c of ['demos', 'notes']) {
+  for (const c of ['demos', 'en/notes']) {
     content.push([c, await $content(c).fetch()])
   }
 
