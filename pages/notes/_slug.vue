@@ -68,7 +68,7 @@ export default {
   watch: {
     async '$i18n.locale' (newLocale) {
       this.note = await getNote(this.$content,
-        newLocale, this.$query.params.slug)
+        newLocale, this.$route.params.slug)
     }
   },
 
