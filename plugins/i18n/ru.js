@@ -10,6 +10,8 @@ export default {
   top: 'Наверх',
   back: 'Назад',
 
+  minutes: 'минут',
+
   error: {
     start: 'Начать сначала'
   },

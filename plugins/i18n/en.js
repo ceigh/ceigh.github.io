@@ -10,6 +10,8 @@ export default {
   top: 'Top',
   back: 'Back',
 
+  minutes: 'min',
+
   error: {
     start: 'Start over'
   },

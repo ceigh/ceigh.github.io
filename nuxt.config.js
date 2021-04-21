@@ -55,8 +55,8 @@ export default {
   hooks: {
     'content:file:beforeInsert': (doc) => {
       if (doc.extension === '.md') {
-        const { text } = require('reading-time')(doc.text)
-        doc.readingTime = text
+        const { minutes } = require('reading-time')(doc.text)
+        doc.minutes = Math.round(minutes)
         doc.timestamp = new Date(doc.date)
       }
     }

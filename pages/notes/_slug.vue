@@ -10,7 +10,7 @@ div
   div.abstract
     h3 {{ $t('abstract') }}
     p {{ note.abstract }}
-    i ~ {{ note.readingTime }}
+    i ~ {{ note.minutes }} {{ $t('minutes') }}
     br
     sub(v-if='note.keywords')
       del
