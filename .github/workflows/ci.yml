@@ -20,4 +20,5 @@ jobs:
             cd ${{ secrets.DIR }}
             git pull
             yarn --production
+            yarn build --quiet
             pm2 --mini-list start
