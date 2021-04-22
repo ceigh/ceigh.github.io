@@ -15,7 +15,7 @@ jobs:
           node-version: '15'
 
       - run: npm i # TODO: --production
-      - run: npm build
+      - run: npm run build
 
       - uses: easingthemes/ssh-deploy@v2
         env:
