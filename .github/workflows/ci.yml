@@ -15,9 +15,7 @@ jobs:
           node-version: '15'
 
       - run: npm i --production
-      - run: |
-        npm run build
-        mv ecosystem.config.js dist
+      - run: npm run build && mv ecosystem.config.js dist
 
       - uses: easingthemes/ssh-deploy@v2
         env:
@@ -34,6 +32,4 @@ jobs:
           port: ${{ secrets.PORT }}
           username: ${{ secrets.USER }}
           script_stop: true
-          script: |
-            cd ${{ secrets.DIR }}
-            pm2 start
+          script: cd ${{ secrets.DIR }} && pm2 start
