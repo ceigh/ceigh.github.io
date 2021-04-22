@@ -19,10 +19,10 @@ jobs:
 
       - uses: wlixcc/SFTP-Deploy-Action@v1.2.1
         with:
-          username: ${{ secrets.USER }}
+          ssh_private_key: ${{ secrets.KEY }}
           server: ${{ secrets.HOST }}
           port: ${{ secrets.PORT }}
-          ssh_private_key: ${{ secrets.KEY }}
+          username: ${{ secrets.USER }}
           local_path: '.nuxt'
           remote_path: ${{ secrets.DIR }}
 
