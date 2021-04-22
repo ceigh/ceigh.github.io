@@ -4,7 +4,7 @@ module.exports = {
       name: 'ceigh.com',
       exec_mode: 'cluster',
       instances: 'max',
-      script: 'nuxt',
+      script: '/usr/local/bin/nuxt',
       args: 'start'
     }
   ]
