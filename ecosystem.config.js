@@ -1,10 +1,10 @@
 module.exports = {
   apps: [
     {
-      name: 'ceigh.com',
+      name: 'blog',
       exec_mode: 'cluster',
       instances: 'max',
-      script: './node_modules/nuxt/bin/nuxt.js',
+      script: 'nuxt',
       args: 'start'
     }
   ]
