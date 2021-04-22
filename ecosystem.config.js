@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'blog',
+      name: 'ceigh.com',
       exec_mode: 'cluster',
       instances: 'max',
       script: 'nuxt',
