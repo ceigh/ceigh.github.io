@@ -9,8 +9,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v2.3.4
+      - uses: actions/setup-node@v2.1.5
         with:
           node-version: '15'
 
@@ -23,7 +23,7 @@ jobs:
           server: ${{ secrets.HOST }}
           port: ${{ secrets.PORT }}
           ssh_private_key: ${{ secrets.KEY }}
-          local_path: 'dist ecosystem.config.js'
+          local_path: './dist ./ecosystem.config.js'
           remote_path: ${{ secrets.DIR }}
 
       - uses: appleboy/ssh-action@v0.1.3 #TODO: remove?
