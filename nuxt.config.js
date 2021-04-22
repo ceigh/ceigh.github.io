@@ -9,31 +9,15 @@ export default {
 
   head: {
     link: [
-      { rel: 'icon', type: 'image/png', href: '/icon.png' },
-      {
-        rel: 'stylesheet',
-        href: 'https://cdn.rawgit.com/dreampulse/computer-modern-web-font/master/fonts.css'
-      }
+      { rel: 'icon', type: 'image/png', href: '/icon.png' }
     ]
   },
+  css: ['latex.css', '~/assets/styles'],
 
-  pwa: {
-    icon: {
-      plugin: false
-    }
-  },
-
-  content: {
-    liveEdit: false
-  },
-
+  pwa: { icon: { plugin: false } },
+  content: { liveEdit: false },
   feed,
   i18n,
-
-  css: [
-    'latex.css',
-    '~/assets/styles'
-  ],
 
   buildModules: [
     '@nuxtjs/eslint-module',
@@ -51,7 +35,6 @@ export default {
   build: {
     transpile: [({ isLegacy }) => isLegacy && 'troxler']
   },
-
   hooks: {
     'content:file:beforeInsert': (doc) => {
       if (doc.extension === '.md') {
