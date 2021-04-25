@@ -2,7 +2,7 @@
 date: 4/18/2021
 title: Enhancing of UNIX typography with Fontconfig
 abstract:
-  Облагораживаем своё окружение с помощью красивых шрифтов и их правильного рендеринга.
+  Refining our environment with beautiful fonts and their correct rendering.
 keywords:
   - unix
   - fonts
@@ -12,101 +12,106 @@ unsplash:
   author: Elisa Calvet B.
 ---
 
-## Предисловие
+## About
 
-В первую очередь не стоит рассматривать этот текст как <i>конкретное руководство
-к действию</i>, это скорее мои собственные размышления о том,
-как настроить единство шрифтов в своей системе, и как отображать их так, чтобы
-**радовало** глаз.
+First of all, do not consider this text as a <i>specific guide
+to action</i>, it is rather my own thoughts on how
+to configure the unity of fonts in your system, and how to display them so that
+**pleased** the eye.
 
-Я считаю что для комфортной работы нельзя обойтись без качественной
-[типографики](https://ru.wikipedia.org/wiki/%D0%A2%D0%B8%D0%BF%D0%BE%D0%B3%D1%80%D0%B0%D1%84%D0%B8%D0%BA%D0%B0),
-и что этот момент дожен стоять в списке приоритетных действий при кастомизации
-рабочего окружения, так как от этого в первую очередь зависит <ins>общее впечатление
-и привлекательность</ins> оного.
+I believe that for a comfortable work, you can not do without high-quality
+[typography](https://en.wikipedia.org/wiki/Typography), and that this moment
+should stand in the list of priority actions when customizing the working
+environment, since this primarily affects the <ins>overall impression and
+attractiveness</ins> of it.
 
-## Эталон
+## Standard
 
-Говоря об “эталонном” отображении текста я хотел бы упомянуть популярную нынче
-“UNIX-подобную” ОС, а конкретно -
-[macOS](https://www.apple.com/ru/macos/big-sur) (и в целом семейство ОС от Apple).
+Speaking about the “standard” display of text, I would like
+to mention the now popular "UNIX-like" OS, specifically
+[macOS](https://www.apple.com/ru/macos/big-sur)
+(and in general the OS family from Apple).
 
-Их дизайнеры уделяют вопросам типографики большое внимание[^1], и как мне кажется -
-у них это <mark>неплохо</mark> получается. Начиная от разработки собственных
-шрифтов, и заканчивая написанием собственных движков для рендеринга текста.
+Their designers pay a lot of attention[^1] to typography issues,
+and it seems to me that they are <mark>quite good</mark> at it.
+Starting from developing fonts, and ending with writing
+engines for rendering text.
 
-![типографика apple](https://developer.apple.com/news/images/og/fonts-og.jpg)
+![apple typography](https://developer.apple.com/news/images/og/fonts-og.jpg)
 
-Не в последнюю очередь восприятие текста зависит от самого дисплея на котором текст
-отображается, можно считать что некоторая часть успеха Apple в этом плане обусловлена
-их дисплеями с очень высокой плотностью пикселей (PPI)[^2]. Но время идёт и сейчас такими
-матрицами никого не удивишь, поэтому в дело вступают конкретные параметры
-отображения.
+Not least of all, the perception of text depends on the display itself
+on which the text is displayed, we can assume that some of Apple's
+success in this regard is due to their displays with high pixel
+density (PPI)[^2]. But time goes on and now such matrices will not
+surprise anyone, so specific display parameters come into play.
 
-**Начертание, сглаживание, хинтинг, и так далее**, это то, от чего на сегодняшний день
-(в большинстве ОС) зависит - будет ли вам комфортно работать с текстом, или не очень.
+**Typeface, anti-aliasing, hinting, and so on**, this is what today
+(in most operating systems) depends on - whether you will be
+comfortable working with text, or not.
 
-Сегодня я постараюсь в полной мере осветить свой опыт по настройке отображения и
-выбору шрифтов в <i>*NIX</i>.
+Today I will try to fully cover my experience in configuring the display
+and selecting fonts in <i>*NIX</i>.
 
-## Шрифт
+## Font
 
-Хочется сразу сказать о том, что подбор шрифтов это <ins>сугубо личное дело каждого</ins>,
-выбирайте те семейства с которыми вам будет **удобно** работать и которые будут вас
-**радовать** своим внешним видом.
+I would like to say right away that the selection of fonts is
+a <ins>purely personal</ins> matter for everyone, choose those
+families with which you will be comfortable working and which will
+**please** you with their appearance.
 
-Я же, раз мы заговорили про “эталон”, покажу как использовать официальные шрифты от Apple.
-Их спокойно можно найти на [GitHub](https://github.com)
-<i>(не переживайте, за их использование в
-некоммерческих целях, вам ничего не будет)</i>.
 
-### Установка
+I, since we are talking about the "standard", will show you how to use
+the official fonts from Apple. They can be easily found on
+[GitHub](https://github.com) <i>(don't worry, you can safely use them
+for non-commercial purposes)</i>.
 
-Нужно выбрать как минимум <mark>три шрифта для трёх начертаний</mark> -
-**Sans-serif** (отсутствие засчек),
-**Serif** (с засечками) и **Monospaced** (все глифы одинаковы по ширине).
-Мне нравятся
+### Installation
+
+You need to choose at least <mark>three fonts for three typefaces</mark> -
+**Sans-serif**, **Serif**, and **Monospaced** (all glyphs are the same width). I like
 [SF Pro](https://github.com/sahibjotsaggu/San-Francisco-Pro-Fonts),
-[Libertinus](https://github.com/alerque/libertinus/releases) и
-[SF Mono](https://github.com/supercomputra/SF-Mono-Font) соответственно.
+[Libertinus](https://github.com/alerque/libertinus/releases) and
+[SF Mono](https://github.com/supercomputra/SF-Mono-Font).
 
-Скачайте шрифты и положите их в директорию `~/.local/share/fonts`
-(или `~/.fonts`).
+Download the fonts and put them in the `~/.local/share/fonts`
+(or `~/.fonts`) directory.
 
-### Лигатуры
+### Ligatures
 
-Если вам иногда приходится писать какой-то код <i>(например вы занимаетесь разработкой
-ПО :))</i>, то вы наверняка слышали о **лигатурах**[^3] в моноширинных шрифтах.
-Это специальные глифы шрифта которые объединяют собой некоторые рядом стоящие
-символы в <ins>один</ins>.
+If you sometimes have to write some code <i>(for example, you are engaged
+in software development :))</i>, then you have probably heard about
+ligatures[^3] in monospaced fonts. These are special font glyphs
+that combine some adjacent characters into one.
 
-Например взгляните на эту строку: `-> => == != === ~~> и даже www`.
-Если ваш моноширинный шрифт **поддерживает** лигатуры, то вы должны увидеть как
-отдельные символы “сливаются” в один единый. На всякий случай вот картинка:
+For example, take a look at this line: `-> => == != === ~~> и даже www`.
+If your monospaced font supports ligatures, then you should see how
+the individual characters “merge” into one single one.
+Just in case, here's a picture:
 
-![лигатуры](/images/enhancing-of-unix-typography-with-fontconfig/0.png)
+![ligatures](/images/enhancing-of-unix-typography-with-fontconfig/0.png)
 
-Выглядит достаточно симпатично, поэтому я предпочитаю использовать шрифты с лигатурами.
-Но что делать, если какой то шрифт очень нравится, но лигатур он по своей природе не
-поддерживает? Ответ прост - <ins>нужно его пропатчить</ins>.
+It looks pretty enough, so I prefer to use fonts with ligatures, but what
+should I do if I really like a font and it does not support
+ligatures by its nature? The answer is simple - you need to <ins>patch</ins> it.
 
-Не пугайтесь, это очень <i>просто</i>. Особенно если использовать ПО для патчинга, например
-[Ligaturizer](https://github.com/ToxicFrog/Ligaturizer).
-С его помощью, можно добавить в выбранный вами шрифт лигатурные глифы из `Fira Code`[^4].
-Также в процессе можно выбрать какие лигатуры использовать, а какие **не трогать**.
-Давайте пропатчим моноширинный `SF Mono`:
+Don't be alarmed, it's <i>simple</i>. Especially if you use patching software,
+such as [Ligaturizer](https://github.com/ToxicFrog/Ligaturizer). You can use it to add
+ligature glyphs from `FireCode`[^4] to your chosen font. Also in the process,
+you can choose which ligatures to use and which **not to touch**.
+Let's patch the monospaced `SF Mono`:
 
 - ```sh
   git clone git@github.com:ToxicFrog/Ligaturizer.git --recurse-submodules
   cd Ligaturizer
   mv ~/.local/share/fonts/sf-mono fonts
   ```
-  >**обратите внимание на опцию `--recurse-submodules`!**
+  >**pay attention to `--recurse-submodules` option!**
 
-- Сейчас можно выбирать нужные вам лигатуры изменив файл `ligatures.py`.
-  Просто <mark>закомментируйте</mark> строчки с ненужными лигатурами.
+- Now you can select the ligatures you need by changing the file
+  `ligatures.py`. Just <mark>comment out</mark> the lines with
+  unnecessary ligatures.
 
-- Теперь нужно добавить наш шрифт в процесс сборки, изменив файл `build.py`:
+- Now we need to add our font to the build process by changing the file `build.py`:
 
   ```python
   prefixed_fonts = [
@@ -115,32 +120,33 @@ unsplash:
   ]
   ```
 
-- Запускаем сборку через `make`.
+- Run the build via `make`.
 
-- После успешного патчинга вы увидите новые шрифты в `fonts/output`.
-  Это и есть нужные нам шрифты, теперь уже <i>поддерживающие</i> лигатуры.
-  Переместим их в директорию со шрифтами:
+- After successful patching, you will see the new fonts in `fonts/output`.
+  These are the fonts we need, which now <i>support</i> ligatures.
+  Move them to the font directory:
   ```sh
   mkdir ~/.local/share/fonts/sf-mono
   mv fonts/output/* ~/.local/share/fonts/sf-mono
   ```
 
-Подробнее можно узнать [тут](https://github.com/ToxicFrog/Ligaturizer#using-the-script).
+More information [here](https://github.com/ToxicFrog/Ligaturizer#using-the-script).
 
 ## Fontconfig
 
-За отображение в <i>GNU/Linux</i> и во многих других **UNIX-like** ОС, отвечает
-библиотека [Fontconfig](https://www.freedesktop.org/wiki/Software/fontconfig).
+The [Fontconfig](https://www.freedesktop.org/wiki/Software/fontconfig) library
+is responsible for the display in <i>GNU/Linux</i> and in many other
+**UNIX-like** operating systems.
 
-Производить собственную настройку можно через конфигурационный файл, который
-находится по пути: `~/.config/fontconfig/fonts.conf`. Это по сути простой
-[XML](https://ru.wikipedia.org/wiki/XML) файл.
-Подробнее про настройку Fontconfig можно прочесть
-[тут](https://wiki.archlinux.org/index.php/Font_configuration_(%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9)).
+You can make your own configuration via the configuration file,
+which is located at the path: `~/.config/fontconfig/fonts.conf`.
+This is essentially a simple
+[XML](https://ru.wikipedia.org/wiki/XML) file. You can read more
+about setting up Fontconfig [here](https://wiki.archlinux.org/index.php/Font_configuration).
 
-### Выбор шрифтов по-умолчанию
+### Default font selection
 
-Давайте укажем наши установленные шрифты в качестве шрифтов <ins>по умолчанию</ins>:
+Let's specify our installed fonts as the <ins>default</ins> fonts:
 
 ```xml
 <match>
@@ -151,17 +157,15 @@ unsplash:
 </match>
 ```
 
-Тут я указал, что для семейства `sans-serif` я предпочитаю
-шрифт `SF Pro Display`. Чтобы узнать внутреннее название того или иного шрифта,
-используйте команду: `fc-list | grep 'SF Pro'`. Вы получите список всех
-шрифтов, названия которых <i>содержат в себе</i> строку `'SF Pro'`, название обычно указано
-после двоеточия:
+Here I pointed out that for the `sans-serif` family, I prefer the `SF Pro Display`
+font. To find out the internal name of a particular font,
+use the command: `fc-list | grep 'SF Pro'`. You will get a list of all fonts
+whose names contain the string `'SF Pro'`, the name is usually indicated after the colon:
 `.local/share/fonts/sf-pro/SF-Pro-Display-Regular.otf: SF Pro Display:style=Regular`,
-возьмите только ту часть, которая находится
-<mark>после первого двоеточия, и до второго</mark>,
-<i>всё остальное это начертание</i>.
+take only the part that is <mark>after the first colon and before the second</mark>,
+the rest is the font <i>style</i>.
 
-Также я переопределю шрифты для `serif` и `monospaced`:
+I will also redefine the fonts for `serif` and `monospaced`:
 
 ```xml
 <match>
@@ -179,16 +183,15 @@ unsplash:
 </match>
 ```
 
-Чтобы проверить соответствие, используйте `fc-match`. Например:
-`fc-match serif` скажет нам:
-`LibertinusSerif-Regular.otf: "Libertinus Serif" "Regular"`, это означает, что
-мы всё указали **верно** и наш шрифт <ins>применился</ins>, вы также можете проверить
-и остальные семейства.
+To check the match, use `fc-match`. For example:
+`fc-match serif` will tell us: `Liberationserif-Regular.otf: "Liberation Serif" "Regular"`,
+this means that we specified everything **correctly** and our font was <ins>applied</ins>,
+you can also check the other families.
 
-### Переопределение
+### Aliasing
 
-Также бывают ситуации, когда мы хотим чтобы <i>вместо</i> одного шрифта,
-отображался наш **выбранный**, для этого добавьте в файл конфигурации такой код:
+There are also situations when we want to display our **selected** font <i>instead</i>
+of one, so add the following code to the configuration file:
 
 ```xml
 <alias>
@@ -197,16 +200,16 @@ unsplash:
 </alias>
 ```
 
-Эту конструкцию нужно добавить <mark>до</mark> определения наших шрифтов по-умолчанию.
-Тут я указал, что вместо `Liberation Mono` хочу использовать стандартный `monospace`,
-который в свою очередь смотрит на `SF Pro Display`.
+This construction must be added <mark>before</mark> defining our default fonts.
+Here I pointed out that instead of `Liberation Mono`, I want to use the
+standard `monospace`, which is pointed to `SF Pro Display`.
 
-### Рендеринг
+### Rendering
 
-Итак, все шрифты указаны, осталось самое **главное** - настроить их <i>правильное</i>
-отображение.
-Для этого добавьте в <mark>самое начало</mark> в блок `<fontconfig>`
-<i>(где мы и работали до этого)</i>, такую конструкцию:
+So, all the fonts are specified, the most **important** thing remains-to
+configure their <i>correct</i> display.
+To do this, add the following construction to the <mark>beginning</mark>
+in the `<fontconfig>` block <i>(where we worked before)</i>:
 
 ```xml
 <match target="font">
@@ -217,62 +220,64 @@ unsplash:
 </match>
 ```
 
-Это настройки общие для вообще **всех** шрифтов, сейчас я объясню что они значат:
+These settings are common to **all** fonts in general, now I will explain what they mean:
 
 - `rgba`
-  Отвечает за субпиксельное отображение (<i>лучшее</i> сглаживание).
+  is responsible for sub-pixel mapping (<i>better</i> anti-aliasing).
 
 - `lcdfilter`
-  Фильтр для корректного субпиксельного сглаживания.
+  filter for correct subpixel smoothing.
 
 - `hinting`
-  Выравнивает глифы по сетке. **Отключайте, если не хотите чтобы шрифт
-  “прыгал”.**
+  aligns the glyphs on the grid. **Disable it if you don't want the font to “jump”**.
 
 - `embolden`
-  Синтетически **утолщает** начертание. Это моя <ins>любимая</ins> настройка, потому что
-  с ней любой шрифт выглядит <i>куда круче</i>.
+  synthetically **thickens** the outline. This is my <ins>favorite</ins> setting,
+  because it makes any font look <i>much cooler</i>.
 
-Чтобы узнать о других параметрах посетите
-[вики](https://wiki.archlinux.org/index.php/Font_configuration_(%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9)) или [документацию](https://www.freedesktop.org/software/fontconfig/fontconfig-user.html). Также в документации находится <ins>масса интересного</ins> о самом Fontconfig.
+To learn about other options, visit the
+[wiki](https://wiki.archlinux.org/index.php/Font_configuration)
+or [documentation](https://www.freedesktop.org/software/fontconfig/fontconfig-user.html).
+The documentation also contains <ins>a lot of interesting</ins>
+information about Fontconfig itself.
 
-## Использование программами
+## Use by programs
 
-### Терминал
+### Terminal
 
-Обычно, ваш терминал использует `monospace` в качестве шрифта, так что
-у вас уже должно всё работать. В ином случае придется указывать **вручную**.
-Я покажу как изменить шрифт в [`st`](https://st.suckless.org).
-Откройте конфиг файл и добавьте строку:
+Usually, your terminal uses `monospace` as the font, so you should already
+have everything working. Otherwise, you will have to specify it **manually**.
+I'll show you how to change the font in [`st`](https://st.suckless.org).
+Open the config file and add the following line:
 ```c
 static char *font = "monospace:pixelsize=15";
 ```
-Такой подход <ins>экономит нам кучу времени</ins>, например если мы хотим поменять
-шрифт **сразу в разных программах**, то придётся изменить шрифт только в
-самом Fontconfig, а не в <mark>куче разных конфигурационных файлов</mark>.
 
-Тут я изменил только размер шрифта (`:pixelsize=15`). Вы можете переопределять
-параметры шрифта прямо тут, например: `"monospace:pixelsize=15:hinting=true"`
-и так далее.
+This approach <ins>saves us a lot of time</ins>, for example, if we want
+to change the font in **different programs at once**, we will have to change
+the font only in Fontconfig itself, and not in <mark>a bunch of different configuration
+files</mark>.
 
-![терминал](/images/enhancing-of-unix-typography-with-fontconfig/2.png)
+Here I only changed the font size (`:pixelsize=15`). You can override the font
+parameters right here, for example: `"monospace:pixelsize=15:hinting=true"` and so on.
 
-Всё конечно зависит от вашего эмулятора терминала, но вероятнее всего там будет
-использоваться <ins>та же схема</ins>.
+![terminal](/images/enhancing-of-unix-typography-with-fontconfig/2.png)
 
-### Окружение
-Тут также всё должно произойти **автоматически**, если это не так - смотрите пример с
-терминалом, всё точно также.
+Everything of course depends on your terminal emulator, but most likely the
+<ins>same scheme</ins> will be used there.
 
-### Браузер
+### Environment
+Here, too, everything should happen **automatically**, if this is not the
+case-see the example with the terminal, everything is exactly the same.
+
+### Browser
 
 #### Firefox
 
-Откройте `about:preferences`, найдите параметры шрифтов, и укажите везде <ins>Default</ins>.
+Open `about:preferences`, find the font settings, and specify <ins>Default</ins> everywhere.
 
-Также я предпочитаю менять шрифт интерфейса Firefox, через `userChrome.css` файл.
-Находится он в `~/.mozilla/firefox/<профиль>/chrome/userChrome.css`, добавьте туда:
-
+I also prefer to change the font of the Firefox interface, via the `userChrome.css` file.
+It is located in `~/.mozilla/firefox/<profile>/chrome/userChrome.css`, add it there:
 ```css
 * {
   font-family: sans-serif !important;
@@ -281,11 +286,12 @@ static char *font = "monospace:pixelsize=15";
 
 ![firefox](/images/enhancing-of-unix-typography-with-fontconfig/1.png)
 
-Узнать **имя вашего профиля** можно на странице `about:support`, поле `Profile Directory`.
+You can find out the **name of your profile** on the `about:support` page,
+in the `Profile Directory` field.
 
 #### Chromium
 
-Откройте `chrome://settings/fonts`, и укажите:
+Open `chrome://settings/fonts`, and specify:
 
 <br>
 <table>
@@ -305,21 +311,17 @@ static char *font = "monospace:pixelsize=15";
   </tbody>
 </table>
 
-## Иконки и эмодзи
+## Icons and emojis
 
-Для отображения различных Unicode иконок, вам
-понадобится <i>иконочный шрифт</i>, например
+To display various Unicode icons, you will need an <i>icon font</i>, such as
 [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts/blob/master/src/glyphs/Symbols-1000-em%20Nerd%20Font%20Complete.ttf).
-Изучите этот репозиторий, он содержит **огромное количество** иконочных шрифтов,
-также есть утилиты которые позволяют <ins>пропатчить ваш шрифт</ins> для поддержки
-иконок в нём.
+Check out this repository, it contains **a huge number** of icon fonts, and there
+are also utilities that allow you to <ins>patch</ins> your font to support icons in it.
 
-[Эмодзи](https://ru.wikipedia.org/wiki/%D0%AD%D0%BC%D0%BE%D0%B4%D0%B7%D0%B8)
-по сути тоже являются <i>некоторым шрифтом</i>, так что
-их тоже можно **переопределить** в Fontconfig.
-Так например чтобы использовать эмодзи от Apple, установите
-[этот](https://github.com/samuelngs/apple-emoji-linux/releases/download/latest/AppleColorEmoji.ttf) шрифт. Затем в `~/.config/fontconfig/fonts.conf`:
-
+[Emojis](https://en.wikipedia.org/wiki/Emoji) are essentially also some <i>font</i>,
+so they can also be **redefined** in Fontconfig.
+So for example, to use an Apple emoji, install [this](https://github.com/samuelngs/apple-emoji-linux/releases/download/latest/AppleColorEmoji.ttf) font.
+Then go to `~/.config/fontconfig/fonts.conf`:
 ```xml
 <match>
   <test name="family"><string>emoji</string></test>
@@ -329,26 +331,26 @@ static char *font = "monospace:pixelsize=15";
 </match>
 ```
 
-![эмодзи](/images/enhancing-of-unix-typography-with-fontconfig/3.png)
+![emoji](/images/enhancing-of-unix-typography-with-fontconfig/3.png)
 
-## Заключение
+## Conclusion
 
-Итак, я показал вам как настраивать и выбирать шрифты с помощью
-**Fontconfig**. <mark>Не ленитесь</mark> и изучите документацию к ней.
-<ins>Гарантирую</ins> - вы не пожалеете, ведь она содержит
-в себе <i>намного больше интересного</i> чем эта статья.
-Я же попытался показать вам **базовые принципы** настроек,
-и общее представление о типографике в <i>*NIX</i>. Надеюсь было познавательно :).
+So, I showed you how to configure and select fonts using **Fontconfig**.
+<mark>Do not be lazy</mark> and study the documentation for it.
+<ins>I guarantee</ins> - you will not regret it, because it contains
+<i>much more interesting</i> than this article.
+I tried to show you the **basic principles** of settings,
+and a general idea of typography in <i>*NIX</i>. I hope it was informative :).
 
-Мою конфигурацию всегда можно найти
-[тут](https://git.ceigh.com/?p=dotfiles.git;a=blob;f=.config/fontconfig/fonts.conf;h=992d003f85586263a865288a8abf729c1ca10ca0;hb=HEAD)[^5]
+My configuration can always be found
+[here](https://git.ceigh.com/?p=dotfiles.git;a=blob;f=.config/fontconfig/fonts.conf;h=992d003f85586263a865288a8abf729c1ca10ca0;hb=HEAD)[^5]
 
-## Ссылки
+## Links
 
-Материалы статьи.
+Article reference.
 
-[^1]: https://developer.apple.com/design/human-interface-guidelines/macos/visual-design/typography - руководства Apple
-[^2]: https://ru.wikipedia.org/wiki/Ppi - что такое PPI
-[^3]: https://ru.wikipedia.org/wiki/%D0%9B%D0%B8%D0%B3%D0%B0%D1%82%D1%83%D1%80%D0%B0_(%D1%81%D0%BE%D0%B5%D0%B4%D0%B8%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B1%D1%83%D0%BA%D0%B2) - о лигатурах
-[^4]: https://github.com/tonsky/FiraCode - шрифт FiraCode
-[^5]: https://github.com/ceigh/dotfiles/blob/master/.config/fontconfig/fonts.conf - конфиг на GitHub
+[^1]: https://developer.apple.com/design/human-interface-guidelines/macos/visual-design/typography - Apple guidelines
+[^2]: https://en.wikipedia.org/wiki/Pixel_density - about PPI
+[^3]: https://en.wikipedia.org/wiki/Ligature_(writing) - ligatures
+[^4]: https://github.com/tonsky/FiraCode - FiraCode font
+[^5]: https://github.com/ceigh/dotfiles/blob/master/.config/fontconfig/fonts.conf - my config at GitHub
