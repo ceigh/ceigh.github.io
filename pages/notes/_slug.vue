@@ -25,8 +25,8 @@ div
   NuxtContent(:document='note')
 
   AppLocalNav
-
   AppNav(bottom)
+  AppSwitchLocale
 </template>
 
 <script>

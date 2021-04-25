@@ -20,6 +20,7 @@ export default {
   i18n,
 
   buildModules: [
+    '@nuxt/typescript-build',
     '@nuxtjs/eslint-module',
     '@nuxtjs/stylelint-module',
     '@nuxtjs/pwa'
@@ -33,7 +34,10 @@ export default {
   ],
 
   build: {
-    transpile: [({ isLegacy }) => isLegacy && 'troxler']
+    transpile: [
+      ({ isLegacy }) => isLegacy && 'troxler',
+      ({ isLegacy }) => isLegacy && 'three'
+    ]
   },
   hooks: {
     'content:file:beforeInsert': (doc) => {

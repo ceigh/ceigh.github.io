@@ -1,6 +1,6 @@
 const cli = bin => `${bin} --ignore-path .gitignore`
 
 module.exports = {
-  '*.{js,vue}': cli('eslint'),
+  '*.{vue,ts,js}': cli('eslint'),
   '*.{css,vue}': cli('stylelint')
 }

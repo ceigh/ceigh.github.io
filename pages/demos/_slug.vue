@@ -1,22 +1,27 @@
 <template lang='pug'>
 div
-  h1.title#title {{ demo.title }}
+  NuxtContent(v-if='demo.full' :document='demo')
 
-  p.author
-    | {{ demo.author || name }}
-    br
-    | {{ shortDate(demo.date, $i18n.locale) }}
+  div(v-else)
+    h1.title#title {{ demo.title }}
 
-  NuxtContent(:document='demo')
+    p.author
+      | {{ demo.author || name }}
+      br
+      | {{ shortDate(demo.date, $i18n.locale) }}
 
-  AppLocalNav
+    NuxtContent(:document='demo')
 
-  AppNav(bottom)
+    AppLocalNav
+    AppNav(bottom)
+    AppSwitchLocale
 </template>
 
 <script>
 import { shortDate } from '~/plugins/filters.js'
 import { name } from '~/plugins/const.json'
+
+const fullClass = 'full'
 
 export default {
   async asyncData ({ $content, params: { slug } }) {
@@ -40,8 +45,13 @@ export default {
     }
   },
 
-  methods: {
-    shortDate
-  }
+  mounted () {
+    if (this.demo.full) { document.body.classList.add(fullClass) }
+  },
+  beforeDestroy () {
+    if (this.demo.full) { document.body.classList.remove(fullClass) }
+  },
+
+  methods: { shortDate }
 }
 </script>

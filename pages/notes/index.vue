@@ -4,14 +4,12 @@ div
   p.mb-1 {{ $t('notes.description') }}.
 
   ul
-    li(v-for='note in notes'
-      :key='note.slug')
-      NuxtLink(:to='`/notes/${note.slug}`')
-        | {{ note.title || note.slug }}
+    li(v-for='note in notes' :key='note.slug')
+      NuxtLink(:to='`/notes/${note.slug}`') {{ note.title || note.slug }}
       |
+      | -
       |
-      i(:title='note.date')
-        | - {{ shortDate(note.date, $i18n.locale) }}
+      i(:title='note.date') {{ shortDate(note.date, $i18n.locale) }}
 </template>
 
 <script>

@@ -6,12 +6,13 @@ div
   div(v-for='(demo, i) in demos' :key='demo.slug'
     :class='{ "mb-1": i !== demos.length - 1 }')
     figure(:class='{ "white-bg": demo.whiteBg }')
-      NuxtLink(:to='`/demos/${demo.slug}`')
+      NuxtLink(:to='`/demos/${demo.slug}`' no-prefetch)
         img(:src='`/images/${demo.preview}`' :alt='demo.title')
       figcaption
         | {{ demo.title }}
+        | -
         |
-        i(:title='demo.date') - {{ shortDate(demo.date, $i18n.locale) }}
+        i(:title='demo.date') {{ shortDate(demo.date, $i18n.locale) }}
 </template>
 
 <script>
