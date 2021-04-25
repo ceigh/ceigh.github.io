@@ -35,7 +35,7 @@ export default {
     links () {
       return [
         { name: this.$t('nav.notes'), to: '/notes' },
-        { name: this.$t('nav.gallery'), to: '/gallery' },
+        { name: this.$t('nav.demos'), to: '/demos' },
         { name: this.$t('nav.code'), to: 'https://git.ceigh.com', external: true },
         { name: 'GitHub', to: 'https://github.com/ceigh', external: true },
         { name: this.$t('nav.email'), to: 'mailto:me@ceigh.com', external: true },

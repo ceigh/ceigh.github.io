@@ -20,4 +20,4 @@ preview: solution/solution.png
 whiteBg: true
 ---
 
-<gallery-show-case :images='images' :white-bg='whiteBg'></gallery-show-case>
+<demo-show-case :images='images' :white-bg='whiteBg'></demo-show-case>

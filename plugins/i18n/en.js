@@ -18,7 +18,7 @@ export default {
 
   nav: {
     notes: 'Notes',
-    gallery: 'Gallery',
+    demos: 'Demos',
     code: 'Code',
     email: 'Email'
   },
@@ -36,8 +36,8 @@ export default {
     description: 'Short essays on technical and near-technical topics'
   },
 
-  gallery: {
-    heading: 'Gallery',
+  demos: {
+    heading: 'Demos',
     description: 'Various graphics'
   }
 }

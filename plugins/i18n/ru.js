@@ -18,7 +18,7 @@ export default {
 
   nav: {
     notes: 'Заметки',
-    gallery: 'Галерея',
+    demos: 'Демо',
     code: 'Код',
     email: 'Почта'
   },
@@ -36,8 +36,8 @@ export default {
     description: 'Короткие очерки на техническую и околотехническую тематику'
   },
 
-  gallery: {
-    heading: 'Галерея',
+  demos: {
+    heading: 'Демо',
     description: 'Различное графическое творчество'
   }
 }
