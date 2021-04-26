@@ -1,12 +1,10 @@
-import { PerspectiveCamera } from 'three'
-import { degree } from '~/plugins/three'
+import * as T from 'three'
 
-export function getCamera (w: number, h: number): PerspectiveCamera {
-  const camera = new PerspectiveCamera(75, w / h, 0.01, 50)
+export function getCamera (w: number, h: number): T.PerspectiveCamera {
+  const camera = new T.PerspectiveCamera(60, w / h, 1, 20000)
 
-  camera.position.z = -10
-  camera.position.y = 8
-  camera.rotation.x = -30 * degree
+  camera.position.z = -500
+  camera.position.y = 200
 
   return camera
 }

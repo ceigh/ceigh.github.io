@@ -1,75 +1,49 @@
-import * as THREE from 'three'
+import * as T from 'three'
 import Stats from 'stats.js'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { getCamera } from './camera'
+import { addControls } from './controls'
 import { getScene } from './scene'
 import { getRenderer } from './renderer'
 import { getLights } from './light'
-import { getHeart, getFloor } from './mesh'
-import { degree } from '~/plugins/three'
-
-let renderer: THREE.WebGLRenderer
-let camera: THREE.Camera
-let controls: OrbitControls
-
-let scene: THREE.Scene
-let lights: THREE.Light[]
-let heart: THREE.Group
+import { getWater, getIceberg } from './mesh'
 
 const isDev = process.env.NODE_ENV === 'development'
-let stats: Stats
-
-function animation (time: number): void {
-  const sec = time / 1000
-  const heartScale = 1 + (1 + Math.sin(sec)) / 10
-  heart.scale.set(heartScale, heartScale, heartScale)
-  heart.rotation.y = sec
-  renderer.render(scene, camera)
-}
-
-function animationDev (time: number): void {
-  stats.begin()
-  animation(time)
-  stats.end()
-}
-
-let animationFn = animation
+let renderer: T.WebGLRenderer
 
 export function start (rendererContainer: HTMLElement): void {
   const [w, h] = [window.innerWidth, window.innerHeight]
   renderer = getRenderer(w, h)
-  camera = getCamera(w, h)
+  const rendererDom = renderer.domElement
+  const camera = getCamera(w, h)
+  addControls(camera, rendererDom)
 
-  controls = new OrbitControls(camera, renderer.domElement)
-  controls.minDistance = 8
-  controls.maxDistance = 20
-  controls.maxPolarAngle = 85 * degree
-
-  scene = getScene()
-  lights = getLights()
-  heart = getHeart()
-
-  scene.add(getFloor())
-  scene.add(heart)
+  const scene = getScene(renderer)
+  const lights = getLights()
+  const water = getWater()
+  const iceberg = getIceberg()
   lights.forEach(l => scene.add(l))
+  scene.add(water)
+  scene.add(iceberg)
 
-  if (isDev) {
-    animationFn = animationDev
-
-    const axesHelper = new THREE.AxesHelper(5)
-    scene.add(axesHelper)
-
-    const lightHelpers = lights
-      .map(l => new THREE.CameraHelper(l.shadow.camera))
-    lightHelpers.forEach((h) => { scene.add(h) })
-
-    stats = new Stats()
-    stats.showPanel(0)
-    document.body.appendChild(stats.dom)
+  function animation () {
+    (water.material as T.ShaderMaterial).uniforms.time.value += 0.01
+    renderer.render(scene, camera)
   }
+  renderer.setAnimationLoop(animation)
 
-  rendererContainer.appendChild(renderer.domElement)
-  renderer.setAnimationLoop(animationFn)
+  rendererContainer.appendChild(rendererDom)
+
+  if (!isDev) { return }
+  const axesHelper = new T.AxesHelper(100)
+  scene.add(axesHelper)
+
+  const stats = new Stats()
+  stats.showPanel(0)
+  document.body.appendChild(stats.dom)
+  renderer.setAnimationLoop(() => {
+    animation()
+    stats.update()
+  })
 
   // eslint-disable-next-line no-console
   setTimeout(() => console.log(renderer.info.render), 2000)
@@ -77,8 +51,8 @@ export function start (rendererContainer: HTMLElement): void {
 
 export function stop (): void {
   renderer.setAnimationLoop(null)
-  if (isDev) { // remove stats
-    const { body } = document
-    body.removeChild(body.lastChild as HTMLElement)
-  }
+
+  if (!isDev) { return }
+  const { body } = document
+  body.removeChild(body.lastChild as HTMLElement)
 }

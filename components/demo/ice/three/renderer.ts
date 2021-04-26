@@ -1,11 +1,10 @@
-import { WebGLRenderer, PCFSoftShadowMap } from 'three'
+import * as T from 'three'
 
-export function getRenderer (w: number, h: number): WebGLRenderer {
-  const renderer = new WebGLRenderer({ antialias: true })
+export function getRenderer (w: number, h: number): T.WebGLRenderer {
+  const renderer = new T.WebGLRenderer({ antialias: true })
+
+  renderer.setPixelRatio(window.devicePixelRatio)
   renderer.setSize(w, h)
-
-  renderer.shadowMap.enabled = true
-  renderer.shadowMap.type = PCFSoftShadowMap
 
   return renderer
 }
