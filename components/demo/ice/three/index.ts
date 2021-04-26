@@ -1,7 +1,7 @@
 import * as T from 'three'
 import Stats from 'stats.js'
 import { getCamera } from './camera'
-import { addControls } from './controls'
+import { getControls } from './controls'
 import { getScene } from './scene'
 import { getRenderer } from './renderer'
 import { getLights } from './light'
@@ -15,7 +15,7 @@ export function start (rendererContainer: HTMLElement): void {
   renderer = getRenderer(w, h)
   const rendererDom = renderer.domElement
   const camera = getCamera(w, h)
-  addControls(camera, rendererDom)
+  const controls = getControls(camera, rendererDom)
 
   const scene = getScene(renderer)
   const lights = getLights()
@@ -26,7 +26,9 @@ export function start (rendererContainer: HTMLElement): void {
   scene.add(iceberg)
 
   function animation () {
-    (water.material as T.ShaderMaterial).uniforms.time.value += 0.01
+    controls.update()
+    const waterMaterial = water.material as T.ShaderMaterial
+    waterMaterial.uniforms.time.value += 0.015
     renderer.render(scene, camera)
   }
   renderer.setAnimationLoop(animation)

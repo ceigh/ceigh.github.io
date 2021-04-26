@@ -14,7 +14,7 @@ export function getWater (): T.Mesh {
     sunDirection: new T.Vector3(),
     waterColor: 0x000115,
     sunColor: 0xFFFFFF,
-    distortionScale: 4,
+    distortionScale: 3,
     fog: true
   })
 
