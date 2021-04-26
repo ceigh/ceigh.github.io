@@ -1,3 +1,5 @@
+import readingTime from 'reading-time'
+import type { IContentDocument } from '@nuxt/content/types/content'
 import feed from './plugins/feed'
 import i18n from './plugins/i18n'
 
@@ -39,9 +41,9 @@ export default {
   },
 
   hooks: {
-    'content:file:beforeInsert': (doc) => {
+    'content:file:beforeInsert': (doc: IContentDocument) => {
       if (doc.extension === '.md') {
-        const { minutes } = require('reading-time')(doc.text)
+        const { minutes } = readingTime(doc.text)
         doc.minutes = Math.round(minutes)
         doc.timestamp = new Date(doc.date)
       }

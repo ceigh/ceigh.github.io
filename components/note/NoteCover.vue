@@ -9,17 +9,29 @@ figure(v-else-if='plain')
   figcaption(v-if='plain.caption') {{ plain.caption }}
 </template>
 
-<script>
-export default {
+<script lang='ts'>
+import Vue, { PropOptions } from 'vue'
+
+interface UnsplashCover {
+  id: string
+  author: string
+}
+
+interface PlainCover {
+  src: string
+  caption: string
+}
+
+export default Vue.extend({
   props: {
     unsplash: {
       type: Object,
       default: null
-    },
+    } as PropOptions<UnsplashCover>,
     plain: {
       type: Object,
       default: null
-    }
+    } as PropOptions<PlainCover>
   }
-}
+})
 </script>

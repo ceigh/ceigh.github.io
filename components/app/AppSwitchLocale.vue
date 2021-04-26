@@ -5,18 +5,21 @@
     span(v-else) Переключить на Русский
 </template>
 
-<script>
-export default {
+<script lang='ts'>
+import Vue from 'vue'
+
+export default Vue.extend({
   methods: {
-    switchLocale () {
+    switchLocale (): void {
       const { $i18n } = this
-      const otherLocales =
-        $i18n.locales.filter(l => l !== $i18n.locale)
+      const otherLocales = $i18n.locales
+        // @ts-ignore
+        .filter((l: string) => l !== $i18n.locale)
       $i18n.setLocale(otherLocales[0])
       window.scrollTo(0, 0)
     }
   }
-}
+})
 </script>
 
 <style scoped>

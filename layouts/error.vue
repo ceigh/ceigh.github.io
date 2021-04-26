@@ -8,27 +8,22 @@ div
     br
     a(href='/') {{ $t('error.start') }}
 
-  NoteCover(:unsplash='unsplash')
+  NoteCover(:unsplash='{ id: "7K3VasWk47Q", author: "Kyaw Tun" }')
 </template>
 
-<script>
-export default {
+<script lang='ts'>
+import Vue, { PropOptions } from 'vue'
+
+export default Vue.extend({
   props: {
     error: {
       required: true,
       type: Object
-    }
+    } as PropOptions<Error>
   },
 
   head () {
     return { title: this.error.message }
-  },
-
-  created () {
-    this.unsplash = {
-      id: '7K3VasWk47Q',
-      author: 'Kyaw Tun'
-    }
   }
-}
+})
 </script>

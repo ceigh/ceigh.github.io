@@ -1,5 +1,4 @@
 module.exports = {
-  root: true,
   env: {
     browser: true,
     node: true
@@ -8,7 +7,5 @@ module.exports = {
     '@nuxtjs/eslint-config-typescript',
     'plugin:nuxt/recommended'
   ],
-  ignorePatterns: [
-    '!.*.js'
-  ]
+  ignorePatterns: ['!.*.js']
 }

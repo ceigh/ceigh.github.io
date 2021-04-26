@@ -13,34 +13,35 @@ div
     figcaption {{ $t('home.troxler.caption') }}
 </template>
 
-<script>
+<script lang='ts'>
+import Vue from 'vue'
 import { drawTroxler } from 'troxler'
 
-async function getDocument ($content, locale) {
-  return await $content(`${locale}/home`).fetch()
+async function getDocument (content: Function, locale: string) {
+  return await content(`${locale}/home`).fetch()
 }
 
-export default {
+export default Vue.extend({
   layout: 'header',
 
   async asyncData ({ $content, i18n }) {
-    return {
-      document: await getDocument($content, i18n.locale)
-    }
+    return { document: await getDocument($content, i18n.locale) }
   },
 
   head () {
+    // @ts-ignore
     return { title: this.heading }
   },
 
   computed: {
-    heading () {
-      return this.$t('home.heading')
+    heading (): string {
+      return this.$t('home.heading') as string
     }
   },
 
   watch: {
     async '$i18n.locale' (newLocale) {
+      // @ts-ignore
       this.document = await getDocument(this.$content, newLocale)
     }
   },
@@ -50,9 +51,9 @@ export default {
   },
 
   methods: {
-    renderTroxler () {
+    renderTroxler (): void {
       drawTroxler(this.$refs.canvas)
     }
   }
-}
+})
 </script>

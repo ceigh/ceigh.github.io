@@ -10,18 +10,28 @@ nav
           a(:href='`#${child.id}`') {{ child.text }}
 </template>
 
-<script>
-export default {
+<script lang='ts'>
+import Vue, { PropOptions } from 'vue'
+
+interface Link {
+  id: string
+  childrens: Link[]
+  text: string
+  depth: number
+}
+type Toc = Link[]
+
+export default Vue.extend({
   props: {
     toc: {
       required: true,
       type: Array
-    }
+    } as PropOptions<Toc>
   },
 
   computed: {
-    tocRearranged () {
-      const res = []
+    tocRearranged (): Toc {
+      const res: Toc = []
       this.toc.forEach((l) => {
         const { depth } = l
         if (depth === 2) {
@@ -34,5 +44,5 @@ export default {
       return res
     }
   }
-}
+})
 </script>

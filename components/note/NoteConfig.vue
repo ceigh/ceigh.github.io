@@ -15,13 +15,15 @@ div(v-if='config')
           code {{ v }}
 </template>
 
-<script>
-export default {
+<script lang='ts'>
+import Vue, { PropOptions } from 'vue'
+
+export default Vue.extend({
   props: {
     config: {
       type: Object,
       default: null
-    }
+    } as PropOptions<Record<string, string>>
   }
-}
+})
 </script>

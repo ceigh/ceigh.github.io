@@ -12,43 +12,42 @@ div
       i(:title='note.date') {{ shortDate(note.date, $i18n.locale) }}
 </template>
 
-<script>
-import { shortDate } from '~/plugins/filters.js'
+<script lang='ts'>
+import Vue from 'vue'
+import { shortDate } from '~/plugins/filters'
 
-async function getNotes ($content, locale) {
-  return await $content(`${locale}/notes`)
+async function getNotes (content: Function, locale: string) {
+  return await content(`${locale}/notes`)
     .sortBy('timestamp', 'desc')
     .only(['slug', 'title', 'date'])
     .fetch()
 }
 
-export default {
+export default Vue.extend({
   layout: 'header',
 
   async asyncData ({ $content, i18n }) {
-    return {
-      notes: await getNotes($content, i18n.locale)
-    }
+    return { notes: await getNotes($content, i18n.locale) }
   },
 
   head () {
+    // @ts-ignore
     return { title: this.heading }
   },
 
   computed: {
-    heading () {
-      return this.$t('notes.heading')
+    heading (): string {
+      return this.$t('notes.heading') as string
     }
   },
 
   watch: {
     async '$i18n.locale' (newLocale) {
+      // @ts-ignore
       this.notes = await getNotes(this.$content, newLocale)
     }
   },
 
-  methods: {
-    shortDate
-  }
-}
+  methods: { shortDate }
+})
 </script>

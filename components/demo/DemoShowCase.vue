@@ -6,17 +6,24 @@ div
     figcaption {{ img.name }}
 </template>
 
-<script>
-export default {
+<script lang='ts'>
+import Vue, { PropOptions } from 'vue'
+
+interface Image {
+  name: string
+  src: string
+}
+
+export default Vue.extend({
   props: {
     images: {
       required: true,
       type: Array
-    },
+    } as PropOptions<Image[]>,
     whiteBg: {
       type: Boolean,
       default: false
-    }
+    } as PropOptions<boolean>
   }
-}
+})
 </script>

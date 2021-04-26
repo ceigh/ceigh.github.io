@@ -29,15 +29,16 @@ div
   AppSwitchLocale
 </template>
 
-<script>
-import { shortDate } from '~/plugins/filters.js'
+<script lang='ts'>
+import Vue from 'vue'
+import { shortDate } from '~/plugins/filters'
 import { name } from '~/plugins/const.json'
 
-async function getNote ($content, locale, slug) {
-  return await $content(`${locale}/notes`, slug).fetch()
+async function getNote (content: Function, locale: string, slug: string) {
+  return await content(`${locale}/notes`, slug).fetch()
 }
 
-export default {
+export default Vue.extend({
   async asyncData ({ $content, i18n, params: { slug } }) {
     return {
       name,
@@ -46,8 +47,9 @@ export default {
   },
 
   head () {
+    // @ts-ignore
     const { note } = this
-    if (!note) { return }
+    if (!note) { return {} }
     const { abstract, keywords } = note
     if (!note.date || !abstract || !keywords) {
       throw new Error('Note must include date, abstract and keywords')
@@ -67,13 +69,11 @@ export default {
 
   watch: {
     async '$i18n.locale' (newLocale) {
-      this.note = await getNote(this.$content,
-        newLocale, this.$route.params.slug)
+      // @ts-ignore
+      this.note = await getNote(this.$content, newLocale, this.$route.params.slug)
     }
   },
 
-  methods: {
-    shortDate
-  }
-}
+  methods: { shortDate }
+})
 </script>

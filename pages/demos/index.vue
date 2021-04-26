@@ -15,10 +15,11 @@ div
         i(:title='demo.date') {{ shortDate(demo.date, $i18n.locale) }}
 </template>
 
-<script>
-import { shortDate } from '~/plugins/filters.js'
+<script lang='ts'>
+import Vue from 'vue'
+import { shortDate } from '~/plugins/filters'
 
-export default {
+export default Vue.extend({
   layout: 'header',
 
   async asyncData ({ $content }) {
@@ -31,19 +32,18 @@ export default {
   },
 
   head () {
+    // @ts-ignore
     return { title: this.heading }
   },
 
   computed: {
-    heading () {
-      return this.$t('demos.heading')
+    heading (): string {
+      return this.$t('demos.heading') as string
     }
   },
 
-  methods: {
-    shortDate
-  }
-}
+  methods: { shortDate }
+})
 </script>
 
 <style scoped>

@@ -22,28 +22,58 @@ div
     +heading
 </template>
 
-<script>
-export default {
+<script lang='ts'>
+import Vue, { PropOptions } from 'vue'
+
+interface Link {
+  name: string
+  to: string
+  external?: true
+}
+
+export default Vue.extend({
   props: {
     bottom: {
       type: Boolean,
       default: false
-    }
+    } as PropOptions<boolean>
   },
 
   computed: {
-    links () {
+    links (): Link[] {
       return [
-        { name: this.$t('nav.notes'), to: '/notes' },
-        { name: this.$t('nav.demos'), to: '/demos' },
-        { name: this.$t('nav.code'), to: 'https://git.ceigh.com', external: true },
-        { name: 'GitHub', to: 'https://github.com/ceigh', external: true },
-        { name: this.$t('nav.email'), to: 'mailto:me@ceigh.com', external: true },
-        { name: 'RSS', to: '/rss/atom.xml', external: true }
+        {
+          name: this.$t('nav.notes') as string,
+          to: '/notes'
+        },
+        {
+          name: this.$t('nav.demos') as string,
+          to: '/demos'
+        },
+        {
+          name: this.$t('nav.code') as string,
+          to: 'https://git.ceigh.com',
+          external: true
+        },
+        {
+          name: 'GitHub',
+          to: 'https://github.com/ceigh',
+          external: true
+        },
+        {
+          name: this.$t('nav.email') as string,
+          to: 'mailto:me@ceigh.com',
+          external: true
+        },
+        {
+          name: 'RSS',
+          to: '/rss/atom.xml',
+          external: true
+        }
       ]
     }
   }
-}
+})
 </script>
 
 <style scoped>

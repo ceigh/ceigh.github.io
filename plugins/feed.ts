@@ -1,9 +1,15 @@
 import { $content } from '@nuxt/content'
+import type { IContentDocument } from '@nuxt/content/types/content'
 import { name } from './const.json'
 
 const baseUrl = 'https://ceigh.com'
 
-async function create (feed) {
+interface Feed {
+  options: { title: string, link: string }
+  addItem: Function
+}
+
+async function create (feed: Feed) {
   feed.options = { title: 'Ceigh', link: baseUrl }
 
   const content = []
@@ -12,7 +18,8 @@ async function create (feed) {
   }
 
   content.forEach((c) => {
-    const [category, items] = c
+    const category = c[0]
+    const items = c[1] as IContentDocument[]
     items.forEach((i) => {
       const url = `${baseUrl}/${category}/${i.slug}`
       const { abstract } = i

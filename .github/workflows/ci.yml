@@ -15,7 +15,7 @@ jobs:
           node-version: '15'
 
       - run: npm --global install yarn
-      - run: yarn --silent
+      - run: yarn
       - run: yarn build
 
       - uses: wlixcc/SFTP-Deploy-Action@v1.2.1
