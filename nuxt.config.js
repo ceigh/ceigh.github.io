@@ -34,10 +34,7 @@ export default {
   ],
 
   build: {
-    transpile: [
-      ({ isLegacy }) => isLegacy && 'troxler',
-      ({ isLegacy }) => isLegacy && 'three'
-    ],
+    transpile: ['three', 'troxler'],
     babel: { compact: true }
   },
 

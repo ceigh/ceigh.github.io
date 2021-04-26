@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "dev": "nuxt",
-    "build": "nuxt build --modern --fail-on-error",
+    "build": "nuxt build --fail-on-error",
     "preview": "nuxt start"
   },
   "dependencies": {
