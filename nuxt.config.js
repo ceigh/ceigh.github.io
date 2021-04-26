@@ -37,8 +37,10 @@ export default {
     transpile: [
       ({ isLegacy }) => isLegacy && 'troxler',
       ({ isLegacy }) => isLegacy && 'three'
-    ]
+    ],
+    babel: { compact: true }
   },
+
   hooks: {
     'content:file:beforeInsert': (doc) => {
       if (doc.extension === '.md') {
