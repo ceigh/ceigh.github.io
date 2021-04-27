@@ -10,8 +10,8 @@ export async function getWater (): Promise<T.Mesh> {
   texture.wrapS = texture.wrapT = T.RepeatWrapping
 
   const mesh = new Water(geometry, {
-    textureWidth: 256,
-    textureHeight: 256,
+    textureWidth: 512,
+    textureHeight: 512,
     waterNormals: texture,
     sunDirection: new T.Vector3(),
     waterColor: 0x000115,

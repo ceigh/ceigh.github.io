@@ -29,11 +29,11 @@ export async function start (rendererContainer: HTMLElement): Promise<void> {
   const updateRaycaster = getUpdateRaycaster(w, h, camera, scene, iceberg)
 
   function animation () {
-    controls.update()
-    updateRaycaster()
     const waterMaterial = water.material as T.ShaderMaterial
     waterMaterial.uniforms.time.value += 0.015
     renderer.render(scene, camera)
+    controls.update()
+    updateRaycaster()
   }
   renderer.setAnimationLoop(animation)
 
