@@ -35,3 +35,8 @@ export function getUpdateRaycaster (w: number, h: number,
     isOnIceberg = intersects.some(i => /iceberg/.test(i.object.name))
   }
 }
+
+export function stopRaycaster () {
+  window.removeEventListener('pointermove', handleMove)
+  window.removeEventListener('pointerup', handleUp)
+}

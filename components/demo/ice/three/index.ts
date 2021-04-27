@@ -6,7 +6,7 @@ import { getScene } from './scene'
 import { getRenderer } from './renderer'
 import { getWater, getIceberg } from './mesh'
 import { getLights } from './light'
-import { getUpdateRaycaster } from './raycaster'
+import { getUpdateRaycaster, stopRaycaster } from './raycaster'
 
 const isDev = process.env.NODE_ENV === 'development'
 let renderer: T.WebGLRenderer
@@ -20,20 +20,20 @@ export async function start (rendererContainer: HTMLElement): Promise<void> {
 
   const scene = await getScene(renderer)
   const lights = getLights()
-  lights.forEach(l => scene.add(l))
   const water = await getWater()
-  scene.add(water)
   const iceberg = await getIceberg()
+  lights.forEach(l => scene.add(l))
+  scene.add(water)
   scene.add(iceberg)
 
   const updateRaycaster = getUpdateRaycaster(w, h, camera, scene, iceberg)
 
   function animation () {
+    updateRaycaster()
+    controls.update()
     const waterMaterial = water.material as T.ShaderMaterial
     waterMaterial.uniforms.time.value += 0.015
     renderer.render(scene, camera)
-    controls.update()
-    updateRaycaster()
   }
   renderer.setAnimationLoop(animation)
 
@@ -57,6 +57,7 @@ export async function start (rendererContainer: HTMLElement): Promise<void> {
 
 export function stop (): void {
   renderer.setAnimationLoop(null)
+  stopRaycaster()
 
   if (!isDev) { return }
   const { body } = document
