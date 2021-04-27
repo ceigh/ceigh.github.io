@@ -26,10 +26,10 @@ export function start (rendererContainer: HTMLElement): void {
   scene.add(iceberg)
 
   function animation () {
-    controls.update()
     const waterMaterial = water.material as T.ShaderMaterial
     waterMaterial.uniforms.time.value += 0.015
     renderer.render(scene, camera)
+    controls.update()
   }
   renderer.setAnimationLoop(animation)
 
