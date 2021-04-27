@@ -7,8 +7,8 @@ import Vue from 'vue'
 import { start, stop } from './three'
 
 export default Vue.extend({
-  mounted () {
-    start(this.$refs.rendererContainer as HTMLElement)
+  async mounted () {
+    await start(this.$refs.rendererContainer as HTMLElement)
   },
   beforeDestroy: stop
 })
