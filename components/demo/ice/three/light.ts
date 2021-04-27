@@ -1,9 +1,12 @@
 import * as T from 'three'
 
 export function getLights (): T.Light[] {
-  const sunLight = new T.HemisphereLight(0xEDF5FB, 0xC3D2DB)
+  const white = 0xEDF5FB
 
-  sunLight.position.set(100, 1000, 100)
+  const light1 = new T.HemisphereLight(white, 0x010C30)
 
-  return [sunLight]
+  const light2 = new T.DirectionalLight(white, 0.2)
+  light2.position.set(0, 4000, 2000)
+
+  return [light1, light2]
 }

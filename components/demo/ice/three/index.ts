@@ -5,7 +5,7 @@ import { getControls } from './controls'
 import { getScene } from './scene'
 import { getRenderer } from './renderer'
 import { getLights } from './light'
-import { getWater, getIceberg } from './mesh'
+import { getWater, addIceberg } from './mesh'
 
 const isDev = process.env.NODE_ENV === 'development'
 let renderer: T.WebGLRenderer
@@ -20,10 +20,9 @@ export function start (rendererContainer: HTMLElement): void {
   const scene = getScene(renderer)
   const lights = getLights()
   const water = getWater()
-  const iceberg = getIceberg()
   lights.forEach(l => scene.add(l))
   scene.add(water)
-  scene.add(iceberg)
+  addIceberg(scene)
 
   function animation () {
     const waterMaterial = water.material as T.ShaderMaterial
