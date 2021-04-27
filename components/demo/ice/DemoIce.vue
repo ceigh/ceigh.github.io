@@ -1,7 +1,7 @@
 <template lang='pug'>
 div
   .splash(v-if='isLoading')
-    span loading…
+    span {{ $t('loading') }}…
   div(v-show='!isLoading' ref='rendererContainer')
 </template>
 

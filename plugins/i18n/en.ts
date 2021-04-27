@@ -39,5 +39,7 @@ export default {
   demos: {
     heading: 'Demos',
     description: 'Various graphics'
-  }
+  },
+
+  loading: 'loading'
 }

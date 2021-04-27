@@ -17,7 +17,7 @@ images:
   - name: Friday
     src: solution/friday.png
 preview: solution/solution.png
-whiteBg: yes
+whiteBg: true
 ---
 
 <demo-show-case :images='images' :white-bg='whiteBg'></demo-show-case>
