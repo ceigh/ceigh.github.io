@@ -7,7 +7,7 @@ div
     :class='{ "mb-1": i !== demos.length - 1 }')
     figure(:class='{ "white-bg": demo.whiteBg }')
       NuxtLink(:to='`/demos/${demo.slug}`' no-prefetch)
-        img(:src='`/images/${demo.preview}`' :alt='demo.title')
+        img(:src='`/images/${demo.preview}`' :alt='demo.title' loading='lazy')
       figcaption
         | {{ demo.title }}
         | -
