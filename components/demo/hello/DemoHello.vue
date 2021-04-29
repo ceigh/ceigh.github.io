@@ -1,7 +1,7 @@
 <template lang='pug'>
 div
   DemoSplash(v-show='isLoading')
-  div(ref='rendererContainer')
+  div(ref='rendererContainer' style='cursor: none')
 </template>
 
 <script lang='ts'>
