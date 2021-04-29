@@ -30,10 +30,12 @@ Promise<T.Object3D> {
 
   for (let r = 0; r < rows; r++) {
     for (let c = 0; c < cols; c++) {
-      const color = colors[Math.floor(Math.random() * colors.length)]
-      matrix.setPosition(2.5 * (offsetX - c), 3 * (offsetY - r), 0)
-      mesh.setMatrixAt(i, matrix)
+      const seed = Math.random()
+      const color = colors[Math.floor(seed * colors.length)]
+      const z = seed - 0.5
       mesh.setColorAt(i, color)
+      matrix.setPosition(2.5 * (offsetX - c), 3 * (offsetY - r), z)
+      mesh.setMatrixAt(i, matrix)
       i++
     }
   }
