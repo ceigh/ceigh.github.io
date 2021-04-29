@@ -4,7 +4,7 @@ import { getCamera } from './camera'
 import { getScene } from './scene'
 import { getRenderer } from './renderer'
 import { getKitties } from './mesh'
-import { getLights } from './light'
+import { getLights, removeLightEvents } from './light'
 
 const isDev = process.env.NODE_ENV === 'development'
 let renderer: T.WebGLRenderer
@@ -16,7 +16,7 @@ export function start (rendererContainer: HTMLElement): void {
   const camera = getCamera(w, h)
 
   const scene = getScene()
-  scene.add(...getLights(), getKitties())
+  scene.add(...getLights(w, h), getKitties())
 
   function animation () {
     renderer.render(scene, camera)
@@ -42,6 +42,7 @@ export function start (rendererContainer: HTMLElement): void {
 
 export function stop (): void {
   renderer.setAnimationLoop(null)
+  removeLightEvents()
 
   if (!isDev) { return }
   const { body } = document
