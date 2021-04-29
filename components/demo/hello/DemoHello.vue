@@ -15,8 +15,8 @@ export default Vue.extend({
     }
   },
 
-  mounted () {
-    start(this.$refs.rendererContainer as HTMLElement)
+  async mounted () {
+    await start(this.$refs.rendererContainer as HTMLElement)
     this.isLoading = false
   },
   beforeDestroy: stop
