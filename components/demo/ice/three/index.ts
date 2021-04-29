@@ -22,9 +22,7 @@ export async function start (rendererContainer: HTMLElement): Promise<void> {
   const lights = getLights()
   const water = await getWater()
   const iceberg = await getIceberg()
-  lights.forEach(l => scene.add(l))
-  scene.add(water)
-  scene.add(iceberg)
+  scene.add(...lights, water, iceberg)
 
   const updateRaycaster = getUpdateRaycaster(w, h, camera, scene, iceberg)
 

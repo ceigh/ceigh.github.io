@@ -1,33 +1,24 @@
 import * as T from 'three'
 import Stats from 'stats.js'
 import { getCamera } from './camera'
-import { getControls } from './controls'
 import { getScene } from './scene'
 import { getRenderer } from './renderer'
+import { getKitties } from './mesh'
 import { getLights } from './light'
-import { getHeart, getFloor } from './mesh'
 
 const isDev = process.env.NODE_ENV === 'development'
 let renderer: T.WebGLRenderer
 
-export async function start (rendererContainer: HTMLElement): Promise<void> {
+export function start (rendererContainer: HTMLElement): void {
   const [w, h] = [window.innerWidth, window.innerHeight]
   renderer = getRenderer(w, h)
   const rendererDom = renderer.domElement
   const camera = getCamera(w, h)
-  const controls = getControls(camera, rendererDom)
 
   const scene = getScene()
-  const lights = getLights()
-  const heart = getHeart()
-  scene.add(...lights, heart, await getFloor())
+  scene.add(...getLights(), getKitties())
 
-  function animation (time: number): void {
-    controls.update()
-    const sec = time / 1000
-    const heartScale = 1 + (1 + Math.sin(sec)) / 10
-    heart.scale.set(heartScale, heartScale, heartScale)
-    heart.rotation.y = sec
+  function animation () {
     renderer.render(scene, camera)
   }
   renderer.setAnimationLoop(animation)
@@ -35,18 +26,13 @@ export async function start (rendererContainer: HTMLElement): Promise<void> {
   rendererContainer.appendChild(rendererDom)
 
   if (!isDev) { return }
-  const axesHelper = new T.AxesHelper(5)
-  scene.add(axesHelper)
-
-  const lightHelpers = lights
-    .map(l => new T.CameraHelper(l.shadow.camera))
-  lightHelpers.forEach((h) => { scene.add(h) })
+  scene.add(new T.AxesHelper())
 
   const stats = new Stats()
   stats.showPanel(0)
   document.body.appendChild(stats.dom)
-  renderer.setAnimationLoop((time: number) => {
-    animation(time)
+  renderer.setAnimationLoop(() => {
+    animation()
     stats.update()
   })
 

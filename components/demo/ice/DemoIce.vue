@@ -1,6 +1,6 @@
 <template lang='pug'>
 div
-  DemoSplash(v-if='isLoading')
+  DemoSplash(v-show='isLoading')
   div(ref='rendererContainer')
 </template>
 
