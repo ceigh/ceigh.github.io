@@ -1,7 +1,7 @@
-import { SpotLight } from 'three'
+import * as T from 'three'
 
-function generateSpotLight (color: number) {
-  const spotLight = new SpotLight(color, 2)
+function generateSpotLight (color: number): T.SpotLight {
+  const spotLight = new T.SpotLight(color, 2)
 
   spotLight.penumbra = 1
   spotLight.angle = 0.8
@@ -13,7 +13,7 @@ function generateSpotLight (color: number) {
   return spotLight
 }
 
-export function getLights (): SpotLight[] {
+export function getLights (): T.SpotLight[] {
   const lights = [0xFF8888, 0x88FF88, 0x8888FF]
     .map(generateSpotLight)
 
