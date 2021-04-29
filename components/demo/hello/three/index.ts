@@ -9,14 +9,17 @@ import { getBulb, removeLightEvents } from './light'
 const isDev = process.env.NODE_ENV === 'development'
 let renderer: T.WebGLRenderer
 
-export async function start (rendererContainer: HTMLElement): Promise<void> {
+export async function start (rendererContainer: HTMLElement,
+  size: 0 | 1, shadows: boolean): Promise<void> {
   const [w, h] = [window.innerWidth, window.innerHeight]
-  renderer = getRenderer(w, h)
+  renderer = getRenderer(w, h, shadows)
   const rendererDom = renderer.domElement
   const camera = getCamera(w, h)
 
   const scene = getScene()
-  scene.add(getBulb(w, h, camera), await getKitties(w, h))
+  const bulb = getBulb(w, h, camera, shadows)
+  const kitties = await getKitties(w, h, size, shadows)
+  scene.add(bulb, kitties)
 
   function animation () {
     renderer.render(scene, camera)

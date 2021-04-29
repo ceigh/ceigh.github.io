@@ -19,7 +19,8 @@ function onMove (e: PointerEvent): void {
   light.position.set(pos.x, pos.y, z)
 }
 
-export function getBulb (w: number, h: number, c: T.Camera): T.PointLight {
+export function getBulb (w: number, h: number,
+  c: T.Camera, shadows: boolean): T.PointLight {
   xCoef = 2 / w
   yCoef = -2 / h
   camera = c
@@ -30,6 +31,7 @@ export function getBulb (w: number, h: number, c: T.Camera): T.PointLight {
 
   light = new T.PointLight(0xFFFFFF, 1, 20, 2)
   light.position.set(0, 0, z)
+  if (shadows) { light.castShadow = true }
   light.add(mesh)
 
   window.addEventListener('pointermove', onMove)

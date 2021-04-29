@@ -1,11 +1,13 @@
 import * as T from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 
-export async function getKitties (w: number, h: number):
-Promise<T.Object3D> {
-  const [rowsMax, colsMax] = [5, 10]
+const sizes = [[2, 3], [5, 10]]
+
+export async function getKitties (w: number, h: number,
+  size: 0 | 1, shadows: boolean): Promise<T.Object3D> {
+  const [rowsMax, colsMax] = sizes[size]
   const [rowsRaw, colsRaw] = [Math.ceil(h / 140), Math.ceil(w / 130)]
-  const rows = rowsRaw > rowsMax ? rowsRaw : rowsRaw
+  const rows = rowsRaw > rowsMax ? rowsMax : rowsRaw
   const cols = colsRaw > colsMax ? colsMax : colsRaw
 
   const count = rows * cols
@@ -22,6 +24,10 @@ Promise<T.Object3D> {
   const { geometry } = kitty
   const material = new T.MeshPhongMaterial({ shininess: 100 })
   const mesh = new T.InstancedMesh(geometry, material, count)
+  if (shadows) {
+    mesh.castShadow = true
+    mesh.receiveShadow = true
+  }
 
   const matrix = new T.Matrix4()
   const colors = [0xFD7293, 0xC6000F, 0xFEFEFE, 0x5FDAD5]
