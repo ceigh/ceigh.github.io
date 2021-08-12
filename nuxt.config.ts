@@ -6,7 +6,9 @@ import i18n from './plugins/i18n'
 export default {
   ssr: true,
   target: 'server',
-  components: true,
+  components: [{
+    path: '@/components', ignore: ['demo/*/three']
+  }],
   loading: { color: '#dac876' },
 
   head: {
