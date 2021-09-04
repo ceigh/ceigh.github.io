@@ -20,13 +20,13 @@
     "nuxt-i18n": "^6.25.0",
     "pug": "^3.0.0",
     "pug-plain-loader": "^1.0.0",
-    "reading-time": "^1.2.0",
+    "reading-time": "^1.4.0",
     "stats.js": "^0.17.0",
-    "three": "^0.131.3",
+    "three": "^0.132.2",
     "troxler": "^1.1.2"
   },
   "devDependencies": {
-    "@babel/core": ">=7.11.0",
+    "@babel/core": ">=7.15.5",
     "@commitlint/cli": "^13.1.0",
     "@commitlint/config-conventional": "^13.1.0",
     "@nuxt/types": "^2.15.4",
