@@ -1,0 +1,16 @@
+html {
+  --color-black: hsl(0deg 5% 5%);
+  --color-white: hsl(0deg 5% 95%);
+  --color-bg: var(--color-black);
+  --color-fg: var(--color-white);
+
+  color: var(--color-fg);
+  background: var(--color-bg);
+
+  @media (prefers-color-scheme: light) {
+    & {
+      --color-bg: var(--color-white);
+      --color-fg: var(--color-black);
+    }
+  }
+}
