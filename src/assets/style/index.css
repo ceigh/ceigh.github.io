@@ -1,11 +1,11 @@
 html {
-  --color-black: hsl(0deg 5% 5%);
-  --color-white: hsl(0deg 5% 95%);
+  --color-black: 0deg 5% 5%;
+  --color-white: 0deg 5% 95%;
   --color-bg: var(--color-black);
   --color-fg: var(--color-white);
 
-  color: var(--color-fg);
-  background: var(--color-bg);
+  color: hsla(var(--color-fg) / 100%);
+  background: hsla(var(--color-bg) / 100%);
 
   @media (prefers-color-scheme: light) {
     & {
@@ -13,4 +13,8 @@ html {
       --color-fg: var(--color-black);
     }
   }
+}
+
+a {
+  color: unset;
 }
