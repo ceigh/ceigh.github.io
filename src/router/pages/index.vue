@@ -38,19 +38,18 @@
 <style>
 @font-face {
   font-family: Magilio;
-  font-display: swap;
+  font-display: block;
   src: url("/fonts/Magilio/MagilioRegular.otf") format("opentype");
 }
 </style>
 
 <style module>
 .main {
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .title {
@@ -61,7 +60,7 @@
   margin: 0;
   color: hsl(var(--color-white));
   font-size: 20rem;
-  font-family: Magilio, sans-serif;
+  font-family: Magilio, serif;
   line-height: 1;
   letter-spacing: -0.02em;
   transform: translate(-50%, -50%);

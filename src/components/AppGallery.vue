@@ -21,16 +21,16 @@ import { items } from "../items"
 .grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 1em;
-  align-items: center;
+  gap: 0.8em;
   justify-content: center;
+  max-width: 120rem;
+  padding: 0.8em;
 
   & a {
-    display: flex;
     flex-basis: 12em;
-    height: 14em;
+    height: 12em;
     overflow: hidden;
-    border-radius: 2em;
+    border-radius: 3em;
     transition: transform 0.2s ease-in-out;
 
     &:hover {
