@@ -6,11 +6,11 @@ import { items } from "../items"
   <div :class="$style.grid">
     <router-link
       v-for="i in items"
-      :key="i"
-      :to="`/${i}`"
+      :key="i.id"
+      :to="`/i/${i.id}`"
     >
       <img
-        :src="`/covers/${i}.jpg`"
+        :src="`/covers/${i.cover || i.id}.jpg`"
         alt=""
       >
     </router-link>

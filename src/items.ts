@@ -1,33 +1,14 @@
-export const items = [
-  "focus",
-  "ice",
-  "heart",
-  "hello",
-  "solution",
-  "mgr",
+interface Item {
+  id: string
+  title?: string
+  cover?: string
+}
 
-  // "focus",
-  // "ice",
-  // "heart",
-  // "hello",
-  // "solution",
-  // "mgr",
-  // "focus",
-  // "ice",
-  // "heart",
-  // "hello",
-  // "solution",
-  // "mgr",
-  // "focus",
-  // "ice",
-  // "heart",
-  // "hello",
-  // "solution",
-  // "mgr",
-  // "focus",
-  // "ice",
-  // "heart",
-  // "hello",
-  // "solution",
-  // "mgr",
+export const items: Item[] = [
+  { id: "focus" },
+  { id: "ice" },
+  { id: "heart" },
+  { id: "hello" },
+  { id: "solution" },
+  { id: "mgr" },
 ]
