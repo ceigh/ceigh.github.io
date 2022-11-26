@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref } from "vue"
+import { ref, onMounted } from "vue"
 
 const getRandInt = (min: number, max: number) =>
   Math.floor(Math.random() * (max - min + 1)) + min
@@ -31,7 +31,7 @@ function generate () {
   gradientPos.value = [...Array(2)].map(() => `${getRandInt(-100, 100)}%`)
   blur.value = `${getRandInt(2, 3)}vmax`
 }
-generate()
+onMounted(generate)
 </script>
 
 <template>

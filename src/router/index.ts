@@ -11,7 +11,7 @@ const routes = [
     children: items.map(i => ({
       path: i.id,
       name: i.title || capitalize(i.id),
-      component: () => import(`./pages/items/${i.id}.vue`),
+      component: () => import(`./pages/items/${i.id}/index.vue`),
     })),
   },
 ]

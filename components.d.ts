@@ -7,11 +7,12 @@ export {}
 
 declare module "@vue/runtime-core" {
   export interface GlobalComponents {
-    AppGallery: typeof import("./src/components/AppGallery.vue")["default"]
+    Gallery: typeof import("./src/components/Gallery.vue")["default"]
     ISiGithub: typeof import("~icons/simple-icons/github")["default"]
     ISiMaildotru: typeof import("~icons/simple-icons/maildotru")["default"]
     ISiTelegram: typeof import("~icons/simple-icons/telegram")["default"]
     RouterLink: typeof import("vue-router")["RouterLink"]
     RouterView: typeof import("vue-router")["RouterView"]
+    ThreeContainer: typeof import("./src/components/ThreeContainer.vue")["default"]
   }
 }

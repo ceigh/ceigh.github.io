@@ -5,7 +5,7 @@
         Ceigh
       </h1>
 
-      <app-gallery />
+      <gallery />
     </main>
 
     <footer :class="$style.footer">
