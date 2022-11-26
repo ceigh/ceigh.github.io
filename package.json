@@ -7,7 +7,8 @@
     "postinstall": "simple-git-hooks",
     "dev": "vite",
     "build": "vue-tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "eslint --fix '**/*.{js,cjs,ts,vue}' && stylelint --fix --ignore-path .gitignore '**/*.{css,vue}'"
   },
   "dependencies": {
     "modern-normalize": "^1.1.0",

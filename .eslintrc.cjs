@@ -16,6 +16,7 @@ module.exports = {
     "no-console": ["warn", { allow: ["warn", "error"] }],
     "prefer-template": "warn",
     "multiline-comment-style": ["warn", "separate-lines"],
+
     "vue/multi-word-component-names": "off",
   },
 }
