@@ -84,8 +84,10 @@
     padding: 0.35em;
     border-radius: 0.5em;
 
-    &:hover {
-      background: hsla(var(--color-fg) / 10%);
+    @media (hover: hover) {
+      &:hover {
+        background: hsla(var(--color-fg) / 10%);
+      }
     }
   }
 }

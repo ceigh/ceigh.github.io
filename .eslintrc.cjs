@@ -18,5 +18,16 @@ module.exports = {
     "multiline-comment-style": ["warn", "separate-lines"],
 
     "vue/multi-word-component-names": "off",
+    "vue/block-lang": [
+      "warn",
+      {
+        script: { lang: "ts", allowNoLang: false },
+        template: { allowNoLang: true },
+        style: { allowNoLang: true },
+      },
+    ],
+    "vue/component-tags-order": ["warn", {
+      order: ["script[setup]", "template", "style[module]"],
+    }],
   },
 }
