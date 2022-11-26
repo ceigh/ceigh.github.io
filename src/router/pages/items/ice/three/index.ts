@@ -1,5 +1,4 @@
 import * as T from "three"
-import Stats from "stats.js"
 import { getCamera } from "./camera"
 import { getControls } from "./controls"
 import { getScene } from "./scene"
@@ -41,6 +40,7 @@ export async function start (rendererContainer: HTMLElement): Promise<void> {
   const axesHelper = new T.AxesHelper(100)
   scene.add(axesHelper)
 
+  const { default: Stats } = await import("stats.js")
   const stats = new Stats()
   stats.showPanel(0)
   document.body.appendChild(stats.dom)
