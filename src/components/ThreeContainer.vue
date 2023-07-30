@@ -14,7 +14,9 @@ onMounted(async () => {
   await props.start(container.value)
   isLoading.value = false
 })
-onUnmounted(props.stop)
+onUnmounted(() => {
+  props.stop()
+})
 </script>
 
 <template>
