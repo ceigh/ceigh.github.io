@@ -59,7 +59,7 @@
   z-index: 10;
   margin: 0;
   color: hsl(var(--color-white));
-  font-size: 20rem;
+  font-size: clamp(8rem, 17vw, 20rem);
   font-family: Magilio, serif;
   line-height: 1;
   letter-spacing: -0.02em;
