@@ -86,7 +86,7 @@
 
     @media (hover: hover) {
       &:hover {
-        background: hsla(var(--color-fg) / 10%);
+        background: hsl(var(--color-fg) / 10%);
       }
     }
   }

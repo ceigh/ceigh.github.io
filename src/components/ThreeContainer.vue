@@ -48,8 +48,8 @@ onUnmounted(() => {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  color: hsla(var(--color-fg) / 100%);
-  background: hsla(var(--color-bg) / 100%);
+  color: hsl(var(--color-fg) / 100%);
+  background: hsl(var(--color-bg) / 100%);
 
   & span {
     --size: 3rem;

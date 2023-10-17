@@ -4,8 +4,8 @@ html {
   --color-bg: var(--color-black);
   --color-fg: var(--color-white);
 
-  color: hsla(var(--color-fg) / 100%);
-  background: hsla(var(--color-bg) / 100%);
+  color: hsl(var(--color-fg) / 100%);
+  background: hsl(var(--color-bg) / 100%);
 
   @media (prefers-color-scheme: light) {
     & {
