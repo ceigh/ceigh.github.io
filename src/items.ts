@@ -5,11 +5,11 @@ interface Item {
 }
 
 export const items: Item[] = [
+  { id: "bubbles" },
   { id: "focus" },
+  { id: "mgr" },
+  { id: "hello" },
   { id: "ice" },
   { id: "heart" },
-  { id: "hello" },
   { id: "solution" },
-  { id: "mgr" },
-  { id: "bubbles" },
 ]
