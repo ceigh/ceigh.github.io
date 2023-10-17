@@ -16,7 +16,10 @@ export default defineConfig({
 
     components({
       resolvers: [iconsResolver({
-        alias: { si: "simple-icons" },
+        alias: {
+          si: "simple-icons",
+          ai: "akar-icons",
+        },
       })],
     }),
 

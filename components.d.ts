@@ -8,6 +8,8 @@ export {}
 declare module "@vue/runtime-core" {
   export interface GlobalComponents {
     Gallery: typeof import("./src/components/Gallery.vue")["default"]
+    IAiAugmentedReality: typeof import("~icons/akar-icons/augmented-reality")["default"]
+    IFluentBubbleMultiple20Regular: typeof import("~icons/fluent/bubble-multiple20-regular")["default"]
     ISiGithub: typeof import("~icons/simple-icons/github")["default"]
     ISiMaildotru: typeof import("~icons/simple-icons/maildotru")["default"]
     ISiTelegram: typeof import("~icons/simple-icons/telegram")["default"]

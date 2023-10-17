@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useCssModule } from "vue"
 import { useHead } from "@unhead/vue"
 
 useHead({
@@ -10,6 +11,9 @@ useHead({
       type: "image/png",
     },
   ],
+  htmlAttrs: {
+    class: useCssModule().html,
+  },
 })
 </script>
 
@@ -40,20 +44,19 @@ useHead({
         type="button"
         :class="$style.btn"
       >
-        Launch
+        <i-ai-augmented-reality />
+        <span>View</span>
       </button>
     </div>
 
     <div :class="$style.copy">
-      <img
-        alt="Bubbles fleuron"
-        :class="$style.fleuron"
-      >
+      <i-fluent-bubble-multiple-20-regular :class="$style.fleuron" />
       <p>
+        Made by
         <router-link to="/">
           Ceigh
         </router-link>
-        2023
+        in 2023
       </p>
     </div>
   </div>
@@ -77,24 +80,43 @@ useHead({
 }
 
 ::selection {
-  background: hsl(45deg 37% 44% / 20%);
+  background: hsl(var(--color-selection) / 20%);
+}
+
+:focus-visible {
+  outline:
+    2px
+    solid
+    hsl(var(--color-selection) / 100%);
+  outline-offset: 2px;
+}
+
+.html {
+  background: hsl(var(--color-fg) / 100%);
 }
 
 .container {
+  --color-selection: 164deg 64% 24%;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   min-height: 100dvh;
-  padding: 10vmax 5vmax;
+  padding: 8vmax 5vmax 5vmax;
   color: hsl(var(--color-fg) / 70%);
   font-size: 1.3rem;
   font-family: Archivo-Regular, sans-serif;
   line-height: 1.4;
   text-align: center;
+  background:
+    linear-gradient(
+      hsl(var(--color-bg) / 100%) 50%,
+      hsl(var(--color-bg) / 97%)
+    );
 
   & > * + * {
-    margin-top: 10vmax;
+    margin-top: 5vmax;
   }
 
   & a {
@@ -109,13 +131,16 @@ useHead({
 }
 
 .logo {
+  width: auto;
+  height: clamp(12rem, 13vw, 16rem);
   margin-bottom: 2rem;
+  object-fit: contain;
 }
 
 .heading {
   margin: 0;
   margin-bottom: 0.1em;
-  font-size: 6rem;
+  font-size: clamp(4rem, 9vw, 6rem);
   font-family: ClashDisplay-Semibold, sans-serif;
   line-height: 1;
   background:
@@ -129,7 +154,7 @@ useHead({
 
 .intro {
   max-width: 40ch;
-  margin: 0 0 2em;
+  margin: 0 0 1.4em;
 }
 
 .btn {
@@ -137,16 +162,22 @@ useHead({
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  padding: 0.4em 0.8em;
-  color: inherit;
-  font-size: 1.3em;
-  background: none;
+  padding: 0.47em 0.94em;
+  color: hsl(var(--color-bg) / 100%);
+  font-size: 1.2rem;
+  line-height: 1.18;
+  background: hsl(var(--color-fg) / 100%);
   border: none;
-  border: 1px solid currentcolor;
-  border-radius: 0.5em;
+  border-radius: 0.47em;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+
+  & > * + * {
+    margin-left: 0.4em;
+  }
 
   &:hover {
-    background: hsl(var(--color-fg) / 5%);
+    background: hsl(var(--color-fg) / 80%);
   }
 
   &:active {
@@ -155,8 +186,8 @@ useHead({
 }
 
 .fleuron {
-  display: block;
-  margin-bottom: 0.2em;
+  margin-bottom: 0.3em;
+  font-size: 1.8em;
 }
 
 .copy {
