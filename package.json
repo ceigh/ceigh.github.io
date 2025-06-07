@@ -1,0 +1,20 @@
+{
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "postinstall": "nuxt prepare",
+    "dev": "nuxt dev",
+    "lint": "eslint .",
+    "lint:fix": "bun run lint --fix",
+    "test": "bun audit && bun run lint && nuxt typecheck",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview"
+  },
+  "dependencies": {
+    "@antfu/eslint-config": "4.14.1",
+    "eslint-plugin-format": "1.0.1",
+    "nuxt": "3.17.5",
+    "prettier-plugin-css-order": "2.1.2",
+    "typescript": "5.8.3"
+  }
+}
