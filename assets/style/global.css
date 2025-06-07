@@ -1,0 +1,11 @@
+html {
+  scroll-behavior: smooth;
+
+  @media (prefers-reduced-motion) {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  font-family: Inter-Display, sans-serif;
+}

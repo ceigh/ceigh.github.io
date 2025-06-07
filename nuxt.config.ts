@@ -7,22 +7,30 @@ export default defineNuxtConfig({
   imports: { scan: false },
   sourcemap: { client: false, server: false },
 
-  // app: {
-  //   head: {
-  //     link: [
-  //       {
-  //         rel: 'preload',
-  //         as: 'font',
-  //         href: '/fonts/Myriad-Pro/Myriad-Pro-Regular.woff',
-  //         type: 'font/woff',
-  //         crossorigin: 'anonymous',
-  //       },
-  //     ],
-  //   },
-  // },
+  app: {
+    head: {
+      link: [
+        {
+          rel: 'preload',
+          as: 'font',
+          href: '/fonts/Inter-Display/Inter-Display-Medium.woff2',
+          type: 'font/woff2',
+          crossorigin: 'anonymous',
+        },
+        {
+          rel: 'preload',
+          as: 'font',
+          href: '/fonts/Reddit-Sans-Condensed/Reddit-Sans-Condensed-Black.ttf',
+          type: 'font/ttf',
+          crossorigin: 'anonymous',
+        },
+      ],
+    },
+  },
 
   css: [
     '@/assets/style/normalize.css',
     '@/assets/style/fonts.css',
+    '@/assets/style/global.css',
   ],
 })
