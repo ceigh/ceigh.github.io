@@ -1,0 +1,13 @@
+:root {
+  --color-primary: oklch(0.71 0.24 41.4);
+  --color-white: oklch(0.94 0.03 41.4);
+  --color-black: oklch(0.1 0.03 41.4);
+
+  --color-bg: light-dark(var(--color-white), var(--color-black));
+  --color-fg: light-dark(var(--color-black), var(--color-white));
+
+  --rem: calc(1rem / 16);
+  --vw: calc(100vw / 1920);
+
+  color-scheme: light dark;
+}

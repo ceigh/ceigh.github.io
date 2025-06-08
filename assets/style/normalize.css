@@ -208,24 +208,3 @@ Add the correct display in Chrome and Safari.
 summary {
   display: list-item;
 }
-
-/*
-* Дополнительно
-*/
-
-html {
-  scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-  font-size: 1rem;
-  font-family: 'Myriad Pro', sans-serif;
-  font-kerning: auto;
-  text-rendering: optimizespeed;
-
-  @media (prefers-reduced-motion: reduce) {
-    scroll-behavior: auto;
-  }
-}
-
-body {
-  min-height: 100vh;
-}
