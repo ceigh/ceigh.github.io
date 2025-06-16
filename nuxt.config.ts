@@ -1,6 +1,3 @@
-import browserslist from 'browserslist'
-import { browserslistToTargets } from 'lightningcss'
-
 export default defineNuxtConfig({
   compatibilityDate: '2025-06-01',
   telemetry: { enabled: false },
@@ -31,25 +28,28 @@ export default defineNuxtConfig({
     },
   },
 
-  vite: {
-    css: {
-      transformer: 'lightningcss',
-      lightningcss: {
-        targets: browserslistToTargets(browserslist()),
-        drafts: {
-          customMedia: true,
-        },
-      },
-    },
-    build: {
-      cssMinify: 'lightningcss',
-    },
-  },
-
   css: [
     '@/assets/style/normalize.css',
     '@/assets/style/fonts.css',
     '@/assets/style/variables.css',
     '@/assets/style/global.css',
   ],
+
+  // Use lightningcss as postcss plugin
+  postcss: {
+    plugins: {
+      // @ts-expect-error Upstream type
+      'autoprefixer': false,
+      // @ts-expect-error Upstream type
+      'cssnano': false,
+      'postcss-lightningcss': {
+        lightningcssOptions: {
+          sourceMap: false,
+          drafts: {
+            customMedia: true,
+          },
+        },
+      },
+    },
+  },
 })
