@@ -1,0 +1,26 @@
+{
+  "categories": {
+    "correctness": "error",
+    "suspicious": "error",
+    "pedantic": "error",
+    "perf": "error",
+    "style": "error",
+    "restriction": "error"
+  },
+
+  "plugins": [
+    "typescript",
+    "unicorn",
+    "oxc",
+    "jsdoc",
+    "node",
+    "promise",
+    "vitest"
+  ],
+
+  "rules": {
+    "filename-case": "off",
+    "sort-keys": "off",
+    "max-lines-per-function": "off"
+  }
+}
