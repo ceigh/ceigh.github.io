@@ -14,6 +14,7 @@
     "@antfu/eslint-config": "4.14.1",
     "eslint-plugin-format": "1.0.1",
     "eslint-plugin-oxlint": "1.1.0",
+    "modern-normalize": "3.0.1",
     "nuxt": "3.17.5",
     "oxlint": "1.1.0",
     "postcss-lightningcss": "1.0.1",
