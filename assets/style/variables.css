@@ -6,8 +6,5 @@
   --color-bg: light-dark(var(--color-white), var(--color-black));
   --color-fg: light-dark(var(--color-black), var(--color-white));
 
-  --rem: calc(1rem / 16);
-  --vw: calc(100vw / 1920);
-
   color-scheme: light dark;
 }

@@ -21,6 +21,8 @@
   "rules": {
     "filename-case": "off",
     "sort-keys": "off",
-    "max-lines-per-function": "off"
+    "max-lines-per-function": "off",
+    "func-style": "off",
+    "max-depth": "off"
   }
 }

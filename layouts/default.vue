@@ -11,8 +11,9 @@
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  max-width: 1920px;
-  min-height: 100dvh;
+  padding-inline: fluid(64, 24);
+  max-inline-size: 1920px;
+  min-block-size: 100dvh;
 }
 
 .layout-main {

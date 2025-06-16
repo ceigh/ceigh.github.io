@@ -1,3 +1,5 @@
+import { fluidCssValue } from './utils/postcss-functions'
+
 export default defineNuxtConfig({
   compatibilityDate: '2025-06-01',
   telemetry: { enabled: false },
@@ -35,13 +37,20 @@ export default defineNuxtConfig({
     '@/assets/style/global.css',
   ],
 
-  // Use lightningcss as postcss plugin
   postcss: {
     plugins: {
+      // Disabled, postcss-lightningcss used instead
       // @ts-expect-error Upstream type
       'autoprefixer': false,
       // @ts-expect-error Upstream type
       'cssnano': false,
+
+      'postcss-functions': {
+        functions: {
+          fluid: fluidCssValue,
+        },
+      },
+
       'postcss-lightningcss': {
         lightningcssOptions: {
           sourceMap: false,
@@ -51,5 +60,15 @@ export default defineNuxtConfig({
         },
       },
     },
+
+    order: [
+      'postcss-functions',
+      'postcss-lightningcss',
+    ],
   },
+
+  watch: [
+    // Force restart on postcss-functions change
+    'utils/postcss-functions.ts',
+  ],
 })

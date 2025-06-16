@@ -10,6 +10,7 @@
         "modern-normalize": "3.0.1",
         "nuxt": "3.17.5",
         "oxlint": "1.1.0",
+        "postcss-functions": "4.0.2",
         "postcss-lightningcss": "1.0.1",
         "prettier-plugin-css-order": "2.1.2",
         "typescript": "5.8.3",
@@ -1480,6 +1481,8 @@
     "postcss-discard-empty": ["postcss-discard-empty@7.0.1", "", { "peerDependencies": { "postcss": "^8.4.32" } }, "sha512-cFrJKZvcg/uxB6Ijr4l6qmn3pXQBna9zyrPC+sK0zjbkDUZew+6xDltSF7OeB7rAtzaaMVYSdbod+sZOCWnMOg=="],
 
     "postcss-discard-overridden": ["postcss-discard-overridden@7.0.1", "", { "peerDependencies": { "postcss": "^8.4.32" } }, "sha512-7c3MMjjSZ/qYrx3uc1940GSOzN1Iqjtlqe8uoSg+qdVPYyRb0TILSqqmtlSFuE4mTDECwsm397Ya7iXGzfF7lg=="],
+
+    "postcss-functions": ["postcss-functions@4.0.2", "", { "dependencies": { "postcss-value-parser": "^4.0.0" }, "peerDependencies": { "postcss": "^8.0.0" } }, "sha512-htDZN6t97uW4GBXquTsz/DVaNVAHtHx5tLCALquVM2u58UwHki+RwHbANKiiI0ImA8T7Iml2MnvLUM7aGtlpqA=="],
 
     "postcss-less": ["postcss-less@6.0.0", "", { "peerDependencies": { "postcss": "^8.3.5" } }, "sha512-FPX16mQLyEjLzEuuJtxA8X3ejDLNGGEG503d2YGZR5Ask1SpDN8KmZUMpzCvyalWRywAn1n1VOA5dcqfCLo5rg=="],
 
