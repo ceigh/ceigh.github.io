@@ -20,6 +20,7 @@
     "oxlint": "1.1.0",
     "postcss-functions": "4.0.2",
     "postcss-lightningcss": "1.0.1",
+    "postcss-pxtorem": "6.1.0",
     "prettier-plugin-css-order": "2.1.2",
     "typescript": "5.8.3"
   }

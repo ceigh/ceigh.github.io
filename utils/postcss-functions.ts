@@ -1,3 +1,4 @@
+import { MAX_PRECISION } from './const'
 import { LruCache } from './lru-cache'
 
 const CACHE_CAPACITY = 1024
@@ -28,8 +29,7 @@ export function fluidCssValue(maxPx = '', minPx = ''): string {
 
   const VW = 100
   const SCREEN = 1920
-  const FRACTIONS = 2
-  const vwNum = (VW * maxPxNum / SCREEN).toFixed(FRACTIONS)
+  const vwNum = (VW * maxPxNum / SCREEN).toFixed(MAX_PRECISION)
 
   const value = `clamp(${minPxNum}px, ${vwNum}vw, ${maxPxNum}px)`
 

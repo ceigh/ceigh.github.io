@@ -1,5 +1,5 @@
 <template>
-  <div class="layout">
+  <div class="layout layout-limited">
     <main class="layout-main">
       <slot />
     </main>
@@ -12,8 +12,11 @@
   flex-direction: column;
   margin: 0 auto;
   padding-inline: fluid(64, 24);
-  max-inline-size: 1920px;
   min-block-size: 100dvh;
+}
+
+.layout-limited {
+  max-inline-size: 1920px;
 }
 
 .layout-main {

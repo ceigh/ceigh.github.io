@@ -1,3 +1,4 @@
+import { MAX_PRECISION } from './utils/const'
 import { fluidCssValue } from './utils/postcss-functions'
 
 export default defineNuxtConfig({
@@ -51,6 +52,15 @@ export default defineNuxtConfig({
         },
       },
 
+      'postcss-pxtorem': {
+        propList: ['*'],
+        unitPrecision: MAX_PRECISION,
+        minPixelValue: 2,
+        selectorBlackList: [
+          '.layout-limited',
+        ],
+      },
+
       'postcss-lightningcss': {
         lightningcssOptions: {
           sourceMap: false,
@@ -63,6 +73,7 @@ export default defineNuxtConfig({
 
     order: [
       'postcss-functions',
+      'postcss-pxtorem',
       'postcss-lightningcss',
     ],
   },
