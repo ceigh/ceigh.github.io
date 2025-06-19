@@ -5,18 +5,10 @@ export default antfu(
   {
     isInEditor: false,
 
-    formatters: {
-      css: true,
-
-      prettierOptions: {
-        plugins: [
-          'prettier-plugin-css-order',
-        ],
-      },
-    },
+    unocss: true,
 
     typescript: {
-      tsconfigPath: 'tsconfig.json',
+      tsconfigPath: './tsconfig.json',
     },
   },
 

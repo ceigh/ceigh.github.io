@@ -1,5 +1,5 @@
-import { MAX_PRECISION } from './utils/const'
-import { fluidCssValue } from './utils/postcss-functions'
+import browserslist from 'browserslist'
+import { browserslistToTargets } from 'lightningcss'
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-06-01',
@@ -10,66 +10,37 @@ export default defineNuxtConfig({
   imports: { scan: false },
   sourcemap: { client: false, server: false },
 
+  vite: {
+    css: {
+      transformer: 'lightningcss',
+      lightningcss: {
+        targets: browserslistToTargets(browserslist()),
+      },
+    },
+    build: {
+      cssMinify: 'lightningcss',
+    },
+  },
+
   app: {
     head: {
+      title: 'Artem Lebzak — The Rhythm Architect',
+
+      // Remove after unocss adds font preloading:
+      // https://github.com/unocss/unocss/issues/4674
       link: [
         {
           rel: 'preload',
           as: 'font',
-          href: '/fonts/Inter/Inter_24pt-Light.ttf',
-          type: 'font/ttf',
+          href: '/assets/fonts/inter-8a8a039a.woff2',
+          type: 'font/woff2',
           crossorigin: 'anonymous',
         },
       ],
     },
   },
 
-  css: [
-    'modern-normalize',
-    '@/assets/style/fonts.css',
-    '@/assets/style/variables.css',
-    '@/assets/style/global.css',
-  ],
-
-  postcss: {
-    plugins: {
-      // Disabled, postcss-lightningcss used instead
-      // @ts-expect-error Upstream type
-      'autoprefixer': false,
-      // @ts-expect-error Upstream type
-      'cssnano': false,
-
-      'postcss-functions': {
-        functions: {
-          fluid: fluidCssValue,
-        },
-      },
-
-      'postcss-pxtorem': {
-        propList: ['*'],
-        unitPrecision: MAX_PRECISION,
-        minPixelValue: 2,
-      },
-
-      'postcss-lightningcss': {
-        lightningcssOptions: {
-          sourceMap: false,
-          drafts: {
-            customMedia: true,
-          },
-        },
-      },
-    },
-
-    order: [
-      'postcss-functions',
-      'postcss-pxtorem',
-      'postcss-lightningcss',
-    ],
-  },
-
-  watch: [
-    // Force restart on postcss-functions change
-    'utils/postcss-functions.ts',
+  modules: [
+    '@unocss/nuxt',
   ],
 })
