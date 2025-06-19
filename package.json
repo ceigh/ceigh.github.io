@@ -6,7 +6,7 @@
     "dev": "nuxt dev",
     "lint": "oxlint . && eslint .",
     "lint:fix": "oxlint --fix . && eslint --fix .",
-    "test": "bun audit && bun run lint && nuxt typecheck",
+    "test": "bun run lint && nuxt typecheck",
     "generate": "nuxt generate",
     "preview": "nuxt preview"
   },

@@ -32,7 +32,7 @@ export default defineNuxtConfig({
         {
           rel: 'preload',
           as: 'font',
-          href: '/assets/fonts/inter-8a8a039a.woff2',
+          href: '/assets/fonts/inter-d99c326e.woff2',
           type: 'font/woff2',
           crossorigin: 'anonymous',
         },
@@ -42,5 +42,9 @@ export default defineNuxtConfig({
 
   modules: [
     '@unocss/nuxt',
+  ],
+
+  watch: [
+    /assets\/icons\/.+\.svg/,
   ],
 })
