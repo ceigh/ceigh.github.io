@@ -1,31 +1,7 @@
 @font-face {
   font-style: normal;
-  font-weight: 500;
-  src: url('/fonts/Inter-Display/Inter-Display-Medium.woff2') format('woff2');
-  font-family: Inter-Display;
+  font-weight: 300;
+  src: url('/fonts/Inter/Inter_24pt-Light.ttf') format('truetype');
+  font-family: Inter;
   font-display: swap;
-}
-
-@font-face {
-  font-style: normal;
-  font-weight: 700;
-  src: url('/fonts/Caveat/Caveat-Bold.ttf') format('truetype');
-  font-family: Caveat;
-  font-display: swap;
-}
-
-@font-face {
-  font-style: normal;
-  font-weight: 900;
-  src: url('/fonts/Reddit-Sans-Condensed/Reddit-Sans-Condensed-Black.ttf') format('truetype');
-  font-family: Reddit-Sans-Condensed;
-  font-display: swap;
-}
-
-.font-handwritten {
-  font-family: Caveat, cursive;
-}
-
-.font-heading {
-  font-family: Reddit-Sans-Condensed, system-ui;
 }

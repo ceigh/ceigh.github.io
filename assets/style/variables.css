@@ -1,10 +1,17 @@
 :root {
-  --color-primary: oklch(0.71 0.24 41.4);
-  --color-white: oklch(0.94 0.03 41.4);
-  --color-black: oklch(0.1 0.03 41.4);
+  --color-primary: oklch(0.677 0.214 36);
 
-  --color-bg: light-dark(var(--color-white), var(--color-black));
-  --color-fg: light-dark(var(--color-black), var(--color-white));
+  --color-gray-100: oklch(0.9 0.003 324);
+  --color-gray-200: oklch(0.8 0.003 324);
+  --color-gray-300: oklch(0.7 0.003 324);
+  --color-gray-400: oklch(0.6 0.003 324);
+  --color-gray-500: oklch(0.5 0.003 324);
+  --color-gray-600: oklch(0.4 0.003 324);
+  --color-gray-700: oklch(0.3 0.003 324);
+  --color-gray-800: oklch(0.2 0.003 324);
+  --color-gray-900: oklch(0.1 0.003 324);
+
+  --color-bg: var(--color-gray-100);
 
   color-scheme: light dark;
 }

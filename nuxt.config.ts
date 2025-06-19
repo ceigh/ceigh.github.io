@@ -16,14 +16,7 @@ export default defineNuxtConfig({
         {
           rel: 'preload',
           as: 'font',
-          href: '/fonts/Inter-Display/Inter-Display-Medium.woff2',
-          type: 'font/woff2',
-          crossorigin: 'anonymous',
-        },
-        {
-          rel: 'preload',
-          as: 'font',
-          href: '/fonts/Reddit-Sans-Condensed/Reddit-Sans-Condensed-Black.ttf',
+          href: '/fonts/Inter/Inter_24pt-Light.ttf',
           type: 'font/ttf',
           crossorigin: 'anonymous',
         },
@@ -56,9 +49,6 @@ export default defineNuxtConfig({
         propList: ['*'],
         unitPrecision: MAX_PRECISION,
         minPixelValue: 2,
-        selectorBlackList: [
-          '.layout-limited',
-        ],
       },
 
       'postcss-lightningcss': {

@@ -1,8 +1,24 @@
 <template>
-  <div class="layout layout-limited">
-    <main class="layout-main">
+  <div class="layout">
+    <main class="layout-surface">
       <slot />
     </main>
+
+    <aside class="layout-aside">
+      <div class="layout-aside-start">
+        <div class="layout-wheel">
+          wheel
+        </div>
+
+        <div class="layout-name">
+          Artem Lebzak
+        </div>
+      </div>
+
+      <div class="">
+        icons
+      </div>
+    </aside>
   </div>
 </template>
 
@@ -10,16 +26,24 @@
 .layout {
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
-  padding-inline: fluid(64, 24);
-  min-block-size: 100dvh;
+  min-height: 100dvh;
 }
 
-.layout-limited {
-  max-inline-size: 1920px;
+.layout-surface {
 }
 
-.layout-main {
-  flex-grow: 1;
+.layout-aside {
+}
+
+.layout-aside-start {
+}
+
+.layout-wheel {
+}
+
+.layout-name {
+}
+
+.layout-socials {
 }
 </style>

@@ -17,13 +17,13 @@ html {
 }
 
 ::selection {
-  background-color: oklch(from var(--color-primary) l c h / 33%);
+  background-color: oklch(from var(--color-primary) l c h / 30%);
 }
 
 body {
   background-color: var(--color-bg);
-  color: var(--color-fg);
+  font-weight: 300;
   font-size: 1rem;
-  font-family: Inter-Display, system-ui;
+  font-family: Inter, system-ui;
   overflow-wrap: break-word;
 }
