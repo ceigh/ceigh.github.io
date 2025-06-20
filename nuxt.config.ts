@@ -24,7 +24,7 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: 'Artem Lebzak — The Rhythm Architect',
+      title: 'Ceigh — The Rhythm Architect',
 
       // Remove after unocss adds font preloading:
       // https://github.com/unocss/unocss/issues/4674
