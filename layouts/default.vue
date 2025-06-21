@@ -23,8 +23,8 @@
           Ceigh
         </h1>
 
-        <div class="text-56px leading-none font-pixel p-2px rounded-8px grow-1 overflow-hidden bg-screen-border shadow-screen">
-          <div class="bg-screen-grid border-0.5px border-slate-500 rounded-6px bg-blue-100 h-full overflow-hidden">
+        <div class="text-33px leading-none font-mono p-2px rounded-8px grow-1 overflow-hidden bg-screen-border shadow-screen">
+          <div class="border-0.5px border-slate-500 rounded-6px bg-blue-100 h-full overflow-hidden bg-screen-grid">
             <div class="p-6 h-full overflow-y-auto">
               <slot />
             </div>

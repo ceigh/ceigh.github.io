@@ -15,7 +15,7 @@ export default defineConfig({
     presetWebFonts({
       fonts: {
         sans: 'Inter:200',
-        pixel: 'Pixelify Sans:400',
+        mono: 'Departure Mono:400',
       },
       processors: createLocalFontProcessor(),
     }),
@@ -80,6 +80,13 @@ export default defineConfig({
     {
       /* eslint-disable ts/no-unsafe-member-access */
       getCSS: ({ theme }): string => /* css */ `
+        @font-face {
+          font-family: 'Departure Mono';
+          font-weight: 400;
+          src: url('/assets/fonts/departure-mono.woff2') format('woff2');
+          font-display: swap;
+        }
+
         ::selection {
           background-color: ${theme.colors.primary};
           color: ${theme.colors.gray['100']};
