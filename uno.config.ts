@@ -48,7 +48,7 @@ export default defineConfig({
   },
 
   rules: [
-    [/^shadow-surface$/, (_, { theme: { colors } }): CSSObject => ({
+    [/^shadow-surface-border/, (_, { theme: { colors } }): CSSObject => ({
       'box-shadow': `inset -1px -1px 0.5px oklch(from ${colors.gray['950']} l c h / 20%), inset 1px 1px 0.5px ${colors.gray['50']}`,
     })],
 
@@ -63,7 +63,7 @@ export default defineConfig({
       'background-image': `conic-gradient(from 180deg at 50% 50%, ${colors.slate['200']} 0deg, ${colors.slate['300']} 35deg, ${colors.slate['300']} 89deg, ${colors.slate['300']} 132deg, ${colors.slate['300']} 180deg, ${colors.slate['200']} 214.26deg, ${colors.slate['100']} 224deg, ${colors.slate['50']} 325deg, ${colors.slate['100']} 330deg, ${colors.slate['200']} 360deg)`,
     })],
 
-    [/^shadow-screen$/, (_, { theme: { colors } }): CSSObject => ({
+    [/^shadow-screen-border$/, (_, { theme: { colors } }): CSSObject => ({
       'box-shadow': `inset 0.5px 0.5px 0.5px oklch(from ${colors.blue['950']} l c h / 59%), inset -0.5px -0.5px 0.5px oklch(from ${colors.blue['50']} l c h / 80%)`,
     })],
 
@@ -72,13 +72,21 @@ export default defineConfig({
       'background-size': '0.5rem 0.5rem',
     })],
 
-    [/^screen-glow$/, (_, { theme: { colors } }): CSSObject => ({
+    [/^shadow-screen-glow$/, (_, { theme: { colors } }): CSSObject => ({
       'box-shadow': `0 0 2rem 0.5rem oklch(from ${colors.blue['200']} l c h / 50%)`,
+    })],
+
+    ['text-vertical', {
+      'writing-mode': 'sideways-lr',
+    }],
+
+    [/^bg-btn-gradient-r$/, (_, { theme: { colors } }): CSSObject => ({
+      background: `radial-gradient(117% 109% at 100% 50%, oklch(from ${colors.gray['50']} l c h / 24%) 0%, transparent 100%)`,
     })],
   ],
 
   shortcuts: {
-    surface: 'shadow-surface border-0.5 border-gray-900/30 border-solid from-gray-200 to-gray-300 bg-linear-to-b',
+    surface: 'shadow-surface-border border-0.5 border-gray-900/30 border-solid from-gray-200 to-gray-300 bg-linear-to-b',
   },
 
   preflights: [
