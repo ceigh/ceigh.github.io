@@ -26,11 +26,20 @@ export default defineNuxtConfig({
     head: {
       title: 'Ceigh — The Rhythm Architect',
 
+      // Remove after preloading were added to unocss
+      // https://github.com/unocss/unocss/issues/4674
       link: [
         {
           rel: 'preload',
           as: 'font',
-          href: '/assets/fonts/departure-mono.woff2',
+          href: '/assets/fonts/pixelifysans-a45e2f67.woff2',
+          type: 'font/woff2',
+          crossorigin: 'anonymous',
+        },
+        {
+          rel: 'preload',
+          as: 'font',
+          href: '/assets/fonts/inter-d99c326e.woff2',
           type: 'font/woff2',
           crossorigin: 'anonymous',
         },

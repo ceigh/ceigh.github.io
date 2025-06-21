@@ -15,18 +15,20 @@
 
 <template>
   <div class="p-8 p-e-18 flex justify-center h-dvh">
-    <main class="p-10 surface rounded-12 grow-1 relative before:(rounded-inherit content-empty inset-0 absolute bg-noise)">
+    <main class="p-t-10 surface rounded-12 grow-1 relative before:(rounded-inherit content-empty inset-0 absolute bg-noise)">
       <div class="bg-gray-500 h-40 w-10 left-full top-25% absolute" />
 
-      <div class="flex flex-col gap-10 h-full relative overflow-hidden">
-        <h1 class="text-3xl tracking-tight uppercase">
+      <div class="flex flex-col h-full relative overflow-hidden">
+        <h1 class="text-3xl tracking-tight p-x-10 uppercase">
           Ceigh
         </h1>
 
-        <div class="text-33px leading-none font-mono p-2px rounded-8px grow-1 overflow-hidden bg-screen-border shadow-screen">
-          <div class="border-0.5px border-slate-500 rounded-6px bg-blue-100 h-full overflow-hidden bg-screen-grid">
-            <div class="p-6 h-full overflow-y-auto">
-              <slot />
+        <div class="p-10 grow-1 overflow-hidden">
+          <div class="screen-glow text-3xl font-mono p-2px rounded-8px h-full overflow-hidden bg-screen-border shadow-screen">
+            <div class="border-0.5px border-slate-500 rounded-6px bg-blue-100 h-full overflow-hidden bg-screen-grid">
+              <div class="p-6 h-full overflow-y-auto">
+                <slot />
+              </div>
             </div>
           </div>
         </div>

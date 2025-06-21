@@ -18,7 +18,7 @@ export default defineConfig({
     presetWebFonts({
       fonts: {
         sans: 'Inter:200',
-        mono: 'Departure Mono:400',
+        mono: 'Pixelify Sans:400',
       },
       processors: createLocalFontProcessor(),
     }),
@@ -71,6 +71,10 @@ export default defineConfig({
       'background-image': `linear-gradient(to right, ${colors.blue['200']} 1px, transparent 1px), linear-gradient(to bottom, ${colors.blue['200']} 1px, transparent 1px)`,
       'background-size': '0.5rem 0.5rem',
     })],
+
+    [/^screen-glow$/, (_, { theme: { colors } }): CSSObject => ({
+      'box-shadow': `0 0 2rem 0.5rem oklch(from ${colors.blue['200']} l c h / 50%)`,
+    })],
   ],
 
   shortcuts: {
@@ -80,13 +84,6 @@ export default defineConfig({
   preflights: [
     {
       getCSS: ({ theme }): string => /* css */ `
-        @font-face {
-          font-family: 'Departure Mono';
-          font-weight: 400;
-          src: url('/assets/fonts/departure-mono.woff2') format('woff2');
-          font-display: swap;
-        }
-
         ::selection {
           background-color: ${theme.colors.primary};
           color: ${theme.colors.gray['100']};
