@@ -27,7 +27,7 @@ const audioUpRef = useTemplateRef<HTMLAudioElement>('audioUpRef')
         @pointerdown="audioDownRef?.play()"
         @pointerup="audioUpRef?.play()"
       >
-        <span class="text-sm tracking-tighter text-center min-h-16 uppercase text-vertical">
+        <span class="writing-sideways-lr text-lg tracking-tighter text-center min-h-22 uppercase">
           {{ l.text }}
         </span>
 

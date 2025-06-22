@@ -76,12 +76,20 @@ export default defineConfig({
       'box-shadow': `0 0 2rem 0.5rem oklch(from ${colors.blue['200']} l c h / 50%)`,
     })],
 
-    ['text-vertical', {
-      'writing-mode': 'sideways-lr',
-    }],
+    [/^writing-(.+)$/, ([, value]): CSSObject => ({
+      'writing-mode': value,
+    })],
 
     [/^bg-btn-gradient-r$/, (_, { theme: { colors } }): CSSObject => ({
       background: `radial-gradient(117% 109% at 100% 50%, oklch(from ${colors.gray['50']} l c h / 24%) 0%, transparent 100%)`,
+    })],
+
+    [/^bg-btn-gradient-l$/, (_, { theme: { colors } }): CSSObject => ({
+      background: `linear-gradient(180deg, ${colors.gray['200']} 0%, ${colors.gray['400']} 10%, ${colors.gray['400']} 18%, ${colors.gray['300']} 26%, ${colors.gray['300']} 36%, ${colors.gray['500']} 50%, ${colors.gray['500']} 81%, ${colors.gray['300']} 89%, ${colors.gray['200']} 100%)`,
+    })],
+
+    [/^shadow-btn-l$/, (_, { theme: { colors } }): CSSObject => ({
+      'box-shadow': `inset -0.5px 0px 0.5px oklch(from ${colors.gray['50']} l c h / 50%), inset 0.5px 0px 0.5px oklch(from ${colors.gray['900']} l c h / 45%)`,
     })],
   ],
 
