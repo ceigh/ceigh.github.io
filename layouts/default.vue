@@ -8,7 +8,7 @@
       <div class="flex flex-col h-full relative overflow-hidden">
         <div class="p-x-14 flex gap-7 items-center justify-between">
           <h1 class="text-3xl tracking-tight uppercase">
-            C31–GH
+            CE–1GH
           </h1>
 
           <img

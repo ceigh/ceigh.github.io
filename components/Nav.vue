@@ -20,7 +20,7 @@ const audioUpRef = useTemplateRef<HTMLAudioElement>('audioUpRef')
 
 <template>
   <div>
-    <nav class="flex flex-col gap-4">
+    <nav class="flex flex-col gap-6">
       <a
         v-for="l in links"
         :key="l.href"
@@ -29,7 +29,7 @@ const audioUpRef = useTemplateRef<HTMLAudioElement>('audioUpRef')
         @pointerdown="audioDownRef?.play()"
         @pointerup="audioUpRef?.play()"
       >
-        <span class="text-lg tracking-tighter uppercase writing-sideways-rl">
+        <span class="text-sm uppercase writing-sideways-rl">
           {{ l.text }}
         </span>
 
