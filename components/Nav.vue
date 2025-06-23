@@ -29,11 +29,11 @@ const audioUpRef = useTemplateRef<HTMLAudioElement>('audioUpRef')
         @pointerdown="audioDownRef?.play()"
         @pointerup="audioUpRef?.play()"
       >
-        <span class="writing-sideways-rl text-lg tracking-tighter uppercase">
+        <span class="text-lg tracking-tighter uppercase writing-sideways-rl">
           {{ l.text }}
         </span>
 
-        <span class="bg-btn-gradient-l shadow-btn-l m-e-2 m-s--2 rounded-inherit bg-gray-400 h-6 w-2 transition-width relative group-active:w-1 before:(content-empty inset-0 absolute bg-noise)" />
+        <span class="m-e-2 m-s--2 rounded-inherit bg-gray-400 h-6 w-2 transition-width relative bg-btn-gradient-l shadow-btn-l group-active:w-1 before:(content-empty inset-0 absolute bg-noise)" />
       </a>
     </nav>
 
