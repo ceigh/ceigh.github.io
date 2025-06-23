@@ -15,7 +15,7 @@ const playAudioUp = useAudio('/assets/audio/btn-click-3-up.mp3')
 <template>
   <div class="flex flex-col gap-2 items-center">
     <div class="text-sm uppercase">
-      Sound
+      Audio
     </div>
 
     <button
