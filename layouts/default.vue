@@ -1,14 +1,24 @@
 <template>
   <div class="p-18 flex justify-center h-dvh">
-    <main class="p-t-14 surface rounded-12 grow-1 min-h-720px relative before:(rounded-inherit content-empty inset-0 absolute bg-noise)">
+    <main class="p-t-8 surface rounded-12 grow-1 min-h-720px relative before:(rounded-inherit content-empty inset-0 absolute bg-noise)">
       <Nav class="translate-y--50% left-0 top-50% absolute z-10" />
 
-      <div class="bg-gray-500 h-40 w-10 left-full top-46 absolute" />
+      <Wheel class="left-full top-46 absolute" />
 
       <div class="flex flex-col h-full relative overflow-hidden">
-        <h1 class="text-3xl tracking-tight p-x-14 uppercase">
-          C31–GH
-        </h1>
+        <div class="p-x-14 flex gap-7 items-center justify-between">
+          <h1 class="text-3xl tracking-tight uppercase">
+            C31–GH
+          </h1>
+
+          <img
+            src="/assets/img/speaker.svg"
+            alt="Speaker"
+            width="90"
+            height="90"
+            class="w-21 aspect-ratio-1 object-contain"
+          >
+        </div>
 
         <div class="p-14 p-t-7 grow-1 overflow-hidden">
           <div class="text-3xl font-mono p-2px rounded-8px h-full overflow-hidden bg-screen-border shadow-screen-border shadow-screen-glow">
