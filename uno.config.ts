@@ -49,31 +49,61 @@ export default defineConfig({
 
   rules: [
     [/^shadow-surface-border/, (_, { theme: { colors } }): CSSObject => ({
-      'box-shadow': `inset -1px -1px 0.5px oklch(from ${colors.gray['950']} l c h / 20%), inset 1px 1px 0.5px ${colors.gray['50']}`,
+      'box-shadow': `
+        inset -1px -1px 0.5px oklch(from ${colors.gray['950']} l c h / 20%),
+        inset 1px 1px 0.5px ${colors.gray['50']}
+      `,
     })],
 
     ['bg-noise', {
       'background-image': `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='512' height='512'><filter id='noiseFilter'><feTurbulence type='turbulence' baseFrequency='0.8' numOctaves='4' result='turbulence'/><feComponentTransfer><feFuncR type='discrete' tableValues='0 1'/><feFuncG type='discrete' tableValues='0 1'/><feFuncB type='discrete' tableValues='0 1'/></feComponentTransfer></filter><rect width='100%25' height='100%25' filter='url(%23noiseFilter)'/></svg>")`,
       'filter': 'grayscale()',
-      'opacity': '12%',
       'mix-blend-mode': 'multiply',
     }],
 
     [/^bg-screen-border$/, (_, { theme: { colors } }): CSSObject => ({
-      'background-image': `conic-gradient(from 180deg at 50% 50%, ${colors.slate['200']} 0deg, ${colors.slate['300']} 35deg, ${colors.slate['300']} 89deg, ${colors.slate['300']} 132deg, ${colors.slate['300']} 180deg, ${colors.slate['200']} 214.26deg, ${colors.slate['100']} 224deg, ${colors.slate['50']} 325deg, ${colors.slate['100']} 330deg, ${colors.slate['200']} 360deg)`,
+      'background-image': `
+        conic-gradient(
+          from 180deg at 50% 50%,
+          ${colors.slate['200']} 0deg,
+          ${colors.slate['300']} 35deg,
+          ${colors.slate['300']} 89deg,
+          ${colors.slate['300']} 132deg,
+          ${colors.slate['300']} 180deg,
+          ${colors.slate['200']} 214deg,
+          ${colors.slate['100']} 224deg,
+          ${colors.slate['50']} 325deg,
+          ${colors.slate['100']} 330deg,
+          ${colors.slate['200']} 360deg
+        )
+      `,
     })],
 
     [/^shadow-screen-border$/, (_, { theme: { colors } }): CSSObject => ({
-      'box-shadow': `inset 0.5px 0.5px 0.5px oklch(from ${colors.blue['950']} l c h / 59%), inset -0.5px -0.5px 0.5px oklch(from ${colors.blue['50']} l c h / 80%)`,
+      'box-shadow': `
+        inset 0.5px 0.5px 0.5px oklch(from ${colors.blue['950']} l c h / 59%),
+        inset -0.5px -0.5px 0.5px oklch(from ${colors.blue['50']} l c h / 80%)
+      `,
     })],
 
     [/^bg-screen-grid$/, (_, { theme: { colors } }): CSSObject => ({
-      'background-image': `linear-gradient(to right, ${colors.blue['200']} 1px, transparent 1px), linear-gradient(to bottom, ${colors.blue['200']} 1px, transparent 1px)`,
+      'background-image': `
+        linear-gradient(
+          to right,
+          ${colors.blue['200']} 1px, transparent 1px
+        ),
+        linear-gradient(
+          to bottom,
+          ${colors.blue['200']} 1px,
+          transparent 1px
+        )`,
       'background-size': '0.5rem 0.5rem',
     })],
 
     [/^shadow-screen-glow$/, (_, { theme: { colors } }): CSSObject => ({
-      'box-shadow': `0 0 2rem 0.5rem oklch(from ${colors.blue['200']} l c h / 50%)`,
+      'box-shadow': `
+        0 0 2rem 0.5rem oklch(from ${colors.blue['200']} l c h / 50%)
+      `,
     })],
 
     [/^writing-(.+)$/, ([, value]): CSSObject => ({
@@ -81,15 +111,68 @@ export default defineConfig({
     })],
 
     [/^bg-btn-gradient-r$/, (_, { theme: { colors } }): CSSObject => ({
-      background: `radial-gradient(117% 109% at 100% 50%, oklch(from ${colors.gray['50']} l c h / 24%) 0%, transparent 100%)`,
+      background: `
+        radial-gradient(
+          117% 109% at 100% 50%,
+          oklch(from ${colors.gray['50']} l c h / 24%) 0%,
+          transparent 100%
+        )
+      `,
     })],
 
     [/^bg-btn-gradient-l$/, (_, { theme: { colors } }): CSSObject => ({
-      background: `linear-gradient(180deg, ${colors.gray['200']} 0%, ${colors.gray['400']} 10%, ${colors.gray['400']} 18%, ${colors.gray['300']} 26%, ${colors.gray['300']} 36%, ${colors.gray['500']} 50%, ${colors.gray['500']} 81%, ${colors.gray['300']} 89%, ${colors.gray['200']} 100%)`,
+      background: `
+        linear-gradient(
+          180deg,
+          ${colors.gray['200']} 0%,
+          ${colors.gray['400']} 10%,
+          ${colors.gray['400']} 18%,
+          ${colors.gray['300']} 26%,
+          ${colors.gray['300']} 36%,
+          ${colors.gray['500']} 50%,
+          ${colors.gray['500']} 81%,
+          ${colors.gray['300']} 89%,
+          ${colors.gray['200']} 100%
+        )
+      `,
     })],
 
     [/^shadow-btn-l$/, (_, { theme: { colors } }): CSSObject => ({
-      'box-shadow': `inset -0.5px 0px 0.5px oklch(from ${colors.gray['50']} l c h / 50%), inset 0.5px 0px 0.5px oklch(from ${colors.gray['900']} l c h / 45%)`,
+      'box-shadow': `
+        inset -0.5px 0 0.5px oklch(from ${colors.gray['50']} l c h / 50%),
+        inset 0.5px 0 0.5px oklch(from ${colors.gray['900']} l c h / 45%)
+      `,
+    })],
+
+    [/^shadow-btn-base$/, (_, { theme: { colors } }): CSSObject => ({
+      'box-shadow': `
+        -1px -1px 1px oklch(from ${colors.gray['50']} l c h / 80%),
+        -0.25rem -0.25rem 0.5rem oklch(from ${colors.gray['50']} l c h / 25%),
+        -0.5rem -0.5rem 1rem oklch(from ${colors.gray['50']} l c h / 40%),
+        0.5px 0.5px 1px oklch(from ${colors.gray['500']} l c h / 50%),
+        1px 1px 2px oklch(from ${colors.gray['500']} l c h / 25%),
+        2px 2px 0.25rem oklch(from ${colors.gray['500']} l c h / 40%)
+      `,
+    })],
+
+    [/^bg-btn-border$/, (_, { theme: { colors } }): CSSObject => ({
+      'background-image': `
+        conic-gradient(
+          from 16deg at 50% 50%,
+          ${colors.gray['200']} -29deg,
+          ${colors.gray['300']} 32deg,
+          ${colors.gray['400']} 129deg,
+          ${colors.gray['300']} 211deg,
+          ${colors.gray['100']} 237deg,
+          ${colors.gray['50']} 300deg,
+          ${colors.gray['200']} 331deg,
+          ${colors.gray['300']} 392deg
+        )
+      `,
+    })],
+
+    [/^shadow-btn-indicator-glow$/, (_, { theme: { colors } }): CSSObject => ({
+      'box-shadow': `0 0 0.5rem 2px ${colors.white}`,
     })],
   ],
 
@@ -121,6 +204,10 @@ export default defineConfig({
           background-color: ${theme.colors.gray['100']};
           color: ${theme.colors.gray['800']};
           overflow-wrap: break-word;
+        }
+
+        button:not(:disabled) {
+          cursor: pointer;
         }
       `,
       layer: 'base',
