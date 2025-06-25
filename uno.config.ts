@@ -45,6 +45,17 @@ export default defineConfig({
 
   extendTheme: (theme): void => {
     theme.colors.primary = theme.colors.orange['600'] as string
+
+    theme.animation.keyframes['wheel-spin'] = /* css */ `
+      {
+        from { 
+          transform: rotateX(360deg); 
+        }
+        to { 
+          transform: rotateX(0deg); 
+        }
+      }
+    `
   },
 
   rules: [
