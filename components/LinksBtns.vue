@@ -33,7 +33,7 @@ const playAudioUp = useAudio('/assets/audio/btn-click-1-up.mp3')
           {{ l.text }} ↗
         </span>
 
-        <span class="m-e--2 m-s-2 rounded-inherit bg-gray-400 h-19 w-2 transition-width relative bg-btn-gradient-r before:(rounded-inherit op-18 content-empty inset-0 right-1px absolute bg-noise) group-active:w-1" />
+        <span class="m-e--2 m-s-2 rounded-inherit bg-base-400 h-19 w-2 transition-width relative bg-btn-gradient-r before:(rounded-inherit op-18 content-empty inset-0 right-1px absolute bg-noise) group-active:w-1" />
       </a>
     </div>
   </div>

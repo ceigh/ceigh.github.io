@@ -37,7 +37,7 @@
         </div>
 
         <div class="p-x-14 p-b-7 flex gap-7 items-center justify-between">
-          <div class="text-gray-600 flex flex-col gap-2 items-end">
+          <div class="text-base-600 flex flex-col gap-2 items-end">
             <div class="text-4xl flex gap-2">
               <i class="i-app:cc" aria-label="Creative Commons" />
               <i class="i-app:accessibility" aria-label="Accesibility" />

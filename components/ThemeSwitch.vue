@@ -26,7 +26,7 @@ onMounted((): void => {
 
 <template>
   <div class="flex flex-col gap-2 w-18">
-    <div class="shadow-theme-switcher border-0.5 border-gray-900/30 rounded-full flex relative from-gray-400 to-gray-500 bg-linear-to-b before:(rounded-inherit op-12 pointer-events-none content-empty inset-0 absolute bg-noise)">
+    <div class="border-base-900/30 from-base-400 to-base-500 border-0.5 rounded-full flex relative bg-linear-to-b shadow-theme-switcher before:(rounded-inherit op-12 pointer-events-none content-empty inset-0 absolute bg-noise)">
       <button
         v-for="i in 3"
         :key="i"
@@ -41,7 +41,7 @@ onMounted((): void => {
       />
 
       <div
-        class="rounded-full bg-red h-100% aspect-ratio-1 pointer-events-none transition-transform left-0 top-50% absolute dark:bg-green"
+        class="rounded-full bg-primary h-100% aspect-ratio-1 pointer-events-none transition-transform left-0 top-50% absolute dark:bg-green"
         :style="{
           transform: `translateY(-50%) translateX(${theme * 100}%)`,
         }"
