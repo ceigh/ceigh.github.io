@@ -215,6 +215,13 @@ export default defineConfig({
         inset 0 -2px 1px 0 ${colors.gray['500']}
       `,
     })],
+
+    [/^shadow-theme-switcher/, (_, { theme: { colors } }): CSSObject => ({
+      'box-shadow': `
+        inset 1px 1px 1px 0 oklch(from ${colors.gray['900']} l c h / 40%),
+        inset -0.5px -0.5px 0.5px 0 oklch(from ${colors.gray['50']} l c h / 60%)
+      `,
+    })],
   ],
 
   shortcuts: {

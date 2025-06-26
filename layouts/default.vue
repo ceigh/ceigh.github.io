@@ -41,8 +41,8 @@
             <div class="text-4xl flex gap-2">
               <i class="i-app:cc" aria-label="Creative Commons" />
               <i class="i-app:accessibility" aria-label="Accesibility" />
-              <i class="i-app:open-source" aria-label="Open source" />
               <i class="i-app:no-ai" aria-label="No AI" />
+              <i class="i-app:open-source" aria-label="Open source" />
             </div>
 
             <div class="text-0.5rem uppercase">

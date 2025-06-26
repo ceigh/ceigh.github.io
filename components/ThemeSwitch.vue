@@ -5,6 +5,11 @@ const theme = usePersistedState('theme', 1)
 
 onMounted((): void => {
   watch(theme, (value): void => {
+    if (![0, 1, 2].includes(value)) {
+      theme.value = 1
+      return
+    }
+
     const html = document.documentElement
 
     html.classList.remove('light', 'dark')
@@ -27,6 +32,10 @@ onMounted((): void => {
         :key="i"
         type="button"
         class="grow-1 aspect-ratio-1"
+        :class="{
+          'rounded-l-full': i === 1,
+          'rounded-r-full': i === 3,
+        }"
         :aria-label="['Light theme', 'System theme', 'Dark theme'][i - 1]"
         @click="theme = i - 1"
       />
