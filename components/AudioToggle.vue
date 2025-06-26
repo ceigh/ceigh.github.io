@@ -21,7 +21,7 @@ const playAudioUp = useAudio('/assets/audio/btn-click-3-up.mp3')
     <button
       type="button"
       class="group border-0.5 border-gray-600/80 rounded-6px flex w-18 aspect-ratio-1.6 transition-shadow from-gray-200 to-gray-300 bg-linear-to-b shadow-btn-base active:shadow-none"
-      aria-label="Toggle sound"
+      aria-label="Toggle audio"
       @pointerdown="() => {
         toggle()
         playAudioDown()

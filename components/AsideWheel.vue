@@ -9,7 +9,7 @@ const animationDelayPerFaceSec = animationDurSec / faces
 
 <template>
   <div
-    class="after:shadow-wheel rounded-r-lg flex w-10 perspective-1000px perspective-origin-center overflow-hidden after:(rounded-inherit content-empty inset-0 absolute)"
+    class="rounded-r-lg flex w-10 perspective-1000px perspective-origin-center overflow-hidden after:(rounded-inherit content-empty inset-0 absolute shadow-wheel)"
     :style="{
       height: `${heightRem}rem`,
     }"
@@ -24,7 +24,7 @@ const animationDelayPerFaceSec = animationDurSec / faces
         <div
           v-for="i in faces"
           :key="i"
-          class="shadow-wheel-face rounded-xl bg-gray w-full transform-3d left-0 absolute animate-wheel-light animate-iteration-infinite before:(rounded-inherit op-12 content-empty inset-0 absolute bg-noise)"
+          class="rounded-xl bg-gray w-full transform-3d left-0 absolute animate-wheel-light animate-iteration-infinite shadow-wheel-face before:(rounded-inherit op-12 content-empty inset-0 absolute bg-noise)"
           :style="{
             'height': `${heightPerFaceRem}rem`,
             'top': `calc(50% - ${heightPerFaceRem / 2}rem)`,
