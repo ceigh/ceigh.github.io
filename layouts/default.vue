@@ -1,9 +1,9 @@
 <template>
   <div class="p-18 flex justify-center h-dvh">
-    <main class="p-t-8 surface rounded-12 grow-1 min-h-720px relative before:(rounded-inherit op-12 content-empty inset-0 absolute bg-noise)">
+    <main class="p-t-8 surface rounded-4xl grow-1 min-h-720px relative before:(rounded-inherit op-12 content-empty inset-0 absolute bg-noise)">
       <NavBtns class="translate-y--50% left-0 top-50% absolute z-10" />
 
-      <AsideWheel class="left-full top-46 absolute" />
+      <AsideWheel class="left-full top-46 absolute z--1" />
 
       <div class="flex flex-col h-full relative overflow-hidden">
         <div class="p-x-14 flex gap-14 items-center justify-between">

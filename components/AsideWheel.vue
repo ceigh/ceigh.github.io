@@ -1,26 +1,36 @@
 <script setup lang="ts">
-const faces = 12
+const faces = 68
 const degPerFace = 360 / faces
-const heightPx = 160
-const heightPerFace = Math.PI * heightPx / faces
+const heightRem = 10
+const heightPerFaceRem = Math.PI * heightRem / faces
+const animationDurSec = 60
+const animationDelayPerFaceSec = animationDurSec / faces
 </script>
 
 <template>
   <div
-    class="w-10 perspective-1000px"
+    class="after:shadow-wheel rounded-r-lg flex w-10 perspective-1000px perspective-origin-center overflow-hidden after:(rounded-inherit content-empty inset-0 absolute)"
     :style="{
-      height: `${heightPx}px`,
+      height: `${heightRem}rem`,
     }"
   >
     <div class="h-full w-full transform-3d inset-0 absolute">
-      <div class="h-full w-full transform-3d inset-0 absolute animate-wheel-spin animate-iteration-infinite animate-duration-60s!">
+      <div
+        class="h-full w-full transform-3d inset-0 absolute animate-wheel-spin animate-iteration-infinite"
+        :style="{
+          'animation-duration': `${animationDurSec}s`,
+        }"
+      >
         <div
           v-for="i in faces"
           :key="i"
-          class="bg-gray h-1px w-full transform-origin-cc transform-3d left-0 top-50% absolute"
+          class="shadow-wheel-face rounded-xl bg-gray w-full transform-3d left-0 absolute animate-wheel-light animate-iteration-infinite before:(rounded-inherit op-12 content-empty inset-0 absolute bg-noise)"
           :style="{
-            height: `${heightPerFace}px`,
-            transform: `rotateX(${(i - 1) * degPerFace}deg) translateZ(5rem)`,
+            'height': `${heightPerFaceRem}rem`,
+            'top': `calc(50% - ${heightPerFaceRem / 2}rem)`,
+            'transform': `rotateX(${(i - 1) * degPerFace}deg) translateZ(5rem)`,
+            'animation-duration': `${animationDurSec}s`,
+            'animation-delay': `${(i - 1) * animationDelayPerFaceSec}s`,
           }"
         />
       </div>

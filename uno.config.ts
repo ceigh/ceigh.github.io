@@ -56,6 +56,20 @@ export default defineConfig({
         }
       }
     `
+
+    theme.animation.keyframes['wheel-light'] = /* css */ `
+      {
+        0%, 100% { 
+          background-color: ${theme.colors.gray['400']};
+        }
+        50% { 
+          background-color: ${theme.colors.gray['900']};
+        }
+        75% { 
+          background-color: ${theme.colors.gray['50']};
+        }
+      }
+    `
   },
 
   rules: [
@@ -184,6 +198,22 @@ export default defineConfig({
 
     [/^shadow-btn-indicator-glow$/, (_, { theme: { colors } }): CSSObject => ({
       'box-shadow': `0 0 0.5rem 2px ${colors.white}`,
+    })],
+
+    [/^shadow-wheel$/, (_, { theme: { colors } }): CSSObject => ({
+      'box-shadow': `
+        inset 0 1px 1px 0 oklch(from ${colors.gray['50']} l c h / 50%),
+        inset -1px -1px 0.5px 0 oklch(from ${colors.gray['900']} l c h / 45%),
+        inset 1rem 0 1rem 0 oklch(from ${colors.gray['900']} l c h / 40%)
+      `,
+    })],
+
+    [/^shadow-wheel-face$/, (_, { theme: { colors } }): CSSObject => ({
+      'box-shadow': `
+        0 0.5px 0.5px 0 ${colors.gray['400']},
+        inset 0 1px 1px 0 ${colors.gray['300']},
+        inset 0 -2px 1px 0 ${colors.gray['500']}
+      `,
     })],
   ],
 
