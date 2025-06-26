@@ -7,9 +7,11 @@
 
       <div class="flex flex-col h-full relative overflow-hidden">
         <div class="p-x-14 flex gap-14 items-center justify-between">
-          <h1 class="text-3xl tracking-tight uppercase">
-            C31–GH
-          </h1>
+          <NuxtLink to="/">
+            <h1 class="text-3xl tracking-tight uppercase">
+              C31–GH
+            </h1>
+          </NuxtLink>
 
           <div class="flex gap-7 items-center justify-end">
             <AudioToggle />
@@ -34,17 +36,21 @@
           </div>
         </div>
 
-        <div class="text-gray-600 p-x-14 p-b-7 flex flex-col gap-2 max-w-fit items-end">
-          <div class="text-4xl flex gap-2">
-            <i class="i-app:cc" />
-            <i class="i-app:accessibility" />
-            <i class="i-app:open-source" />
-            <i class="i-app:no-ai" />
+        <div class="p-x-14 p-b-7 flex gap-7 items-center justify-between">
+          <div class="text-gray-600 flex flex-col gap-2 items-end">
+            <div class="text-4xl flex gap-2">
+              <i class="i-app:cc" aria-label="Creative Commons" />
+              <i class="i-app:accessibility" aria-label="Accesibility" />
+              <i class="i-app:open-source" aria-label="Open source" />
+              <i class="i-app:no-ai" aria-label="No AI" />
+            </div>
+
+            <div class="text-0.5rem uppercase">
+              2025 Made in Russia
+            </div>
           </div>
 
-          <div class="text-0.5rem uppercase">
-            2025 Made in Russia
-          </div>
+          <ThemeSwitch />
         </div>
       </div>
 
