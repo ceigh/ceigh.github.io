@@ -77,7 +77,7 @@ export default defineConfig({
   rules: [
     [/^shadow-surface-border/, (_, { theme: { colors } }): CSSObject => ({
       'box-shadow': `
-        inset -1px -1px 0.5px oklch(from ${colors.base['950']} l c h / 20%),
+        inset -1px -1px 0.5px oklch(from ${colors.base['900']} l c h / 20%),
         inset 1px 1px 0.5px ${colors.base['50']}
       `,
     })],
@@ -108,7 +108,7 @@ export default defineConfig({
 
     [/^shadow-screen-border$/, (_, { theme: { colors } }): CSSObject => ({
       'box-shadow': `
-        inset 0.5px 0.5px 0.5px oklch(from ${colors.screen['950']} l c h / 59%),
+        inset 0.5px 0.5px 0.5px oklch(from ${colors.screen['900']} l c h / 59%),
         inset -0.5px -0.5px 0.5px oklch(from ${colors.screen['50']} l c h / 80%)
       `,
     })],
@@ -218,10 +218,45 @@ export default defineConfig({
       `,
     })],
 
-    [/^shadow-theme-switcher/, (_, { theme: { colors } }): CSSObject => ({
+    [/^bg-theme-switch-border$/, (_, { theme: { colors } }): CSSObject => ({
+      'background-image': `
+        conic-gradient(
+          from 20deg at 50% 50%,
+          ${colors.base['300']} 0deg,
+          ${colors.base['400']} 35deg,
+          ${colors.base['200']} 89deg,
+          ${colors.base['300']} 132deg,
+          ${colors.base['400']} 180deg,
+          ${colors.base['400']} 230deg,
+          ${colors.base['200']} 250deg,
+          ${colors.base['100']} 325deg,
+          ${colors.base['200']} 330deg,
+          ${colors.base['300']} 360deg
+        )
+      `,
+    })],
+
+    [/^shadow-theme-switch$/, (_, { theme: { colors } }): CSSObject => ({
       'box-shadow': `
         inset 1px 1px 1px 0 oklch(from ${colors.base['900']} l c h / 40%),
-        inset -0.5px -0.5px 0.5px 0 oklch(from ${colors.base['50']} l c h / 60%)
+        inset -0.5px -0.5px 0.5px 0 oklch(from ${colors.base['50']} l c h / 40%)
+      `,
+    })],
+
+    [/^shadow-theme-switch-handle$/, (_, { theme: { colors } }): CSSObject => ({
+      'box-shadow': `
+        inset -1px -1px 0.5px oklch(from ${colors.base['900']} l c h / 20%),
+        inset 1px 1px 0.5px oklch(from ${colors.base['50']} l c h / 50%),
+        0.5px 0.5px 0.5px 0 oklch(from ${colors.base['900']} l c h / 30%),
+        0.5px -0.5px 0.5px 0 oklch(from ${colors.base['900']} l c h / 30%),
+        -0.5px 0.5px 0.5px 0 oklch(from ${colors.base['900']} l c h / 30%)
+      `,
+    })],
+
+    [/^shadow-theme-switch-handle-mark$/, (_, { theme: { colors } }): CSSObject => ({
+      'box-shadow': `
+        inset -0.5px -1px 3px oklch(from ${colors.base['50']} l c h / 50%),
+        inset 0.5px 0px 2px oklch(from ${colors.base['900']} l c h / 60%)
       `,
     })],
   ],

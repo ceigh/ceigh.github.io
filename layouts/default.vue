@@ -54,7 +54,7 @@
         </div>
       </div>
 
-      <LinksBtns class="bottom-30 right-0 absolute z-10" />
+      <LinksBtns class="bottom-40 right-0 absolute z-10" />
     </main>
   </div>
 </template>
