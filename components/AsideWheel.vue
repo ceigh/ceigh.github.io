@@ -24,7 +24,7 @@ const animationDelayPerFaceSec = animationDurSec / faces
         <div
           v-for="i in faces"
           :key="i"
-          class="rounded-xl bg-base w-full transform-3d left-0 absolute animate-wheel-light animate-iteration-infinite shadow-wheel-face before:(rounded-inherit op-12 content-empty inset-0 absolute bg-noise)"
+          class="rounded-xs bg-base w-full transform-3d left-0 absolute animate-wheel-light animate-iteration-infinite shadow-wheel-face before:(rounded-inherit op-12 content-empty inset-0 absolute bg-noise)"
           :style="{
             'height': `${heightPerFaceRem}rem`,
             'top': `calc(50% - ${heightPerFaceRem / 2}rem)`,

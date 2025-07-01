@@ -3,8 +3,8 @@ import { useDownUpAudio } from '@/utils/audio'
 import { usePersistedState } from '@/utils/state'
 
 const { playDown, playUp } = useDownUpAudio(
-  '/assets/audio/btn-3-down.mp3',
-  '/assets/audio/btn-3-up.mp3',
+  '/assets/audio/btn-2-down.mp3',
+  '/assets/audio/btn-2-up.mp3',
 )
 
 const isMuted = usePersistedState('isMuted', false)

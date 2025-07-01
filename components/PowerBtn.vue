@@ -2,8 +2,8 @@
 import { useDownUpAudio } from '@/utils/audio'
 
 const { playDown, playUp } = useDownUpAudio(
-  '/assets/audio/btn-1-down.mp3',
-  '/assets/audio/btn-1-up.mp3',
+  '/assets/audio/btn-2-down.mp3',
+  '/assets/audio/btn-2-up.mp3',
 )
 
 const isOff = useState('isOff', () => false)

@@ -27,11 +27,11 @@ onMounted((): void => {
   }, { immediate: true })
 })
 
-const { play: playAudio } = useAudio('/assets/audio/btn-2-down.mp3')
+const { play: playAudio } = useAudio('/assets/audio/btn-1-down.mp3')
 
 function setTheme(value: Theme): void {
-  theme.value = value
   playAudio()
+  theme.value = value
 }
 </script>
 
@@ -49,7 +49,9 @@ function setTheme(value: Theme): void {
             'rounded-r-full': i === 3,
           }"
           :aria-label="['Light theme', 'System theme', 'Dark theme'][i - 1]"
-          @click="setTheme(i - 1 as Theme)"
+          @pointerdown="setTheme(i - 1 as Theme)"
+          @keydown.enter="theme = i - 1 as Theme"
+          @keydown.space="theme = i - 1 as Theme"
         />
 
         <div

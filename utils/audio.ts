@@ -1,6 +1,6 @@
 import { usePersistedState } from '@/utils/state'
 
-export function useAudio(src: string): {
+export function useAudio(src: string, throttleMs = 50): {
   audio: Ref<HTMLAudioElement | undefined>
   isPlaying: Ref<boolean>
   play: () => void
@@ -9,20 +9,10 @@ export function useAudio(src: string): {
   const audio = ref<HTMLAudioElement>()
   const isPlaying = ref(false)
 
-  function onEnded(): void {
-    isPlaying.value = false
-  }
-
   onMounted((): void => {
     audio.value = new Audio(src)
     audio.value.preload = 'auto'
     audio.value.volume = 0.5
-
-    audio.value.addEventListener('ended', onEnded)
-  })
-
-  onUnmounted((): void => {
-    audio.value?.removeEventListener('ended', onEnded)
   })
 
   function play(): void {
@@ -31,6 +21,11 @@ export function useAudio(src: string): {
     }
 
     isPlaying.value = true
+    setTimeout(() => {
+      isPlaying.value = false
+    }, throttleMs)
+
+    audio.value.pause()
     audio.value.currentTime = 0
     void audio.value?.play()
   }
