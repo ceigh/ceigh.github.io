@@ -8,7 +8,7 @@ export function usePersistedState<T = unknown>(
 
   onMounted((): void => {
     const item = localStorage.getItem(key)
-    if (null !== item) {
+    if (item !== null) {
       try {
         state.value = JSON.parse(item) as T
       }

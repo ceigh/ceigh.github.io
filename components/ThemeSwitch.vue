@@ -18,10 +18,10 @@ onMounted((): void => {
 
     html.classList.remove('light', 'dark')
 
-    if (0 === value) {
+    if (value === 0) {
       html.classList.add('light')
     }
-    else if (2 === value) {
+    else if (value === 2) {
       html.classList.add('dark')
     }
   }, { immediate: true })
