@@ -1,15 +1,17 @@
 <script setup lang="ts">
-import { useAudio } from '@/utils/audio'
+import { useDownUpAudio } from '@/utils/audio'
 import { usePersistedState } from '@/utils/state'
+
+const { playDown, playUp } = useDownUpAudio(
+  '/assets/audio/btn-3-down.mp3',
+  '/assets/audio/btn-3-up.mp3',
+)
 
 const isMuted = usePersistedState('isMuted', false)
 
 function toggle(): void {
   isMuted.value = !isMuted.value
 }
-
-const playAudioDown = useAudio('/assets/audio/btn-click-3-down.mp3')
-const playAudioUp = useAudio('/assets/audio/btn-click-3-up.mp3')
 </script>
 
 <template>
@@ -24,11 +26,11 @@ const playAudioUp = useAudio('/assets/audio/btn-click-3-up.mp3')
       aria-label="Toggle audio"
       @pointerdown="() => {
         toggle()
-        playAudioDown()
+        playDown()
       }"
-      @pointerup="playAudioUp()"
-      @keypress.enter="toggle()"
-      @keypress.space="toggle()"
+      @pointerup="playUp()"
+      @keydown.enter="toggle()"
+      @keydown.space="toggle()"
     >
       <div class="p-2px rounded-inherit h-full w-full relative bg-btn-border before:(rounded-inherit op-6 content-empty inset-0 absolute bg-noise)">
         <div class="rounded-4px flex h-full w-full items-center justify-center relative from-base-200 to-base-300 bg-linear-to-b before:(rounded-inherit op-12 content-empty inset-0 absolute bg-noise)">

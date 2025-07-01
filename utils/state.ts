@@ -4,7 +4,7 @@ export function usePersistedState<T = unknown>(
 ): Ref<T> {
   key = `app:${key}`
 
-  const state = shallowRef<T>(defaultValue)
+  const state = useState(key, (): T => defaultValue)
 
   onMounted((): void => {
     const item = localStorage.getItem(key)

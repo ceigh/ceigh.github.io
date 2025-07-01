@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useAudio } from '@/utils/audio'
+import { useDownUpAudio } from '@/utils/audio'
 
 const links = [
   {
@@ -16,8 +16,10 @@ const links = [
   },
 ]
 
-const playAudioDown = useAudio('/assets/audio/btn-click-2-down.mp3')
-const playAudioUp = useAudio('/assets/audio/btn-click-2-up.mp3')
+const { playDown, playUp } = useDownUpAudio(
+  '/assets/audio/btn-1-down.mp3',
+  '/assets/audio/btn-1-up.mp3',
+)
 </script>
 
 <template>
@@ -28,8 +30,8 @@ const playAudioUp = useAudio('/assets/audio/btn-click-2-up.mp3')
         :key="l.text"
         :href="l.href"
         class="group rounded-s-0.5 flex flex-row-reverse items-center relative after:(rounded-inherit h-full w-2 content-empty left--2 absolute)"
-        @pointerdown="playAudioDown()"
-        @pointerup="playAudioUp()"
+        @pointerdown="playDown()"
+        @pointerup="playUp()"
       >
         <span class="text-sm uppercase writing-sideways-rl">
           {{ l.text }}

@@ -30,6 +30,8 @@
     "no-duplicate-imports": "off",
     "no-async-await": "off",
     "no-optional-chaining": "off",
+    "no-void": "off",
+    "max-lines": "off",
 
     "no-console": ["error", { "allow": ["error"] }]
   }
