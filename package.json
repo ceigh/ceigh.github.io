@@ -5,8 +5,8 @@
     "postinstall": "nuxt prepare",
     "dev": "nuxt dev",
     "lint": "eslint .",
-    "lint:fix": "eslint --fix .",
-    "test": "bun run lint && nuxt typecheck",
+    "lint:fix": "bun run lint --fix",
+    "test": "bun audit && bun run lint && nuxt typecheck",
     "generate": "nuxt generate",
     "preview": "nuxt preview"
   },
