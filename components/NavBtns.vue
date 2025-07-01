@@ -29,7 +29,7 @@ const { playDown, playUp } = useDownUpAudio(
         v-for="l in links"
         :key="l.text"
         :href="l.href"
-        class="group rounded-s-0.5 flex flex-row-reverse items-center relative after:(rounded-inherit h-full w-2 content-empty left--2 absolute)"
+        class="group rounded-s-0.5 flex flex-row-reverse items-center relative after:(rounded-inherit h-full w-2 content-empty left--2 top-0 absolute)"
         @pointerdown="playDown()"
         @pointerup="playUp()"
       >

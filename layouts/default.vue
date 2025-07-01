@@ -26,35 +26,19 @@
           </div>
         </div>
 
-        <div class="p-x-14 p-y-7 grow-1 overflow-hidden">
-          <div class="text-3xl font-mono p-2px rounded-8px h-full overflow-hidden bg-screen-border shadow-screen-border shadow-screen-glow">
-            <div class="border-0.5px border-slate-500 rounded-6px bg-blue-100 h-full overflow-hidden bg-screen-grid">
-              <div class="p-6 h-full overflow-y-auto">
-                <slot />
-              </div>
-            </div>
-          </div>
-        </div>
+        <PixelScreen>
+          <slot />
+        </PixelScreen>
 
         <div class="p-x-14 p-b-7 flex gap-7 items-center justify-between">
-          <div class="text-base-600 flex flex-col gap-2 items-end">
-            <div class="text-4xl flex gap-2">
-              <i class="i-app:cc" aria-label="Creative Commons" />
-              <i class="i-app:accessibility" aria-label="Accesibility" />
-              <i class="i-app:no-ai" aria-label="No AI" />
-              <i class="i-app:open-source" aria-label="Open source" />
-            </div>
-
-            <div class="text-0.5rem uppercase">
-              2025 Made in Russia
-            </div>
-          </div>
-
+          <FooterMarkings />
           <ThemeSwitch />
         </div>
       </div>
 
       <LinksBtns class="bottom-40 right-0 absolute z-10" />
+
+      <PowerBtn class="bottom-full left-14 absolute" />
     </main>
   </div>
 </template>

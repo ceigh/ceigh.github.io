@@ -106,12 +106,22 @@ export default defineConfig({
       `,
     })],
 
-    [/^shadow-screen-border$/, (_, { theme: { colors } }): CSSObject => ({
-      'box-shadow': `
-        inset 0.5px 0.5px 0.5px oklch(from ${colors.screen['900']} l c h / 59%),
-        inset -0.5px -0.5px 0.5px oklch(from ${colors.screen['50']} l c h / 80%)
-      `,
-    })],
+    [
+      /^shadow-screen-glow-(on|off)$/,
+      ([, value], { theme: { colors } }): CSSObject => ({
+        'box-shadow': `
+          inset 0.5px 0.5px 0.5px 
+            oklch(from ${colors.screen['900']} l c h / 59%),
+          inset -0.5px -0.5px 0.5px 
+            oklch(from ${colors.screen['50']} l c h / 80%)
+          ${value === 'on'
+          ? `, 0 0 1.5rem 0.5rem
+              oklch(from ${colors.screen['200']} l c h / 50%)`
+          : ''
+        }
+        `,
+      }),
+    ],
 
     [/^bg-screen-grid$/, (_, { theme: { colors } }): CSSObject => ({
       'background-image': `
@@ -125,12 +135,6 @@ export default defineConfig({
           transparent 1px
         )`,
       'background-size': '0.5rem 0.5rem',
-    })],
-
-    [/^shadow-screen-glow$/, (_, { theme: { colors } }): CSSObject => ({
-      'box-shadow': `
-        0 0 2rem 0.5rem oklch(from ${colors.screen['200']} l c h / 50%)
-      `,
     })],
 
     [/^writing-(.+)$/, ([, value]): CSSObject => ({
@@ -198,9 +202,12 @@ export default defineConfig({
       `,
     })],
 
-    [/^shadow-btn-indicator-glow$/, (_, { theme: { colors } }): CSSObject => ({
-      'box-shadow': `0 0 0.5rem 2px ${colors.base['50']}`,
-    })],
+    [
+      /^shadow-btn-indicator-glow$/,
+      (_, { theme: { colors } }): CSSObject => ({
+        'box-shadow': `0 0 0.5rem 2px ${colors.base['50']}`,
+      }),
+    ],
 
     [/^shadow-wheel$/, (_, { theme: { colors } }): CSSObject => ({
       'box-shadow': `
@@ -238,25 +245,50 @@ export default defineConfig({
 
     [/^shadow-theme-switch$/, (_, { theme: { colors } }): CSSObject => ({
       'box-shadow': `
-        inset 1px 1px 1px 0 oklch(from ${colors.base['900']} l c h / 40%),
-        inset -0.5px -0.5px 0.5px 0 oklch(from ${colors.base['50']} l c h / 40%)
+        inset 1px 1px 1px oklch(from ${colors.base['900']} l c h / 40%),
+        inset -0.5px -0.5px 0.5px oklch(from ${colors.base['50']} l c h / 40%)
       `,
     })],
 
-    [/^shadow-theme-switch-handle$/, (_, { theme: { colors } }): CSSObject => ({
-      'box-shadow': `
-        inset -1px -1px 0.5px oklch(from ${colors.base['900']} l c h / 20%),
-        inset 1px 1px 0.5px oklch(from ${colors.base['50']} l c h / 50%),
-        0.5px 0.5px 0.5px 0 oklch(from ${colors.base['900']} l c h / 30%),
-        0.5px -0.5px 0.5px 0 oklch(from ${colors.base['900']} l c h / 30%),
-        -0.5px 0.5px 0.5px 0 oklch(from ${colors.base['900']} l c h / 30%)
+    [
+      /^shadow-theme-switch-handle$/,
+      (_, { theme: { colors } }): CSSObject => ({
+        'box-shadow': `
+          inset -1px -1px 0.5px oklch(from ${colors.base['900']} l c h / 20%),
+          inset 1px 1px 0.5px oklch(from ${colors.base['50']} l c h / 50%),
+          0.5px 0.5px 0.5px 0 oklch(from ${colors.base['900']} l c h / 30%),
+          0.5px -0.5px 0.5px 0 oklch(from ${colors.base['900']} l c h / 30%),
+          -0.5px 0.5px 0.5px 0 oklch(from ${colors.base['900']} l c h / 30%)
+        `,
+      }),
+    ],
+
+    [
+      /^shadow-theme-switch-handle-mark$/,
+      (_, { theme: { colors } }): CSSObject => ({
+        'box-shadow': `
+          inset -0.5px -1px 3px oklch(from ${colors.base['50']} l c h / 50%),
+          inset 0.5px 0px 2px oklch(from ${colors.base['900']} l c h / 60%)
+        `,
+      }),
+    ],
+
+    [/^bg-power-btn$/, (_, { theme: { colors } }): CSSObject => ({
+      'background-image': `
+        linear-gradient(
+          to left,
+          ${colors.primary['500']} 0%,
+          ${colors.primary['600']} 25%,
+          ${colors.primary['400']} 50%,
+          ${colors.primary['300']} 80%,
+          ${colors.primary['400']} 100%
+        )
       `,
     })],
 
-    [/^shadow-theme-switch-handle-mark$/, (_, { theme: { colors } }): CSSObject => ({
+    [/^shadow-power-btn$/, (_, { theme: { colors } }): CSSObject => ({
       'box-shadow': `
-        inset -0.5px -1px 3px oklch(from ${colors.base['50']} l c h / 50%),
-        inset 0.5px 0px 2px oklch(from ${colors.base['900']} l c h / 60%)
+        inset -1px 1px 2px oklch(from ${colors.base['50']} l c h / 50%)
       `,
     })],
   ],

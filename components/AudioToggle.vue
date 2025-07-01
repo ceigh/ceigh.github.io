@@ -12,6 +12,8 @@ const isMuted = usePersistedState('isMuted', false)
 function toggle(): void {
   isMuted.value = !isMuted.value
 }
+
+const isOff = useState('isOff', () => false)
 </script>
 
 <template>
@@ -37,8 +39,8 @@ function toggle(): void {
           <div
             class="rounded-full w-4 aspect-ratio-1 transition z-1"
             :class="{
-              'bg-base-700': isMuted,
-              'shadow-btn-indicator-glow bg-base-50': !isMuted,
+              'bg-base-700': isMuted || isOff,
+              'shadow-btn-indicator-glow bg-base-50': !isMuted && !isOff,
             }"
           />
         </div>

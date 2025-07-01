@@ -27,7 +27,7 @@ const { playDown, playUp } = useDownUpAudio(
         :href="l.href"
         target="_blank"
         rel="noopener noreferrer"
-        class="group rounded-e-1 flex items-center relative after:(rounded-inherit h-full w-2 content-empty right--2 absolute)"
+        class="group rounded-e-1 flex items-center relative after:(rounded-inherit h-full w-2 content-empty right--2 top-0 absolute)"
         @pointerdown="playDown()"
         @pointerup="playUp()"
       >
