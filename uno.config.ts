@@ -47,31 +47,6 @@ export default defineConfig({
     theme.colors.primary = theme.colors.orange as { [key: string]: string }
     theme.colors.base = theme.colors.gray as { [key: string]: string }
     theme.colors.screen = theme.colors.blue as { [key: string]: string }
-
-    theme.animation.keyframes['wheel-spin'] = /* css */ `
-      {
-        from { 
-          transform: rotateX(360deg); 
-        }
-        to { 
-          transform: rotateX(0deg); 
-        }
-      }
-    `
-
-    theme.animation.keyframes['wheel-light'] = /* css */ `
-      {
-        0%, 100% { 
-          background-color: ${theme.colors.base['400']};
-        }
-        50% { 
-          background-color: ${theme.colors.base['900']};
-        }
-        75% { 
-          background-color: ${theme.colors.base['50']};
-        }
-      }
-    `
   },
 
   rules: [
