@@ -36,7 +36,7 @@ function setTheme(value: Theme): void {
 </script>
 
 <template>
-  <div class="flex flex-col gap-2 w-16">
+  <div class="flex flex-col gap-1 w-14">
     <div class="p-1px rounded-full bg-theme-switch-border">
       <div class="border-0.5 border-base-900/30 rounded-inherit flex relative from-base-400 to-base-500 bg-linear-to-b shadow-theme-switch before:(rounded-inherit op-12 pointer-events-none content-empty inset-0 absolute bg-noise)">
         <button
@@ -65,7 +65,7 @@ function setTheme(value: Theme): void {
       </div>
     </div>
 
-    <div class="text-lg p-x-1 flex items-center justify-between">
+    <div class="text-lg p-x-0.5 flex items-center justify-between">
       <i class="i-app:sun" />
       <i class="i-app:auto" />
       <i class="i-app:moon" />

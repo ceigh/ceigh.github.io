@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const faces = 68
+const faces = 64
 const degPerFace = 360 / faces
 const heightRem = 10
 const heightPerFaceRem = Math.PI * heightRem / faces
@@ -9,7 +9,7 @@ const animationDelayPerFaceSec = animationDurSec / faces
 
 <template>
   <div
-    class="rounded-r-lg flex w-10 perspective-1000px perspective-origin-center overflow-hidden after:(rounded-inherit content-empty inset-0 absolute shadow-wheel)"
+    class="rounded-r-md flex w-9 perspective-1080px perspective-origin-center overflow-hidden after:(rounded-inherit content-empty inset-0 absolute shadow-wheel)"
     :style="{
       height: `${heightRem}rem`,
     }"

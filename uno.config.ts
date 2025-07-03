@@ -144,7 +144,7 @@ export default defineConfig({
     [/^bg-btn-gradient-r$/, (_, { theme: { colors } }): CSSObject => ({
       background: `
         radial-gradient(
-          117% 109% at 100% 50%,
+          117% 109% at 50% 100%,
           oklch(from ${colors.base['50']} l c h / 24%) 0%,
           transparent 100%
         )
@@ -178,11 +178,11 @@ export default defineConfig({
     [/^shadow-btn-base$/, (_, { theme: { colors } }): CSSObject => ({
       'box-shadow': `
         -1px -1px 1px oklch(from ${colors.base['50']} l c h / 80%),
-        -0.25rem -0.25rem 0.5rem oklch(from ${colors.base['50']} l c h / 25%),
+        -2px -2px 0.5rem oklch(from ${colors.base['50']} l c h / 25%),
         -0.5rem -0.5rem 1rem oklch(from ${colors.base['50']} l c h / 40%),
         0.5px 0.5px 1px oklch(from ${colors.base['500']} l c h / 50%),
         1px 1px 2px oklch(from ${colors.base['500']} l c h / 25%),
-        2px 2px 0.25rem oklch(from ${colors.base['500']} l c h / 40%)
+        2px 2px 2px oklch(from ${colors.base['500']} l c h / 40%)
       `,
     })],
 

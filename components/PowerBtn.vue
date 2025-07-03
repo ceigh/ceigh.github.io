@@ -17,7 +17,7 @@ function toggle(): void {
   <button
     type="button"
     :aria-label="isOff ? 'Turn on' : 'Turn off'"
-    class="group m-b--7 rounded-t-md flex flex-col gap-2 items-center after:(rounded-inherit h-6 w-full content-empty bottom-7 left-0 absolute)"
+    class="group m-b--6 rounded-t-sm flex flex-col gap-2 items-center after:(rounded-inherit h-4 w-full content-empty bottom-6 left-0 absolute)"
     @pointerdown="() => {
       toggle()
       playDown()
@@ -27,14 +27,14 @@ function toggle(): void {
     @keydown.space="toggle()"
   >
     <div
-      class="rounded-inherit bg-red w-10 transition-height bg-power-btn shadow-power-btn group-active:h-2"
+      class="rounded-inherit bg-red w-10 transition-height bg-power-btn shadow-power-btn group-active:h-1"
       :class="{
-        'h-3': !isOff,
-        'h-6': isOff,
+        'h-2': !isOff,
+        'h-4': isOff,
       }"
     />
 
-    <div class="text-sm uppercase">
+    <div class="text-xs uppercase">
       Power
     </div>
   </button>
